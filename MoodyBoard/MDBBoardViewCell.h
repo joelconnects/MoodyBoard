@@ -10,6 +10,7 @@
 
 @interface MDBBoardViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIColor *color;
+@property (nonatomic, strong) UIColor *aColor;
+
 
 @end

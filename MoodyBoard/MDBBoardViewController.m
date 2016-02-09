@@ -61,7 +61,8 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     
     NSUInteger boardIndex = indexPath.item + (indexPath.section * kItemsPerSection);
     
-    [cell setColor:self.colors[boardIndex]];
+    cell.aColor = self.colors[boardIndex];
+//    [cell setColor:self.colors[boardIndex]];
     
     return cell;
 }

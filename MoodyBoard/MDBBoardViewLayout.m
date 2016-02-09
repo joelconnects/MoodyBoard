@@ -261,6 +261,32 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     
 }
 
+-(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+{
+    
+    NSMutableArray *layoutAttributes = [NSMutableArray new];
+    
+    for (NSIndexPath *path in self.layoutCache) {
+        
+        UICollectionViewLayoutAttributes *attributes = [self.layoutCache objectForKey:path];
+        
+        if (CGRectIntersectsRect(attributes.frame, rect)) {
+            [layoutAttributes addObject:attributes];
+        }
+        
+        
+    }
+    
+    return layoutAttributes;
+    
+    
+}
+
+-(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return NO;
+}
+
 
 
 @end
