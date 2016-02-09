@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0182701C69758800789799 /* MDBBoardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0182681C69758800789799 /* MDBBoardViewLayout.m */; };
+		5D0182711C69758800789799 /* MDBBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826A1C69758800789799 /* MDBBoardViewController.m */; };
+		5D0182721C69758800789799 /* MDBBoardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826D1C69758800789799 /* MDBBoardViewCell.m */; };
+		5D0182731C69758800789799 /* MDBBoardLayoutMultipliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */; };
 		5D83F5701C67BBE700F5A04D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F56F1C67BBE700F5A04D /* main.m */; };
 		5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5721C67BBE700F5A04D /* AppDelegate.m */; };
-		5D83F5761C67BBE700F5A04D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5751C67BBE700F5A04D /* ViewController.m */; };
 		5D83F5791C67BBE700F5A04D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D83F5771C67BBE700F5A04D /* Main.storyboard */; };
 		5D83F57B1C67BBE700F5A04D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D83F57A1C67BBE700F5A04D /* Assets.xcassets */; };
 		5D83F57E1C67BBE700F5A04D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D83F57C1C67BBE700F5A04D /* LaunchScreen.storyboard */; };
@@ -35,12 +38,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D0182681C69758800789799 /* MDBBoardViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBBoardViewLayout.m; sourceTree = "<group>"; };
+		5D0182691C69758800789799 /* MDBBoardViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBBoardViewLayout.h; sourceTree = "<group>"; };
+		5D01826A1C69758800789799 /* MDBBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBBoardViewController.m; sourceTree = "<group>"; };
+		5D01826B1C69758800789799 /* MDBBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBBoardViewController.h; sourceTree = "<group>"; };
+		5D01826C1C69758800789799 /* MDBBoardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBBoardViewCell.h; sourceTree = "<group>"; };
+		5D01826D1C69758800789799 /* MDBBoardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBBoardViewCell.m; sourceTree = "<group>"; };
+		5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBBoardLayoutMultipliers.m; sourceTree = "<group>"; };
+		5D01826F1C69758800789799 /* MDBBoardLayoutMultipliers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBBoardLayoutMultipliers.h; sourceTree = "<group>"; };
 		5D83F56B1C67BBE700F5A04D /* MoodyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D83F56F1C67BBE700F5A04D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D83F5711C67BBE700F5A04D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5D83F5721C67BBE700F5A04D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5D83F5741C67BBE700F5A04D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5D83F5751C67BBE700F5A04D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5D83F5781C67BBE700F5A04D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D83F57A1C67BBE700F5A04D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D83F57D1C67BBE700F5A04D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,12 +112,15 @@
 			children = (
 				5D83F5711C67BBE700F5A04D /* AppDelegate.h */,
 				5D83F5721C67BBE700F5A04D /* AppDelegate.m */,
-				5D83F5741C67BBE700F5A04D /* ViewController.h */,
-				5D83F5751C67BBE700F5A04D /* ViewController.m */,
+				5D01826B1C69758800789799 /* MDBBoardViewController.h */,
+				5D01826A1C69758800789799 /* MDBBoardViewController.m */,
+				5D0182691C69758800789799 /* MDBBoardViewLayout.h */,
+				5D0182681C69758800789799 /* MDBBoardViewLayout.m */,
+				5D01826C1C69758800789799 /* MDBBoardViewCell.h */,
+				5D01826D1C69758800789799 /* MDBBoardViewCell.m */,
+				5D01826F1C69758800789799 /* MDBBoardLayoutMultipliers.h */,
+				5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */,
 				5D83F5771C67BBE700F5A04D /* Main.storyboard */,
-				5D83F57A1C67BBE700F5A04D /* Assets.xcassets */,
-				5D83F57C1C67BBE700F5A04D /* LaunchScreen.storyboard */,
-				5D83F57F1C67BBE700F5A04D /* Info.plist */,
 				5D83F56E1C67BBE700F5A04D /* Supporting Files */,
 			);
 			path = MoodyBoard;
@@ -117,6 +129,9 @@
 		5D83F56E1C67BBE700F5A04D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5D83F57A1C67BBE700F5A04D /* Assets.xcassets */,
+				5D83F57C1C67BBE700F5A04D /* LaunchScreen.storyboard */,
+				5D83F57F1C67BBE700F5A04D /* Info.plist */,
 				5D83F56F1C67BBE700F5A04D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -270,8 +285,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D83F5761C67BBE700F5A04D /* ViewController.m in Sources */,
+				5D0182721C69758800789799 /* MDBBoardViewCell.m in Sources */,
+				5D0182731C69758800789799 /* MDBBoardLayoutMultipliers.m in Sources */,
 				5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */,
+				5D0182711C69758800789799 /* MDBBoardViewController.m in Sources */,
+				5D0182701C69758800789799 /* MDBBoardViewLayout.m in Sources */,
 				5D83F5701C67BBE700F5A04D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +516,7 @@
 				5D83F59A1C67BBE700F5A04D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D83F59B1C67BBE700F5A04D /* Build configuration list for PBXNativeTarget "MoodyBoardTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +525,7 @@
 				5D83F59D1C67BBE700F5A04D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D83F59E1C67BBE700F5A04D /* Build configuration list for PBXNativeTarget "MoodyBoardUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +534,7 @@
 				5D83F5A01C67BBE700F5A04D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
