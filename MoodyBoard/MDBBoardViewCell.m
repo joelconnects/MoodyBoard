@@ -16,6 +16,7 @@
 
 @implementation MDBBoardViewCell
 
+
 - (id)initWithFrame:(CGRect)frame
 {
     if (!(self = [super initWithFrame:frame])) return nil;
@@ -34,12 +35,12 @@
     self.colorView.frame = CGRectInset(self.bounds, 4, 4);
 }
 
-//-(void)setColor:(UIColor *)color
-//{
-//    _color = color;
-//    
-//    self.colorView.backgroundColor = color;
-//}
+-(void)setColor:(UIColor *)color
+{
+    _color = color;
+    
+    self.colorView.backgroundColor = color;
+}
 
 
 @end

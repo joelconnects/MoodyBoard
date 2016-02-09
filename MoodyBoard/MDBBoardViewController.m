@@ -25,10 +25,10 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     [super viewDidLoad];
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[MDBBoardViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     self.collectionView.backgroundColor = [UIColor blackColor];
-    self.colors = [self generateColors:kItemsPerSection*2];
+    self.colors = [self generateColors:kItemsPerSection];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,12 +57,11 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    MDBBoardViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    MDBBoardViewCell *cell = (MDBBoardViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     NSUInteger boardIndex = indexPath.item + (indexPath.section * kItemsPerSection);
-    
-    cell.aColor = self.colors[boardIndex];
-//    [cell setColor:self.colors[boardIndex]];
+
+    [cell setColor:self.colors[boardIndex]];
     
     return cell;
 }
@@ -71,8 +70,8 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 {
     
     NSMutableArray *colors = [NSMutableArray array];
-    CGFloat hue = 0.01;
-    CGFloat hueIncrement = 0.01;
+    CGFloat hue = 0.0;
+    CGFloat hueIncrement = 0.05;
     
     for (NSUInteger i = 0; i < numberOfColors; i++) {
         UIColor *color = [UIColor colorWithHue:hue

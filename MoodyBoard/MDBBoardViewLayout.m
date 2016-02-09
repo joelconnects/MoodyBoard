@@ -9,8 +9,10 @@
 #import "MDBBoardViewLayout.h"
 #import "MDBBoardLayoutMultipliers.h"
 
-static NSUInteger const kX, kWidth = 0;
-static NSUInteger const kY, kHeight = 1;
+static NSUInteger const kWidth = 0;
+static NSUInteger const kHeight = 1;
+static NSUInteger const kX = 0;
+static NSUInteger const kY = 1;
 NSUInteger const kItemsPerSection = 14;
 
 typedef NS_ENUM(NSUInteger, Zindex) {
@@ -42,8 +44,6 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     if (self)  {
         _layoutCache = [NSMutableDictionary dictionary];
         _contentWidth = 0;
-        _xOffset = 0.0;
-        _yOffset = 260.0;
         
     }
     return self;
@@ -61,6 +61,92 @@ typedef NS_ENUM(NSUInteger, Zindex) {
 -(CGSize)collectionViewContentSize
 {
     return CGSizeMake(self.contentWidth, self.viewHeight);
+}
+
+
+-(void)prepareLayout
+{
+    
+    NSUInteger sectionCount = [self.collectionView numberOfSections];
+    
+    if (self.layoutCache.count == 0) {
+        
+        for (NSUInteger section = 0; section < sectionCount; section++) {
+            for (NSUInteger item = 0; item < kItemsPerSection; item++) {
+                
+                [self setItemAttributeForSection:section item:item];
+                
+            }
+        }
+    
+    } else {
+        
+        NSUInteger sectionIndex = self.layoutCache.count / kItemsPerSection;
+        
+        for (NSUInteger section = sectionIndex; section < sectionCount; section++) {
+            for (NSUInteger item = 0; item < kItemsPerSection; item++) {
+                
+                [self setItemAttributeForSection:section item:item];
+                
+            }
+        }
+        
+    }
+    
+}
+
+-(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
+{
+    
+    NSMutableArray *layoutAttributes = [NSMutableArray new];
+    
+    for (NSIndexPath *path in self.layoutCache) {
+        
+        UICollectionViewLayoutAttributes *attributes = [self.layoutCache objectForKey:path];
+        
+        if (CGRectIntersectsRect(attributes.frame, rect)) {
+            [layoutAttributes addObject:attributes];
+        }
+        
+        
+    }
+    
+    return layoutAttributes;
+    
+    
+}
+
+-(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return NO;
+}
+
+-(void)setItemAttributeForSection:(NSUInteger)section item:(NSUInteger)item {
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+    
+    [self itemSizeForLocation:item];
+    [self itemZindexForLocation:item];
+    [self itemOffsetForLocation:item];
+    
+    if (section == 0 && item == 0) {
+        self.xOffset = 0.0;
+        self.yOffset = 260.0;
+    }
+    
+    CGRect frame = CGRectMake(self.xOffset, self.yOffset, self.itemWidth, self.itemHeight);
+    
+    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    
+    attributes.frame = frame;
+    attributes.zIndex = self.itemZindex;
+    
+    [self.layoutCache setObject:attributes forKey:indexPath];
+    
+    if (item % kItemsPerSection < 2) {
+        self.contentWidth = CGRectGetMaxX(frame);
+    }
+    
 }
 
 -(void)calculateItemSize:(NSString *)size
@@ -175,117 +261,6 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     
 }
 
-
--(void)prepareLayout
-{
-    
-    NSUInteger sectionCount = [self.collectionView numberOfSections];
-    
-    if (self.layoutCache.count == 0) {
-        
-        for (NSUInteger section = 0; section < sectionCount; section++) {
-            for (NSUInteger item = 0; item < kItemsPerSection; item++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-                
-                // item size
-                [self itemSizeForLocation:item];
-                
-                // item zIndex
-                [self itemZindexForLocation:item];
-                
-                if (section != 0 && item != 0) {
-                    
-                    // item offsets
-                    [self itemOffsetForLocation:item];
-        
-                }
-                
-                CGRect frame = CGRectMake(self.xOffset, self.yOffset, self.itemWidth, self.itemHeight);
-                
-                UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-                
-                attributes.frame = frame;
-                attributes.zIndex = self.itemZindex;
-                
-                [self.layoutCache setObject:attributes forKey:indexPath];
-                
-                if (item % kItemsPerSection < 2) {
-                    self.contentWidth = CGRectGetMaxX(frame);
-                }
-                
-            }
-        }
-    
-    } else {
-        
-        // let's say layoutCache count is 14
-        // that means section number should be 1
-        
-        NSUInteger sectionIndex = self.layoutCache.count / kItemsPerSection;
-        
-        for (NSUInteger section = sectionIndex; section < sectionCount; section++) {
-            for (NSUInteger item = 0; item < kItemsPerSection; item++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-                
-                // item size
-                [self itemSizeForLocation:item];
-                
-                // item zIndex
-                [self itemZindexForLocation:item];
-                
-                if (section != 0 && item != 0) {
-                    
-                    // item offsets
-                    [self itemOffsetForLocation:item];
-                    
-                }
-                
-                CGRect frame = CGRectMake(self.xOffset, self.yOffset, self.itemWidth, self.itemHeight);
-                
-                UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-                
-                attributes.frame = frame;
-                attributes.zIndex = self.itemZindex;
-                
-                [self.layoutCache setObject:attributes forKey:indexPath];
-                
-                if (item % kItemsPerSection < 2) {
-                    self.contentWidth = CGRectGetMaxX(frame);
-                }
-                
-            }
-        }
-        
-        
-    }
-    
-}
-
--(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
-{
-    
-    NSMutableArray *layoutAttributes = [NSMutableArray new];
-    
-    for (NSIndexPath *path in self.layoutCache) {
-        
-        UICollectionViewLayoutAttributes *attributes = [self.layoutCache objectForKey:path];
-        
-        if (CGRectIntersectsRect(attributes.frame, rect)) {
-            [layoutAttributes addObject:attributes];
-        }
-        
-        
-    }
-    
-    return layoutAttributes;
-    
-    
-}
-
--(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
-{
-    return NO;
-}
 
 
 
