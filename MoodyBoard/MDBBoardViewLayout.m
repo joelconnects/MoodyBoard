@@ -129,9 +129,15 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     [self itemZindexForLocation:item];
     [self itemOffsetForLocation:item];
     
+    // initial value for offsets
     if (section == 0 && item == 0) {
         self.xOffset = 0.0;
         self.yOffset = 260.0;
+    }
+    
+    // xOffset adjustment for new section
+    if (section > 0 && item == 0) {
+        self.xOffset -= 4;
     }
     
     CGRect frame = CGRectMake(self.xOffset, self.yOffset, self.itemWidth, self.itemHeight);

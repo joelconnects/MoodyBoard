@@ -10,7 +10,7 @@
 #import "MDBBoardViewLayout.h"
 #import "MDBBoardViewCell.h"
 
-@interface MDBBoardViewController ()
+@interface MDBBoardViewController () <UICollectionViewDelegate>
 
 @property (nonatomic, strong) NSArray *colors;
 
@@ -28,7 +28,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     [self.collectionView registerClass:[MDBBoardViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     self.collectionView.backgroundColor = [UIColor blackColor];
-    self.colors = [self generateColors:kItemsPerSection];
+    self.colors = [self generateColors:kItemsPerSection*3];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +66,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     return cell;
 }
 
+
 -(NSArray *)generateColors:(NSUInteger)numberOfColors
 {
     
@@ -86,6 +87,15 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    NSUInteger item = indexPath.item;
+    NSUInteger section = indexPath.section;
+    NSLog(@"\n\nDID SELECT:\nsection: %lu\nitem: %lu\n\n",section,item);
+    
+}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
