@@ -18,13 +18,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self performSegueWithIdentifier:@"boardSegue" sender:nil];
+    UIViewController *boardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
+//    [self showViewController:boardVC sender:nil];
+    
+    [self addChildViewController:boardVC];
+    boardVC.view.frame = self.view.frame;
+    [self.view addSubview:self.];
+    [content didMoveToParentViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 
 /*
 #pragma mark - Navigation

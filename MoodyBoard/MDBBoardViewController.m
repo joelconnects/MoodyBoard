@@ -42,9 +42,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     [super didReceiveMemoryWarning];
 }
 
--(BOOL)prefersStatusBarHidden {
-    return YES;
-}
+
 
 #pragma mark <UICollectionViewDataSource>
 

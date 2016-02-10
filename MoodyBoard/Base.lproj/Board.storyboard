@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Board Container View Controller-->
         <scene sceneID="DwR-rZ-o4W">
             <objects>
-                <viewController id="Ppe-VX-zk2" sceneMemberID="viewController">
+                <viewController id="Ppe-VX-zk2" customClass="MDBBoardContainerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nc9-a8-wwe"/>
                         <viewControllerLayoutGuide type="bottom" id="i4J-GV-gkF"/>
@@ -20,9 +20,6 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1H-CW-bHv">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <connections>
-                                    <segue destination="Tat-qp-M0J" kind="embed" identifier="boardSegue" id="grz-ap-RLH"/>
-                                </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnq-kd-VXZ">
                                 <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -75,7 +72,7 @@
         <!--Board View Controller-->
         <scene sceneID="rxm-36-rgd">
             <objects>
-                <collectionViewController id="Tat-qp-M0J" customClass="MDBBoardViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="BoardViewController" id="Tat-qp-M0J" customClass="MDBBoardViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VU3-i3-hLQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
