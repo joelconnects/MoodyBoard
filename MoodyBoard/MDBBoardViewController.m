@@ -27,12 +27,18 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     // Register cell classes
     [self.collectionView registerClass:[MDBBoardViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
+    self.collectionView.contentInset = UIEdgeInsetsMake(-24.0, 0.0, 0.0, 0.0);
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     self.collectionView.backgroundColor = [UIColor blackColor];
-    self.colors = [self generateColors:kItemsPerSection*3];
+    self.colors = [self generateColors:kItemsPerSection*2];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 #pragma mark <UICollectionViewDataSource>
