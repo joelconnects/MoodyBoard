@@ -27,8 +27,13 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     // Register cell classes
     [self.collectionView registerClass:[MDBBoardViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    self.collectionView.contentInset = UIEdgeInsetsMake(-24.0, 0.0, 0.0, 0.0);
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
+//    self.collectionView.contentInset = UIEdgeInsetsMake(-24.0, 0.0, 0.0, 0.0);
+//    [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    
+    self.collectionView.contentInset = UIEdgeInsetsZero;
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsZero;
+    
+    
     self.collectionView.backgroundColor = [UIColor blackColor];
     self.colors = [self generateColors:kItemsPerSection*2];
 }
@@ -68,6 +73,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     NSUInteger boardIndex = indexPath.item + (indexPath.section * kItemsPerSection);
 
     [cell setColor:self.colors[boardIndex]];
+    [cell addShadowToCell];
     
     return cell;
 }

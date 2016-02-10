@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) UIColor *color;
 
+-(void)addShadowToCell;
+
 
 @end
