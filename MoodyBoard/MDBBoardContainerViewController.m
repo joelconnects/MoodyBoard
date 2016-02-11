@@ -10,21 +10,22 @@
 
 @interface MDBBoardContainerViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) UIViewController *currentViewController;
+
 @end
 
 @implementation MDBBoardContainerViewController
 
 - (void)viewDidLoad {
+    
+    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
+    self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addChildViewController:self.currentViewController];
+    [self addSubview:self.currentViewController.view toView:self.containerView];
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    UIViewController *boardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
-//    [self showViewController:boardVC sender:nil];
     
-    [self addChildViewController:boardVC];
-    boardVC.view.frame = self.view.frame;
-    [self.view addSubview:self.];
-    [content didMoveToParentViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +35,22 @@
 
 -(BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+- (void)addSubview:(UIView *)subView toView:(UIView*)parentView {
+    [parentView addSubview:subView];
+    
+    NSDictionary * views = @{@"subView" : subView,};
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subView]|"
+                                                                   options:0
+                                                                   metrics:0
+                                                                     views:views];
+    [parentView addConstraints:constraints];
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subView]|"
+                                                          options:0
+                                                          metrics:0
+                                                            views:views];
+    [parentView addConstraints:constraints];
 }
 
 
