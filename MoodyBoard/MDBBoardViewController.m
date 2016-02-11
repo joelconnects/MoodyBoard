@@ -100,7 +100,6 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    
     NSUInteger item = indexPath.item;
     NSUInteger section = indexPath.section;
     NSLog(@"\n\nDID SELECT:\nsection: %lu\nitem: %lu\n\n",section,item);
