@@ -8,6 +8,7 @@
 
 #import "MDBBoardContainerViewController.h"
 #import "MDBAddContentViewController.h"
+#import "MDBConstants.h"
 
 @interface MDBBoardContainerViewController ()
 
@@ -50,12 +51,53 @@
     [self addSubview:self.currentViewController.view toView:self.containerView];
     [super viewDidLoad];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserDidLogOut:) name:UserDidLogOutNotificationName object:nil];
-//    
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserDidLogIn:) name:UserDidLogInNotificationName object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowHamburgerMenu:) name:ShowHamburgerMenuNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleBoardSelected)
+                                                 name:BoardSelectedNotificationName
+                                               object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleAddContentSelected)
+                                                 name:AddContentSelectedNotificationName
+                                               object:nil];
+    
+
+    
+    
+}
+-(void)handleAddContentSelected {
+    
+    UIViewController *addContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddContentViewController"];
+    addContentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.settingsMenuBtn.hidden = YES;
+    self.boardActivityBtn.hidden = YES;
+    self.addContentBtn.hidden = YES;
+    self.boardDetailsBtn.hidden = YES;
+    
+    [self cycleFromViewController:self.currentViewController toViewController:addContentViewController];
+    
+    self.currentViewController = addContentViewController;
+    
+}
+
+-(void)handleBoardSelected {
+    
+    NSLog(@"\n\nhandle board selected\n\n");
+    UIViewController *boardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
+    boardViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+
+    
+    [self cycleFromAddController:self.currentViewController toBoardController:boardViewController];
+    
+    self.currentViewController = boardViewController;
+    
+}
+
+- (IBAction)addContent:(id)sender {
+    
+    [self handleAddContentSelected];
     
 }
 
@@ -93,36 +135,21 @@
 - (IBAction)boardActivity:(id)sender {
 }
 
-/*
-- (IBAction)showComponent:(UISegmentedControl *)sender {
-    if (sender.selectedSegmentIndex == 0) {
-        UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PurpleView"];
-        newViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-        [self cycleFromViewController:self.currentViewController toViewController:newViewController];
-        self.currentViewController = newViewController;
-    } else {
-        UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BlueView"];
-        newViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-        [self cycleFromViewController:self.currentViewController toViewController:newViewController];
-        self.currentViewController = newViewController;
-    }
-}
- */
-
 -(void)cycleFromViewController:(UIViewController *)oldViewController
               toViewController:(UIViewController *)newViewController
 {
     
-    self.settingsMenuBtn.hidden = YES;
-    self.boardActivityBtn.hidden = YES;
-    self.addContentBtn.hidden = YES;
-    self.boardDetailsBtn.hidden = YES;
+    NSLog(@"\n\ncycle views\n\n");
+    
+    
     
     [oldViewController willMoveToParentViewController:nil];
     
     [self addChildViewController:newViewController];
     
     [self.containerView addSubview:newViewController.view];
+    
+    newViewController.view.alpha = 0;
     
     NSDictionary *viewsDictionary = @{@"newView":newViewController.view};
     
@@ -157,18 +184,19 @@
     [self.containerView addConstraints:constraint_V];
     
     
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.4
                      animations:^{
+                         newViewController.view.alpha = 1;
                          [newViewController.view layoutIfNeeded];
                      }
                      completion:^(BOOL finished) {
                          
-                         
-                         
+                         NSLog(@"\n\nanimation complete\n\n");
                          [oldViewController.view removeFromSuperview];
                          [oldViewController removeFromParentViewController];
                          [newViewController didMoveToParentViewController:self];
-                         self.currentViewController = newViewController;
+                         
+                         
                          
                          
                      }];
@@ -177,16 +205,86 @@
     
 }
 
-- (IBAction)addContent:(id)sender {
+-(void)cycleFromAddController:(UIViewController *)addController
+              toBoardController:(UIViewController *)boardController
+{
+    
+    NSLog(@"\n\ncycle views - add to board\n\n");
+    
+
+    
+    [addController willMoveToParentViewController:nil];
+    
+    [self addChildViewController:boardController];
+    
+    [self.containerView addSubview:boardController.view];
     
     
-    UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddContentViewController"];
-    newViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    boardController.view.alpha = 0;
     
-    [self cycleFromViewController:self.currentViewController toViewController:newViewController];
-  
+    [self.containerView removeConstraints:self.containerView.constraints];
+    
+    NSDictionary *viewsDictionary = @{@"boardView":boardController.view,
+                                      @"addView":addController.view};
+    
+    NSArray *boardConstraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[boardView]|"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                      views:viewsDictionary];
+    
+    NSArray *boardConstraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[boardView]|"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                       views:viewsDictionary];
+    
+    [self.containerView addConstraints:boardConstraint_H];
+    [self.containerView addConstraints:boardConstraint_V];
+    
+    [boardController.view layoutIfNeeded];
+    
+
+    
+    NSArray *addContentConstraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[addView(0)]|"
+                                                                         options:0
+                                                                         metrics:nil
+                                                                           views:viewsDictionary];
+    
+    NSArray *addContentConstraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[addView(0)]"
+                                                                         options:0
+                                                                         metrics:nil
+                                                                           views:viewsDictionary];
+    
+    [self.containerView addConstraints:addContentConstraint_H];
+    [self.containerView addConstraints:addContentConstraint_V];
+    
+    [UIView animateWithDuration:0.4
+                     animations:^{
+                         
+                         [addController.view layoutIfNeeded];
+                         boardController.view.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                         self.settingsMenuBtn.hidden = NO;
+                         self.boardActivityBtn.hidden = NO;
+                         self.addContentBtn.hidden = NO;
+                         self.boardDetailsBtn.hidden = NO;
+                         
+                         
+                         
+                         NSLog(@"\n\nanimation complete\n\n");
+                         [addController.view removeFromSuperview];
+                         [addController removeFromParentViewController];
+                         [boardController didMoveToParentViewController:self];
+                         
+                         
+                     }];
+    
+    
     
 }
+
+
 
 
 /*

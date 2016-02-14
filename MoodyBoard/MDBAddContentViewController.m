@@ -7,6 +7,7 @@
 //
 
 #import "MDBAddContentViewController.h"
+#import "MDBConstants.h"
 
 @interface MDBAddContentViewController ()
 
@@ -25,6 +26,7 @@
 }
 - (IBAction)backToBoardController:(id)sender {
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:BoardSelectedNotificationName object:nil];
     
 }
 

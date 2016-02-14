@@ -36,6 +36,8 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     
     self.collectionView.backgroundColor = [UIColor blackColor];
     self.colors = [self generateColors:kItemsPerSection*2];
+    
+    NSLog(@"\n\nboard view did load\n\n");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +67,8 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"\n\ncellForItemAtIndexPath\n\n");
     
     MDBBoardViewCell *cell = (MDBBoardViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     

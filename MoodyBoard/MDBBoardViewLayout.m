@@ -46,6 +46,9 @@ typedef NS_ENUM(NSUInteger, Zindex) {
         _contentWidth = 0;
         
     }
+    
+    NSLog(@"\n\ninit board view layout\n\n");
+    
     return self;
 }
 

@@ -8,11 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const LoggedInUserDefaultsKey;
-
-extern NSString * const UserDidLogInNotificationName;
-extern NSString * const UserDidLogOutNotificationName;
-extern NSString * const ShowHamburgerMenuNotificationName;
+extern NSString * const AddContentSelectedNotificationName;
+extern NSString * const BoardSelectedNotificationName;
 
 extern NSString * const AddContentViewControllerStoryboardID;
 extern NSString * const BoardViewControllerStoryBoardID;

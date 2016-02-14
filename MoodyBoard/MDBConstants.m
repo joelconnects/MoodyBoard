@@ -8,11 +8,8 @@
 
 #import "MDBConstants.h"
 
-NSString * const LoggedInUserDefaultsKey = @"LoggedIn";
-
-NSString * const UserDidLogInNotificationName = @"UserDidLogInNotification";
-NSString * const UserDidLogOutNotificationName = @"UserDidLogOutNotification";
-NSString * const ShowHamburgerMenuNotificationName = @"ShowHamburgerMenuNotification";
+NSString * const AddContentSelectedNotificationName = @"AddContentSelectedNotification";
+NSString * const BoardSelectedNotificationName = @"BoardSelectedNotification";
 
 NSString * const AddContentViewControllerStoryboardID = @"AddContentViewController";
 NSString * const BoardViewControllerStoryBoardID = @"BoardViewController";
