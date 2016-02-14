@@ -19,6 +19,8 @@
 		5D83F57E1C67BBE700F5A04D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D83F57C1C67BBE700F5A04D /* LaunchScreen.storyboard */; };
 		5D83F5891C67BBE700F5A04D /* MoodyBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5881C67BBE700F5A04D /* MoodyBoardTests.m */; };
 		5D83F5941C67BBE700F5A04D /* MoodyBoardUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5931C67BBE700F5A04D /* MoodyBoardUITests.m */; };
+		5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F041C701483008872C5 /* MDBAddContentViewController.m */; };
+		5D890F081C703100008872C5 /* MDBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F071C703100008872C5 /* MDBConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		5D83F58F1C67BBE700F5A04D /* MoodyBoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodyBoardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D83F5931C67BBE700F5A04D /* MoodyBoardUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoodyBoardUITests.m; sourceTree = "<group>"; };
 		5D83F5951C67BBE700F5A04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D890F031C701483008872C5 /* MDBAddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBAddContentViewController.h; sourceTree = "<group>"; };
+		5D890F041C701483008872C5 /* MDBAddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBAddContentViewController.m; sourceTree = "<group>"; };
+		5D890F061C703100008872C5 /* MDBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBConstants.h; sourceTree = "<group>"; };
+		5D890F071C703100008872C5 /* MDBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,10 @@
 			children = (
 				5D83F5711C67BBE700F5A04D /* AppDelegate.h */,
 				5D83F5721C67BBE700F5A04D /* AppDelegate.m */,
+				5D890F061C703100008872C5 /* MDBConstants.h */,
+				5D890F071C703100008872C5 /* MDBConstants.m */,
+				5D890F031C701483008872C5 /* MDBAddContentViewController.h */,
+				5D890F041C701483008872C5 /* MDBAddContentViewController.m */,
 				5D2993F71C6BC94000E8C9EB /* MDBBoardContainerViewController.h */,
 				5D2993F81C6BC94000E8C9EB /* MDBBoardContainerViewController.m */,
 				5D01826B1C69758800789799 /* MDBBoardViewController.h */,
@@ -294,9 +304,11 @@
 				5D0182721C69758800789799 /* MDBBoardViewCell.m in Sources */,
 				5D2993F91C6BC94000E8C9EB /* MDBBoardContainerViewController.m in Sources */,
 				5D0182731C69758800789799 /* MDBBoardLayoutMultipliers.m in Sources */,
+				5D890F081C703100008872C5 /* MDBConstants.m in Sources */,
 				5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */,
 				5D0182711C69758800789799 /* MDBBoardViewController.m in Sources */,
 				5D0182701C69758800789799 /* MDBBoardViewLayout.m in Sources */,
+				5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */,
 				5D83F5701C67BBE700F5A04D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

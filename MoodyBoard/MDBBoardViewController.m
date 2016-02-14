@@ -30,8 +30,8 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 //    self.collectionView.contentInset = UIEdgeInsetsMake(-24.0, 0.0, 0.0, 0.0);
 //    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     
-    self.collectionView.contentInset = UIEdgeInsetsZero;
-    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsZero;
+//    self.collectionView.contentInset = UIEdgeInsetsZero;
+//    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsZero;
     
     
     self.collectionView.backgroundColor = [UIColor blackColor];
