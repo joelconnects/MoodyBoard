@@ -1,16 +1,18 @@
 //
-//  MDBBoardContainerViewController.m
+//  MDBAppViewController.m
 //  MoodyBoard
 //
 //  Created by Joel Bell on 2/10/16.
 //  Copyright © 2016 Joel Bell. All rights reserved.
 //
 
-#import "MDBBoardContainerViewController.h"
-#import "MDBAddContentViewController.h"
+#import "MDBAppViewController.h"
 #import "MDBConstants.h"
+#import "MDBAppViewController+Constraints.h"
+#import "MDBAddContentViewController.h"
 
-@interface MDBBoardContainerViewController ()
+
+@interface MDBAppViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) UIViewController *currentViewController;
@@ -21,35 +23,25 @@
 
 @end
 
-@implementation MDBBoardContainerViewController
-
-
+@implementation MDBAppViewController
 
 
 - (void)viewDidLoad {
     
-//    [self.view addSubview:self.containerView];
-    UIView *subView = self.containerView;
-    
-    NSDictionary * views = @{@"subView" : subView};
-    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subView]|"
-                                                                   options:0
-                                                                   metrics:0
-                                                                     views:views];
-    [self.view addConstraints:constraints];
-    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subView]|"
-                                                          options:0
-                                                          metrics:0
-                                                            views:views];
-    [self.view addConstraints:constraints];
-    
-    
-    
-    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
+    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:BoardViewControllerStoryBoardID];
     self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:self.currentViewController];
-    [self addSubview:self.currentViewController.view toView:self.containerView];
+    [self.containerView addSubview:self.currentViewController.view];
+    [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
+    
     [super viewDidLoad];
+    
+    [self addNotificationObservers];
+
+}
+
+
+-(void)addNotificationObservers {
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleBoardSelected)
@@ -61,10 +53,9 @@
                                                  name:AddContentSelectedNotificationName
                                                object:nil];
     
-
-    
-    
 }
+
+
 -(void)handleAddContentSelected {
     
     UIViewController *addContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddContentViewController"];
@@ -83,7 +74,6 @@
 
 -(void)handleBoardSelected {
     
-    NSLog(@"\n\nhandle board selected\n\n");
     UIViewController *boardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
     boardViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -110,22 +100,6 @@
     return YES;
 }
 
-- (void)addSubview:(UIView *)subView toView:(UIView*)parentView {
-    [parentView addSubview:subView];
-    
-    NSDictionary * views = @{@"subView" : subView,};
-    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subView]|"
-                                                                   options:0
-                                                                   metrics:0
-                                                                     views:views];
-    [parentView addConstraints:constraints];
-    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subView]|"
-                                                          options:0
-                                                          metrics:0
-                                                            views:views];
-    [parentView addConstraints:constraints];
-}
-
 - (IBAction)settingsMenu:(id)sender {
 }
 
@@ -138,8 +112,6 @@
 -(void)cycleFromViewController:(UIViewController *)oldViewController
               toViewController:(UIViewController *)newViewController
 {
-    
-    NSLog(@"\n\ncycle views\n\n");
     
     
     
@@ -184,7 +156,7 @@
     [self.containerView addConstraints:constraint_V];
     
     
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.5
                      animations:^{
                          newViewController.view.alpha = 1;
                          [newViewController.view layoutIfNeeded];
@@ -257,7 +229,7 @@
     [self.containerView addConstraints:addContentConstraint_H];
     [self.containerView addConstraints:addContentConstraint_V];
     
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.5
                      animations:^{
                          
                          [addController.view layoutIfNeeded];

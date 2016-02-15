@@ -8,12 +8,13 @@
 
 #import "MDBBoardViewLayout.h"
 #import "MDBBoardLayoutMultipliers.h"
+#import "MDBConstants.h"
 
 static NSUInteger const kWidth = 0;
 static NSUInteger const kHeight = 1;
 static NSUInteger const kX = 0;
 static NSUInteger const kY = 1;
-NSUInteger const kItemsPerSection = 14;
+static CGFloat const kFirstItemYoffsetMultiplier = 0.35326086956522;
 
 typedef NS_ENUM(NSUInteger, Zindex) {
     VeryTop = 5,
@@ -34,6 +35,7 @@ typedef NS_ENUM(NSUInteger, Zindex) {
 @property (nonatomic, assign) NSUInteger itemZindex;
 @property (nonatomic, assign) CGFloat xOffset;
 @property (nonatomic, assign) CGFloat yOffset;
+//@property (nonatomic) UIEdgeInsets insets;
 
 @end
 
@@ -58,15 +60,15 @@ typedef NS_ENUM(NSUInteger, Zindex) {
 }
 -(CGFloat)viewHeight
 {
+
     return self.collectionView.bounds.size.height;
 }
 
 -(CGSize)collectionViewContentSize
 {
+    NSLog(@"\n\ncollectionViewContentSize: %.0f, %.0f\n\n",self.contentWidth, self.viewHeight);
     return CGSizeMake(self.contentWidth, self.viewHeight);
 }
-
-
 
 
 -(void)prepareLayout
@@ -137,7 +139,7 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     // initial value for offsets
     if (section == 0 && item == 0) {
         self.xOffset = 0.0;
-        self.yOffset = 260.0;
+        self.yOffset = roundf(self.viewHeight * kFirstItemYoffsetMultiplier);
     }
     
     // xOffset adjustment for new section

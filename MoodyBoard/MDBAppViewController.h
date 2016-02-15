@@ -1,5 +1,5 @@
 //
-//  MDBBoardContainerViewController.h
+//  MDBAppViewController.h
 //  MoodyBoard
 //
 //  Created by Joel Bell on 2/10/16.
@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MDBBoardContainerViewController : UIViewController 
-
-
-
+@interface MDBAppViewController : UIViewController 
 
 
 @end

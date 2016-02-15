@@ -8,10 +8,17 @@
 
 #import "MDBConstants.h"
 
+// Notifications
 NSString * const AddContentSelectedNotificationName = @"AddContentSelectedNotification";
 NSString * const BoardSelectedNotificationName = @"BoardSelectedNotification";
 
+// StoryboardIDs
 NSString * const AddContentViewControllerStoryboardID = @"AddContentViewController";
 NSString * const BoardViewControllerStoryBoardID = @"BoardViewController";
+
+// BoardViewController
+// BoardViewLayout
+NSUInteger const kItemsPerSection = 14;
+
 
 

@@ -11,7 +11,7 @@
 		5D0182711C69758800789799 /* MDBBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826A1C69758800789799 /* MDBBoardViewController.m */; };
 		5D0182721C69758800789799 /* MDBBoardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826D1C69758800789799 /* MDBBoardViewCell.m */; };
 		5D0182731C69758800789799 /* MDBBoardLayoutMultipliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */; };
-		5D2993F91C6BC94000E8C9EB /* MDBBoardContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2993F81C6BC94000E8C9EB /* MDBBoardContainerViewController.m */; };
+		5D2993F91C6BC94000E8C9EB /* MDBAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2993F81C6BC94000E8C9EB /* MDBAppViewController.m */; };
 		5D83F5701C67BBE700F5A04D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F56F1C67BBE700F5A04D /* main.m */; };
 		5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5721C67BBE700F5A04D /* AppDelegate.m */; };
 		5D83F5791C67BBE700F5A04D /* Board.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D83F5771C67BBE700F5A04D /* Board.storyboard */; };
@@ -21,6 +21,7 @@
 		5D83F5941C67BBE700F5A04D /* MoodyBoardUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5931C67BBE700F5A04D /* MoodyBoardUITests.m */; };
 		5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F041C701483008872C5 /* MDBAddContentViewController.m */; };
 		5D890F081C703100008872C5 /* MDBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F071C703100008872C5 /* MDBConstants.m */; };
+		5D890F0B1C714608008872C5 /* MDBAppViewController+Constraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +50,8 @@
 		5D01826D1C69758800789799 /* MDBBoardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBBoardViewCell.m; sourceTree = "<group>"; };
 		5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBBoardLayoutMultipliers.m; sourceTree = "<group>"; };
 		5D01826F1C69758800789799 /* MDBBoardLayoutMultipliers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBBoardLayoutMultipliers.h; sourceTree = "<group>"; };
-		5D2993F71C6BC94000E8C9EB /* MDBBoardContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBBoardContainerViewController.h; sourceTree = "<group>"; };
-		5D2993F81C6BC94000E8C9EB /* MDBBoardContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBBoardContainerViewController.m; sourceTree = "<group>"; };
+		5D2993F71C6BC94000E8C9EB /* MDBAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBAppViewController.h; sourceTree = "<group>"; };
+		5D2993F81C6BC94000E8C9EB /* MDBAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBAppViewController.m; sourceTree = "<group>"; };
 		5D83F56B1C67BBE700F5A04D /* MoodyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D83F56F1C67BBE700F5A04D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D83F5711C67BBE700F5A04D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +70,8 @@
 		5D890F041C701483008872C5 /* MDBAddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBAddContentViewController.m; sourceTree = "<group>"; };
 		5D890F061C703100008872C5 /* MDBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBConstants.h; sourceTree = "<group>"; };
 		5D890F071C703100008872C5 /* MDBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBConstants.m; sourceTree = "<group>"; };
+		5D890F091C714608008872C5 /* MDBAppViewController+Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDBAppViewController+Constraints.h"; sourceTree = "<group>"; };
+		5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MDBAppViewController+Constraints.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +126,12 @@
 				5D83F5721C67BBE700F5A04D /* AppDelegate.m */,
 				5D890F061C703100008872C5 /* MDBConstants.h */,
 				5D890F071C703100008872C5 /* MDBConstants.m */,
+				5D2993F71C6BC94000E8C9EB /* MDBAppViewController.h */,
+				5D2993F81C6BC94000E8C9EB /* MDBAppViewController.m */,
+				5D890F091C714608008872C5 /* MDBAppViewController+Constraints.h */,
+				5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */,
 				5D890F031C701483008872C5 /* MDBAddContentViewController.h */,
 				5D890F041C701483008872C5 /* MDBAddContentViewController.m */,
-				5D2993F71C6BC94000E8C9EB /* MDBBoardContainerViewController.h */,
-				5D2993F81C6BC94000E8C9EB /* MDBBoardContainerViewController.m */,
 				5D01826B1C69758800789799 /* MDBBoardViewController.h */,
 				5D01826A1C69758800789799 /* MDBBoardViewController.m */,
 				5D0182691C69758800789799 /* MDBBoardViewLayout.h */,
@@ -302,10 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D0182721C69758800789799 /* MDBBoardViewCell.m in Sources */,
-				5D2993F91C6BC94000E8C9EB /* MDBBoardContainerViewController.m in Sources */,
+				5D2993F91C6BC94000E8C9EB /* MDBAppViewController.m in Sources */,
 				5D0182731C69758800789799 /* MDBBoardLayoutMultipliers.m in Sources */,
 				5D890F081C703100008872C5 /* MDBConstants.m in Sources */,
 				5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */,
+				5D890F0B1C714608008872C5 /* MDBAppViewController+Constraints.m in Sources */,
 				5D0182711C69758800789799 /* MDBBoardViewController.m in Sources */,
 				5D0182701C69758800789799 /* MDBBoardViewLayout.m in Sources */,
 				5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */,
@@ -453,10 +459,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MoodyBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.craftedbycrazy.MoodyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -467,10 +475,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MoodyBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.craftedbycrazy.MoodyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

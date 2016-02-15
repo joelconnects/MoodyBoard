@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSUInteger const kItemsPerSection;
+
 
 @interface MDBBoardViewLayout : UICollectionViewLayout
 

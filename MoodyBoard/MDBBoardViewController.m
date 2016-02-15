@@ -9,6 +9,7 @@
 #import "MDBBoardViewController.h"
 #import "MDBBoardViewLayout.h"
 #import "MDBBoardViewCell.h"
+#import "MDBConstants.h"
 
 @interface MDBBoardViewController () <UICollectionViewDelegate>
 
@@ -27,23 +28,16 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     // Register cell classes
     [self.collectionView registerClass:[MDBBoardViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-//    self.collectionView.contentInset = UIEdgeInsetsMake(-24.0, 0.0, 0.0, 0.0);
-//    [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    
-//    self.collectionView.contentInset = UIEdgeInsetsZero;
-//    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsZero;
-    
-    
-    self.collectionView.backgroundColor = [UIColor blackColor];
-    self.colors = [self generateColors:kItemsPerSection*2];
-    
-    NSLog(@"\n\nboard view did load\n\n");
+    self.collectionView.backgroundColor = [UIColor grayColor];
+    self.colors = [self generateColors:kItemsPerSection];
+
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
 
 
 #pragma mark <UICollectionViewDataSource>
@@ -67,8 +61,6 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"\n\ncellForItemAtIndexPath\n\n");
     
     MDBBoardViewCell *cell = (MDBBoardViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
