@@ -14,5 +14,8 @@
 -(void)constrainSubView:(UIView *)subView
            toParentView:(UIView *)parentView;
 
+-(void)preAnimationConstrainAddContentSubView:(UIView *)subView
+                                 toParentView:(UIView *)parentView;
+
 
 @end

@@ -127,6 +127,48 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     
 }
 
+//-(UIImage *)boardScreenshot {
+//    
+//    CGFloat viewWidth = self.collectionView.bounds.size.width;
+//    CGFloat viewHeight = self.collectionView.bounds.size.height;
+//    
+//    CGSize size = CGSizeMake(viewWidth, viewHeight);
+//    
+//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+//    
+//    CGRect rec = CGRectMake(0, 0, viewWidth, viewHeight);
+//    [self.collectionView drawViewHierarchyInRect:rec afterScreenUpdates:YES];
+//    
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return image;
+//}
+-(UIImage *)boardScreenshot {
+    
+    CGFloat viewWidth = self.collectionView.bounds.size.width;
+    CGFloat viewHeight = self.collectionView.bounds.size.height;
+    
+    CGSize size = CGSizeMake(viewWidth, viewHeight);
+    
+    UIGraphicsBeginImageContextWithOptions(size, self.collectionView.opaque, 0.0);
+    [self.collectionView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *screenGrab = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return screenGrab;
+    
+}
+/*
+ // grab reference to the view you'd like to capture
+ UIView *wholeScreen = self.splitViewController.view;
+ 
+ // define the size and grab a UIImage from it
+ UIGraphicsBeginImageContextWithOptions(wholeScreen.bounds.size, wholeScreen.opaque, 0.0);
+ [wholeScreen.layer renderInContext:UIGraphicsGetCurrentContext()];
+ UIImage *screengrab = UIGraphicsGetImageFromCurrentImageContext();
+ UIGraphicsEndImageContext();
+ */
+
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {

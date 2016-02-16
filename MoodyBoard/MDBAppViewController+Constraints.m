@@ -28,6 +28,30 @@
 
 }
 
+-(void)preAnimationConstrainAddContentSubView:(UIView *)subView
+                                 toParentView:(UIView *)parentView {
+    
+    NSDictionary *viewsDictionary = @{@"subView":subView};
+    
+    NSArray *constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[subView(0)]|"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                      views:viewsDictionary];
+    
+    [parentView addConstraints:constraint_H];
+    NSArray *constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subView(0)]"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                      views:viewsDictionary];
+    [parentView addConstraints:constraint_V];
+    
+    [parentView layoutIfNeeded];
+    
+    [parentView removeConstraints:constraint_H];
+    [parentView removeConstraints:constraint_V];
+
+}
+
 //-(void)constrainSubView:(UIView *)subView
 //           toParentView:(UIView *)parentView
 //{
