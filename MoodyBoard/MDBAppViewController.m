@@ -36,6 +36,16 @@
     
     [super viewDidLoad];
     
+//    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.addContentBtn.bounds];
+//    self.addContentBtn.layer.masksToBounds = NO;
+//    self.addContentBtn.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.addContentBtn.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//    self.addContentBtn.layer.shadowOpacity = 0.5f;
+//    self.addContentBtn.layer.shadowPath = shadowPath.CGPath;
+//    self.addContentBtn.layer.shouldRasterize = YES;
+//    self.addContentBtn.layer.rasterizationScale = [UIScreen mainScreen].scale;
+
+    
     [self addNotificationObservers];
 
 }
@@ -61,12 +71,11 @@
     UIViewController *addContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddContentViewController"];
     addContentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.settingsMenuBtn.hidden = YES;
-    self.boardActivityBtn.hidden = YES;
-    self.addContentBtn.hidden = YES;
-    self.boardDetailsBtn.hidden = YES;
+    
     
     [self cycleFromViewController:self.currentViewController toViewController:addContentViewController];
+    
+    
     
     self.currentViewController = addContentViewController;
     
@@ -80,6 +89,11 @@
 
     
     [self cycleFromAddController:self.currentViewController toBoardController:boardViewController];
+    
+    self.settingsMenuBtn.hidden = NO;
+    self.boardActivityBtn.hidden = NO;
+    self.addContentBtn.hidden = NO;
+    self.boardDetailsBtn.hidden = NO;
     
     self.currentViewController = boardViewController;
     
@@ -96,9 +110,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(BOOL)prefersStatusBarHidden {
-    return YES;
-}
+
 
 - (IBAction)settingsMenu:(id)sender {
 }
@@ -164,6 +176,12 @@
                      completion:^(BOOL finished) {
                          
                          NSLog(@"\n\nanimation complete\n\n");
+                         
+                         self.settingsMenuBtn.hidden = YES;
+                         self.boardActivityBtn.hidden = YES;
+                         self.addContentBtn.hidden = YES;
+                         self.boardDetailsBtn.hidden = YES;
+                         
                          [oldViewController.view removeFromSuperview];
                          [oldViewController removeFromParentViewController];
                          [newViewController didMoveToParentViewController:self];
@@ -182,6 +200,7 @@
 {
     
     NSLog(@"\n\ncycle views - add to board\n\n");
+    
     
 
     
@@ -229,6 +248,8 @@
     [self.containerView addConstraints:addContentConstraint_H];
     [self.containerView addConstraints:addContentConstraint_V];
     
+    
+    
     [UIView animateWithDuration:0.5
                      animations:^{
                          
@@ -237,14 +258,8 @@
                      }
                      completion:^(BOOL finished) {
                          
-                         self.settingsMenuBtn.hidden = NO;
-                         self.boardActivityBtn.hidden = NO;
-                         self.addContentBtn.hidden = NO;
-                         self.boardDetailsBtn.hidden = NO;
                          
                          
-                         
-                         NSLog(@"\n\nanimation complete\n\n");
                          [addController.view removeFromSuperview];
                          [addController removeFromParentViewController];
                          [boardController didMoveToParentViewController:self];

@@ -13,7 +13,10 @@
 
 @interface MDBBoardViewController () <UICollectionViewDelegate>
 
+//test properties
 @property (nonatomic, strong) NSArray *colors;
+@property (nonatomic, strong) NSMutableArray *testImages;
+
 
 @end
 
@@ -28,7 +31,27 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     // Register cell classes
     [self.collectionView registerClass:[MDBBoardViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    self.collectionView.backgroundColor = [UIColor grayColor];
+    self.testImages = [NSMutableArray new];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    
+    int integer = 1;
+    for (NSUInteger i = 0; i < kItemsPerSection; i++) {
+        NSString *imageName = @"IMG_";
+        NSString *imageNumber = [NSString stringWithFormat:@"%03d", integer];
+        imageName = [imageName stringByAppendingString:imageNumber];
+        NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle]
+                                    pathForResource:@"Test"
+                                             ofType:@"bundle"]];
+        UIImage *image  = [UIImage imageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.testImages addObject:image];
+        integer += 1;
+    }
+    
+    
+    
+
+    
     self.colors = [self generateColors:kItemsPerSection];
 
 }
@@ -66,8 +89,9 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     
     NSUInteger boardIndex = indexPath.item + (indexPath.section * kItemsPerSection);
 
-    [cell setColor:self.colors[boardIndex]];
-    [cell addShadowToCell];
+//    [cell setColor:self.colors[boardIndex]];
+    [cell setImage:self.testImages[boardIndex]];
+//    [cell addShadowToCell];
     
     return cell;
 }
