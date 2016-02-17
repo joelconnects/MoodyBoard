@@ -15,7 +15,7 @@
 -(void)constrainSubView:(UIView *)subView
            toParentView:(UIView *)parentView
            forNavAction:(NSString *)navAction
-                  oldVC:(UIViewController *)oldVC
+           includeOldVC:(UIViewController *)oldVC
 {
     if ([navAction isEqualToString:ReturnToBoardNavAction]) {
         [parentView removeConstraints:parentView.constraints];

@@ -17,21 +17,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-//    self.view.backgroundColor = [UIColor whiteColor];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 - (IBAction)backToBoardController:(id)sender {
 
     [[NSNotificationCenter defaultCenter] postNotificationName:BoardSelectedNotificationName object:nil];
     
 }
+/*
+ UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+ [button addTarget:self
+ action:@selector(aMethod:)
+ forControlEvents:UIControlEventTouchUpInside];
+ [button setTitle:@"Show View" forState:UIControlStateNormal];
+ button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+ [view addSubview:button];
+ */
 
 /*
 #pragma mark - Navigation

@@ -120,7 +120,7 @@
     [self constrainSubView:newViewController.view
               toParentView:self.containerView
               forNavAction:self.navAction
-                     oldVC:oldViewController];
+              includeOldVC:oldViewController];
     
     [UIView animateWithDuration:0.5
                      animations:^{
