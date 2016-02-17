@@ -18,5 +18,11 @@ extern NSString * const BoardViewControllerStoryBoardID;
 
 // BoardViewController
 // BoardViewLayout
-extern NSUInteger const kItemsPerSection;
+extern NSUInteger const BoardItemsPerSection;
 
+// App Controller Navigation Actions
+extern NSString * const AddContentNavAction;
+extern NSString * const SettingsMenuNavAction;
+extern NSString * const BoardDetailsNavAction;
+extern NSString * const BoardActivityNavAction;
+extern NSString * const ReturnToBoardNavAction;

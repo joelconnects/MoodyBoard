@@ -36,7 +36,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     
     
     int integer = 1;
-    for (NSUInteger i = 0; i < kItemsPerSection; i++) {
+    for (NSUInteger i = 0; i < BoardItemsPerSection; i++) {
         NSString *imageName = @"IMG_";
         NSString *imageNumber = [NSString stringWithFormat:@"%03d", integer];
         imageName = [imageName stringByAppendingString:imageNumber];
@@ -52,7 +52,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     
 
     
-    self.colors = [self generateColors:kItemsPerSection];
+    self.colors = [self generateColors:BoardItemsPerSection];
 
 }
 
@@ -68,18 +68,18 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
-    if (self.colors.count == kItemsPerSection) {
+    if (self.colors.count == BoardItemsPerSection) {
         return kDefaultNumberOfSections;
     }
     
-    return self.colors.count / kItemsPerSection;
+    return self.colors.count / BoardItemsPerSection;
 
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return kItemsPerSection;
+    return BoardItemsPerSection;
     
 }
 
@@ -87,7 +87,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
     
     MDBBoardViewCell *cell = (MDBBoardViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    NSUInteger boardIndex = indexPath.item + (indexPath.section * kItemsPerSection);
+    NSUInteger boardIndex = indexPath.item + (indexPath.section * BoardItemsPerSection);
 
 //    [cell setColor:self.colors[boardIndex]];
     [cell setImage:self.testImages[boardIndex]];

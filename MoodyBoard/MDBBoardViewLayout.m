@@ -79,7 +79,7 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     if (self.layoutCache.count == 0) {
         
         for (NSUInteger section = 0; section < sectionCount; section++) {
-            for (NSUInteger item = 0; item < kItemsPerSection; item++) {
+            for (NSUInteger item = 0; item < BoardItemsPerSection; item++) {
                 
                 [self setItemAttributeForSection:section item:item];
                 
@@ -88,10 +88,10 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     
     } else {
         
-        NSUInteger sectionIndex = self.layoutCache.count / kItemsPerSection;
+        NSUInteger sectionIndex = self.layoutCache.count / BoardItemsPerSection;
         
         for (NSUInteger section = sectionIndex; section < sectionCount; section++) {
-            for (NSUInteger item = 0; item < kItemsPerSection; item++) {
+            for (NSUInteger item = 0; item < BoardItemsPerSection; item++) {
                 
                 [self setItemAttributeForSection:section item:item];
                 
@@ -156,7 +156,7 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     
     [self.layoutCache setObject:attributes forKey:indexPath];
     
-    if (item % kItemsPerSection < 2) {
+    if (item % BoardItemsPerSection < 2) {
         self.contentWidth = CGRectGetMaxX(frame);
     }
     

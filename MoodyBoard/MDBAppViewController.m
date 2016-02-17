@@ -22,11 +22,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *boardDetailsBtn;
 @property (weak, nonatomic) IBOutlet UIButton *boardActivityBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) NSString *navAction;
 
 
 @end
 
 @implementation MDBAppViewController
+
 
 
 - (void)viewDidLoad {
@@ -41,6 +43,10 @@
     
     [self addNotificationObservers];
 
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 
@@ -68,45 +74,20 @@
 
 -(void)handleAddContentSelected {
     
+    self.navAction = AddContentNavAction;
     [self setScreenshotOfBoardToImageView];
-    
     UIViewController *addContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddContentViewController"];
-//    addContentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    
-    
-
-    
     [self cycleFromViewController:self.currentViewController toViewController:addContentViewController];
-    
-    
-    
     self.currentViewController = addContentViewController;
     
 }
 
 -(void)handleBoardSelected {
     
+    self.navAction = ReturnToBoardNavAction;
     UIViewController *boardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
-//    boardViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-    
-
-    
-    [self cycleFromAddController:self.currentViewController toBoardController:boardViewController];
-    
-    self.settingsMenuBtn.hidden = NO;
-    self.boardActivityBtn.hidden = NO;
-    self.addContentBtn.hidden = NO;
-    self.boardDetailsBtn.hidden = NO;
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.settingsMenuBtn.alpha = 1.0;
-        self.boardActivityBtn.alpha = 1.0;
-        self.addContentBtn.alpha = 1.0;
-        self.boardDetailsBtn.alpha = 1.0;
-    }];
-    
-    
+    [self showHideButtonsForNavAction:self.navAction];
+    [self cycleFromViewController:self.currentViewController toViewController:boardViewController];
     self.currentViewController = boardViewController;
     
 }
@@ -116,13 +97,6 @@
     [self handleAddContentSelected];
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 
 - (IBAction)settingsMenu:(id)sender {
 }
@@ -143,116 +117,99 @@
     
     newViewController.view.alpha = 0;
     
-    [self preAnimationConstrainAddContentSubView:newViewController.view
-                                    toParentView:self.containerView];
-    
     [self constrainSubView:newViewController.view
-              toParentView:self.containerView];
-    
+              toParentView:self.containerView
+              forNavAction:self.navAction
+                     oldVC:oldViewController];
     
     [UIView animateWithDuration:0.5
                      animations:^{
+                         
                          newViewController.view.alpha = 1.0;
                          oldViewController.view.alpha = 0.0;
-                         [newViewController.view layoutIfNeeded];
                          
-                         self.settingsMenuBtn.alpha = 0.0;
-                         self.boardActivityBtn.alpha = 0.0;
-                         self.addContentBtn.alpha = 0.0;
-                         self.boardDetailsBtn.alpha = 0.0;
+                         if ([self.navAction isEqualToString:ReturnToBoardNavAction]) {
+                             [oldViewController.view layoutIfNeeded];
+                         }
+                         if ([self.navAction isEqualToString:AddContentNavAction]) {
+                             [newViewController.view layoutIfNeeded];
+                         }
+                         
+                         [self setButtonsAlphaForNavAction:self.navAction];
                      }
                      completion:^(BOOL finished) {
                          
-                         self.settingsMenuBtn.hidden = YES;
-                         self.boardActivityBtn.hidden = YES;
-                         self.addContentBtn.hidden = YES;
-                         self.boardDetailsBtn.hidden = YES;
-                         
+                         [self showHideButtonsForNavAction:self.navAction];
                          [oldViewController.view removeFromSuperview];
                          [oldViewController removeFromParentViewController];
                          [newViewController didMoveToParentViewController:self];
                          
-                         
                      }];
-    
-    
-    
 }
 
--(void)cycleFromAddController:(UIViewController *)addController
-              toBoardController:(UIViewController *)boardController
+
+
+-(void)setButtonsAlphaForNavAction:(NSString *)navAction
 {
-    
-    NSLog(@"\n\ncycle views - add to board\n\n");
-    
-    boardController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    if ([navAction isEqualToString:ReturnToBoardNavAction]) {
+        [self setButtonsOpaque];
+    }
+    if ([navAction isEqualToString:AddContentNavAction]) {
+        [self setButtonsAlphaToZero];
+    }
+    if ([navAction isEqualToString:SettingsMenuNavAction]) {
+        //
+    }
+    if ([navAction isEqualToString:BoardDetailsNavAction]) {
+        //
+    }
+    if ([navAction isEqualToString:BoardActivityNavAction]) {
+        //
+    }
+}
 
-    
-    [addController willMoveToParentViewController:nil];
-    
-    [self addChildViewController:boardController];
-    
-    [self.containerView addSubview:boardController.view];
-    
-    
-    boardController.view.alpha = 0;
-    
-    [self.containerView removeConstraints:self.containerView.constraints];
-    
-    NSDictionary *viewsDictionary = @{@"boardView":boardController.view,
-                                      @"addView":addController.view};
-    
-    NSArray *boardConstraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[boardView]|"
-                                                                    options:0
-                                                                    metrics:nil
-                                                                      views:viewsDictionary];
-    
-    NSArray *boardConstraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[boardView]|"
-                                                                    options:0
-                                                                    metrics:nil
-                                                                       views:viewsDictionary];
-    
-    [self.containerView addConstraints:boardConstraint_H];
-    [self.containerView addConstraints:boardConstraint_V];
-    
-    [boardController.view layoutIfNeeded];
-    
+-(void)showHideButtonsForNavAction:(NSString *)navAction
+{
+    if ([navAction isEqualToString:ReturnToBoardNavAction]) {
+        [self setButtonsToShow];
+    }
+    if ([navAction isEqualToString:AddContentNavAction]) {
+        [self setButtonsToHidden];
+    }
+    if ([navAction isEqualToString:SettingsMenuNavAction]) {
+        //
+    }
+    if ([navAction isEqualToString:BoardDetailsNavAction]) {
+        //
+    }
+    if ([navAction isEqualToString:BoardActivityNavAction]) {
+        //
+    }
+}
 
-    
-    NSArray *addContentConstraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[addView(0)]|"
-                                                                         options:0
-                                                                         metrics:nil
-                                                                           views:viewsDictionary];
-    
-    NSArray *addContentConstraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[addView(0)]"
-                                                                         options:0
-                                                                         metrics:nil
-                                                                           views:viewsDictionary];
-    
-    [self.containerView addConstraints:addContentConstraint_H];
-    [self.containerView addConstraints:addContentConstraint_V];
-    
-    
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         
-                         [addController.view layoutIfNeeded];
-                         boardController.view.alpha = 1.0;
-                     }
-                     completion:^(BOOL finished) {
-                         
-                         
-                         
-                         [addController.view removeFromSuperview];
-                         [addController removeFromParentViewController];
-                         [boardController didMoveToParentViewController:self];
-                         
-                         
-                     }];
-    
-    
-    
+-(void)setButtonsAlphaToZero {
+    self.settingsMenuBtn.alpha = 0.0;
+    self.boardActivityBtn.alpha = 0.0;
+    self.addContentBtn.alpha = 0.0;
+    self.boardDetailsBtn.alpha = 0.0;
+}
+-(void)setButtonsOpaque {
+    self.settingsMenuBtn.alpha = 1.0;
+    self.boardActivityBtn.alpha = 1.0;
+    self.addContentBtn.alpha = 1.0;
+    self.boardDetailsBtn.alpha = 1.0;
+}
+-(void)setButtonsToHidden {
+    self.settingsMenuBtn.hidden = YES;
+    self.boardActivityBtn.hidden = YES;
+    self.addContentBtn.hidden = YES;
+    self.boardDetailsBtn.hidden = YES;
+}
+-(void)setButtonsToShow {
+    self.settingsMenuBtn.hidden = NO;
+    self.boardActivityBtn.hidden = NO;
+    self.addContentBtn.hidden = NO;
+    self.boardDetailsBtn.hidden = NO;
 }
 
 

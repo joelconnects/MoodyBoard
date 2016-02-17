@@ -10,12 +10,14 @@
 
 @interface MDBAppViewController (Constraints)
 
+-(void)constrainSubView:(UIView *)subView
+           toParentView:(UIView *)parentView
+           forNavAction:(NSString *)navAction
+                  oldVC:(UIViewController *)oldView;
 
 -(void)constrainSubView:(UIView *)subView
            toParentView:(UIView *)parentView;
 
--(void)preAnimationConstrainAddContentSubView:(UIView *)subView
-                                 toParentView:(UIView *)parentView;
 
 
 @end

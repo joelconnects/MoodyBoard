@@ -18,7 +18,14 @@ NSString * const BoardViewControllerStoryBoardID = @"BoardViewController";
 
 // BoardViewController
 // BoardViewLayout
-NSUInteger const kItemsPerSection = 14;
+NSUInteger const BoardItemsPerSection = 14;
+
+// App Controller Navigation Actions
+NSString * const AddContentNavAction = @"Add Content";
+NSString * const SettingsMenuNavAction = @"Settings Menu";
+NSString * const BoardDetailsNavAction = @"Board Details";
+NSString * const BoardActivityNavAction = @"Board Activity";
+NSString * const ReturnToBoardNavAction = @"Return to Board";
 
 
 

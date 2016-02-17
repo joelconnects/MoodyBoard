@@ -7,8 +7,44 @@
 //
 
 #import "MDBAppViewController+Constraints.h"
+#import "MDBConstants.h"
 
 @implementation MDBAppViewController (Constraints)
+
+
+-(void)constrainSubView:(UIView *)subView
+           toParentView:(UIView *)parentView
+           forNavAction:(NSString *)navAction
+                  oldVC:(UIViewController *)oldVC
+{
+    if ([navAction isEqualToString:ReturnToBoardNavAction]) {
+        [parentView removeConstraints:parentView.constraints];
+        [self constrainSubView:subView toParentView:parentView];
+        [self constrainAddContentSubViewSizeZero:oldVC.view toParentView:parentView];
+    }
+    
+    if ([navAction isEqualToString:AddContentNavAction]) {
+        [self constrainAddContentSubViewSizeZero:subView toParentView:parentView];
+        [parentView layoutIfNeeded];
+        [parentView removeConstraints:parentView.constraints];
+        [self constrainSubView:subView toParentView:parentView];
+    }
+    
+    if ([navAction isEqualToString:SettingsMenuNavAction]) {
+        //
+        //
+    }
+    
+    if ([navAction isEqualToString:BoardDetailsNavAction]) {
+        //
+        //
+    }
+    
+    if ([navAction isEqualToString:BoardActivityNavAction]) {
+        //
+        //
+    }
+}
 
 
 -(void)constrainSubView:(UIView *)subView
@@ -28,8 +64,8 @@
 
 }
 
--(void)preAnimationConstrainAddContentSubView:(UIView *)subView
-                                 toParentView:(UIView *)parentView {
+-(void)constrainAddContentSubViewSizeZero:(UIView *)subView
+                             toParentView:(UIView *)parentView {
     
     NSDictionary *viewsDictionary = @{@"subView":subView};
     
@@ -44,13 +80,14 @@
                                                                     metrics:nil
                                                                       views:viewsDictionary];
     [parentView addConstraints:constraint_V];
-    
-    [parentView layoutIfNeeded];
-    
-    [parentView removeConstraints:constraint_H];
-    [parentView removeConstraints:constraint_V];
 
 }
+
+
+
+@end
+
+
 
 //-(void)constrainSubView:(UIView *)subView
 //           toParentView:(UIView *)parentView
@@ -88,7 +125,3 @@
 //                                                         multiplier:1.0
 //                                                           constant:0.0]];
 //}
-
-
-
-@end
