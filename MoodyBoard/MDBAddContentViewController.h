@@ -10,5 +10,6 @@
 
 @interface MDBAddContentViewController : UIViewController
 
+@property (strong, nonatomic) UIView *subView;
 
 @end

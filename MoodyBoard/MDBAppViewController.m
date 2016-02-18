@@ -13,7 +13,7 @@
 #import "MDBBoardViewController.h"
 
 
-@interface MDBAppViewController ()
+@interface MDBAppViewController () 
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) UIViewController *currentViewController;
@@ -83,7 +83,7 @@
 }
 
 -(void)handleBoardSelected {
-    
+     
     self.navAction = ReturnToBoardNavAction;
     UIViewController *boardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
     [self showHideButtonsForNavAction:self.navAction];

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ppe-VX-zk2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ppe-VX-zk2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--App View Controller-->
@@ -133,37 +132,6 @@
                     <view key="view" contentMode="scaleToFill" id="8zx-sM-cd9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJi-lr-05V">
-                                <rect key="frame" x="32" y="57" width="256" height="454"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3l-GS-Jyo">
-                                        <rect key="frame" x="52" y="159" width="153.5" height="136"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="ADD IMAGE">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backToBoardController:" destination="isE-do-fub" eventType="touchUpInside" id="qTP-li-wtN"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="g3l-GS-Jyo" firstAttribute="centerY" secondItem="DJi-lr-05V" secondAttribute="centerY" id="E0S-q9-vdc"/>
-                                    <constraint firstItem="g3l-GS-Jyo" firstAttribute="centerX" secondItem="DJi-lr-05V" secondAttribute="centerX" id="I4h-m0-xfB"/>
-                                    <constraint firstItem="g3l-GS-Jyo" firstAttribute="width" secondItem="DJi-lr-05V" secondAttribute="width" multiplier="0.6" id="U2s-UM-bhf"/>
-                                    <constraint firstItem="g3l-GS-Jyo" firstAttribute="height" secondItem="DJi-lr-05V" secondAttribute="height" multiplier="0.3" id="n51-l1-Zte"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="DJi-lr-05V" firstAttribute="height" secondItem="8zx-sM-cd9" secondAttribute="height" multiplier="0.8" id="8gA-XB-bP9"/>
-                            <constraint firstItem="DJi-lr-05V" firstAttribute="width" secondItem="8zx-sM-cd9" secondAttribute="width" multiplier="0.8" id="P9y-W5-rFR"/>
-                            <constraint firstItem="DJi-lr-05V" firstAttribute="centerY" secondItem="8zx-sM-cd9" secondAttribute="centerY" id="dbp-aA-Mwh"/>
-                            <constraint firstItem="DJi-lr-05V" firstAttribute="centerX" secondItem="8zx-sM-cd9" secondAttribute="centerX" id="ohP-3O-0ai"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
