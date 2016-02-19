@@ -11,19 +11,19 @@
 #import "MDBBoardViewCell.h"
 #import "MDBConstants.h"
 
+static NSString * const reuseIdentifier = @"BoardCell";
+static NSUInteger const DefaultNumberOfSections = 1;
+
 @interface MDBBoardViewController () <UICollectionViewDelegate>
 
 //test properties
 @property (nonatomic, strong) NSArray *colors;
 @property (nonatomic, strong) NSMutableArray *testImages;
 
-
 @end
 
 @implementation MDBBoardViewController
 
-static NSString * const reuseIdentifier = @"BoardCell";
-static NSUInteger const kDefaultNumberOfSections = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,7 +63,7 @@ static NSUInteger const kDefaultNumberOfSections = 1;
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
     if (self.colors.count == BoardItemsPerSection) {
-        return kDefaultNumberOfSections;
+        return DefaultNumberOfSections;
     }
     
     return self.colors.count / BoardItemsPerSection;

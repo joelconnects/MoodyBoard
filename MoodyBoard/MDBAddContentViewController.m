@@ -9,7 +9,17 @@
 #import "MDBAddContentViewController.h"
 #import "MDBConstants.h"
 
+
+static CGFloat const EightyPercentMultiplier = 0.8;
+static CGFloat const TenPercentMultiplier = 0.1;
+static CGFloat const OneHundredPercentMultiplier = 1.0;
+
 @interface MDBAddContentViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, assign) CGFloat layoutWidthMultiplier;
+@property (nonatomic, assign) CGFloat layoutHeightMultiplier;
+@property (nonatomic, strong) UIButton *button;
+
 
 @end
 
@@ -30,13 +40,45 @@
 - (void)backToBoardController {
 
 //    [[NSNotificationCenter defaultCenter] postNotificationName:BoardSelectedNotificationName object:nil];
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.modalInPopover = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:picker animated:YES completion:NULL];
+    
+    [self.view removeConstraints:self.view.constraints];
+    self.layoutWidthMultiplier = OneHundredPercentMultiplier;
+    self.layoutHeightMultiplier = OneHundredPercentMultiplier;
+    [self constrainSubView:self.subView toParentView:self.view];
+
+
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        [self.view layoutIfNeeded];
+        self.button.alpha = 0;
+        
+    } completion:^(BOOL finished) {
+
+        [UIView animateWithDuration:0.3 animations:^{
+            self.view.alpha = 0;
+            
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+//            picker.modalInPopover = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            
+            CATransition *transition = [CATransition animation];
+            transition.duration = 0.4;
+            transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+            transition.type = kCATransitionFade;
+            transition.subtype = kCATransitionReveal;
+            [self.view.window.layer addAnimation:transition forKey:nil];
+            [self presentViewController:picker animated:NO completion:NULL];
+            
+        }];
+        
+    }];
+    
+    
+    
+    
     
     
 }
@@ -46,18 +88,22 @@
     self.subView.backgroundColor = [UIColor whiteColor];
     self.subView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.subView];
+    self.layoutWidthMultiplier = EightyPercentMultiplier;
+    self.layoutHeightMultiplier = EightyPercentMultiplier;
     [self constrainSubView:self.subView toParentView:self.view];
 }
 
 -(void)addButton {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self action:@selector(backToBoardController)
+    self.button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.button addTarget:self action:@selector(backToBoardController)
      forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"Add Image" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor grayColor];
-    button.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.subView addSubview:button];
-    [self constrainButton:button toSubView:self.subView];
+    [self.button setTitle:@"Add Image" forState:UIControlStateNormal];
+    self.button.backgroundColor = [UIColor grayColor];
+    self.button.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.subView addSubview:self.button];
+    self.layoutWidthMultiplier = EightyPercentMultiplier;
+    self.layoutHeightMultiplier = TenPercentMultiplier;
+    [self constrainButton:self.button toSubView:self.subView];
 }
 
 -(void)constrainButton:(UIButton *)button
@@ -68,7 +114,7 @@
                                                         relatedBy:NSLayoutRelationEqual
                                                            toItem:subView
                                                         attribute:NSLayoutAttributeWidth
-                                                       multiplier:0.8
+                                                       multiplier:self.layoutWidthMultiplier
                                                          constant:0.0]];
 
     [subView addConstraint:[NSLayoutConstraint constraintWithItem:button
@@ -76,7 +122,7 @@
                                                         relatedBy:NSLayoutRelationEqual
                                                            toItem:subView
                                                         attribute:NSLayoutAttributeHeight
-                                                       multiplier:0.10
+                                                       multiplier:self.layoutHeightMultiplier
                                                          constant:0.0]];
 
     [subView addConstraint:[NSLayoutConstraint constraintWithItem:button
@@ -104,7 +150,7 @@
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:parentView
                                                            attribute:NSLayoutAttributeWidth
-                                                          multiplier:0.8
+                                                          multiplier:self.layoutWidthMultiplier
                                                             constant:0.0]];
     
     [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
@@ -112,7 +158,7 @@
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:parentView
                                                            attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.8
+                                                          multiplier:self.layoutHeightMultiplier
                                                             constant:0.0]];
     
     [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
