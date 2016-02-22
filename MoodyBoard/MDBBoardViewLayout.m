@@ -49,8 +49,6 @@ typedef NS_ENUM(NSUInteger, Zindex) {
         
     }
     
-    NSLog(@"\n\ninit board view layout\n\n");
-    
     return self;
 }
 
@@ -66,7 +64,7 @@ typedef NS_ENUM(NSUInteger, Zindex) {
 
 -(CGSize)collectionViewContentSize
 {
-    NSLog(@"\n\ncollectionViewContentSize: %.0f, %.0f\n\n",self.contentWidth, self.viewHeight);
+
     return CGSizeMake(self.contentWidth, self.viewHeight);
 }
 

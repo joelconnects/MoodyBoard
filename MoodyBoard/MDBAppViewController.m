@@ -68,7 +68,7 @@
     
     MDBBoardViewController *boardController = (MDBBoardViewController *)self.currentViewController;
     self.imageView.image = [boardController boardScreenshot];
-    self.imageView.alpha = 0.3;
+    self.imageView.alpha = 1.0;
     
 }
 
@@ -122,11 +122,11 @@
               forNavAction:self.navAction
               includeOldVC:oldViewController];
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.4
                      animations:^{
                          
                          newViewController.view.alpha = 1.0;
-                         oldViewController.view.alpha = 0.0;
+                         self.imageView.alpha = 0.3;
                          
                          if ([self.navAction isEqualToString:ReturnToBoardNavAction]) {
                              [oldViewController.view layoutIfNeeded];

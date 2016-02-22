@@ -20,6 +20,7 @@
 		5D83F5891C67BBE700F5A04D /* MoodyBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5881C67BBE700F5A04D /* MoodyBoardTests.m */; };
 		5D83F5941C67BBE700F5A04D /* MoodyBoardUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5931C67BBE700F5A04D /* MoodyBoardUITests.m */; };
 		5D8801CD1C76B0A900CCF3C2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8801CC1C76B0A900CCF3C2 /* QuartzCore.framework */; };
+		5D8801CF1C7AB49700CCF3C2 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8801CE1C7AB49700CCF3C2 /* Test.storyboard */; };
 		5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F041C701483008872C5 /* MDBAddContentViewController.m */; };
 		5D890F081C703100008872C5 /* MDBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F071C703100008872C5 /* MDBConstants.m */; };
 		5D890F0B1C714608008872C5 /* MDBAppViewController+Constraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */; };
@@ -69,6 +70,7 @@
 		5D83F5931C67BBE700F5A04D /* MoodyBoardUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoodyBoardUITests.m; sourceTree = "<group>"; };
 		5D83F5951C67BBE700F5A04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D8801CC1C76B0A900CCF3C2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5D8801CE1C7AB49700CCF3C2 /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		5D890F031C701483008872C5 /* MDBAddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBAddContentViewController.h; sourceTree = "<group>"; };
 		5D890F041C701483008872C5 /* MDBAddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBAddContentViewController.m; sourceTree = "<group>"; };
 		5D890F061C703100008872C5 /* MDBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBConstants.h; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				5D01826F1C69758800789799 /* MDBBoardLayoutMultipliers.h */,
 				5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */,
 				5D83F5771C67BBE700F5A04D /* Board.storyboard */,
+				5D8801CE1C7AB49700CCF3C2 /* Test.storyboard */,
 				5D83F56E1C67BBE700F5A04D /* Supporting Files */,
 			);
 			path = MoodyBoard;
@@ -290,6 +293,7 @@
 				5D890F0D1C72C9E7008872C5 /* Test.xcassets in Resources */,
 				5D83F57B1C67BBE700F5A04D /* Assets.xcassets in Resources */,
 				5D83F5791C67BBE700F5A04D /* Board.storyboard in Resources */,
+				5D8801CF1C7AB49700CCF3C2 /* Test.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
