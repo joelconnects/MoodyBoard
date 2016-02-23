@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/QuartzCore.h>
 #import <Photos/Photos.h>
 
 

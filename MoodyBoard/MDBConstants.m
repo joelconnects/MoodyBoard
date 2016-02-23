@@ -11,6 +11,7 @@
 // Notifications
 NSString * const AddContentSelectedNotificationName = @"AddContentSelectedNotification";
 NSString * const BoardSelectedNotificationName = @"BoardSelectedNotification";
+NSString * const PhotoLibrarySelectedNotificationName = @"PhotoLibrarySelectedNotification";
 
 // StoryboardIDs
 NSString * const AddContentViewControllerStoryboardID = @"AddContentViewController";

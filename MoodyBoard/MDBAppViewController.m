@@ -62,6 +62,11 @@
                                                  name:AddContentSelectedNotificationName
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleAddContentSelected)
+                                                 name:PhotoLibrarySelectedNotificationName
+                                               object:nil];
+    
 }
 
 -(void)setScreenshotOfBoardToImageView {
@@ -122,7 +127,7 @@
               forNavAction:self.navAction
               includeOldVC:oldViewController];
     
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.3
                      animations:^{
                          
                          newViewController.view.alpha = 1.0;

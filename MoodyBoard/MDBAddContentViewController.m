@@ -30,6 +30,7 @@
     [self addSubView];
     [self addButtonViewToSubView];
     [self addImageButtonToButtonView];
+    [self addCancelButtonToButtonView];
     [super viewDidLoad];
 
     
@@ -92,35 +93,38 @@
     picker.navigationBar.tintColor = [UIColor blackColor];
     
     CATransition *transition = [CATransition animation];
-    transition.duration = 0.4;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionReveal;
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFromRight;
     
     [self.view.window.layer addAnimation:transition forKey:nil];
-    [self presentViewController:picker animated:NO completion:NULL];
+    [self presentViewController:picker animated:NO completion:nil];
     
 }
 
 
 - (void)transitionToImagePicker {
 
-
-    
     [self.view removeConstraints:self.view.constraints];
     [self constrainSubView:self.subView toExpandToParentView:self.view];
 
+//    self.subView.alpha = 0;
+//    self.addImageButton.alpha = 0;
+    
     [UIView animateWithDuration:0.4 animations:^{
         
         [self.view layoutIfNeeded];
-        self.subView.alpha = 0;
-        self.addImageButton.alpha = 0;
-        [self performSelector:@selector(animateImagePickerDidAppear)
-                   withObject:nil
-                   afterDelay:0.1];
-        
+//        self.subView.alpha = 0;
+//        self.addImageButton.alpha = 0;
         
     }];
+    
+//    [self animateImagePickerDidAppear];
+    
+    [self performSelector:@selector(animateImagePickerDidAppear)
+               withObject:nil
+               afterDelay:0.1];
     
 }
 
@@ -146,7 +150,7 @@
 
 -(void)addButtonViewToSubView {
     self.buttonView = [[UIView alloc] init];
-    self.subView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.buttonView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.subView addSubview:self.buttonView];
     [self constrainButtonView:self.buttonView toSubView:self.subView];
 }
@@ -171,7 +175,7 @@
     [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
     self.cancelButton.backgroundColor = [UIColor grayColor];
     self.cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonView addSubview:self.buttonView];
+    [self.buttonView addSubview:self.cancelButton];
     [self constrainCancelButton:self.cancelButton toButtonView:self.buttonView];
     
 }
@@ -329,7 +333,7 @@
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:parentView
                                                            attribute:NSLayoutAttributeWidth
-                                                          multiplier:1.0
+                                                          multiplier:0.8
                                                             constant:0.0]];
     
     [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
@@ -337,14 +341,14 @@
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:parentView
                                                            attribute:NSLayoutAttributeHeight
-                                                          multiplier:1.0
+                                                          multiplier:0.8
                                                             constant:0.0]];
     
     [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterX
+                                                           attribute:NSLayoutAttributeRight
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterX
+                                                           attribute:NSLayoutAttributeLeft
                                                           multiplier:1.0
                                                             constant:0.0]];
     
