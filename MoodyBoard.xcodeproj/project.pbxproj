@@ -25,6 +25,7 @@
 		5D890F081C703100008872C5 /* MDBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F071C703100008872C5 /* MDBConstants.m */; };
 		5D890F0B1C714608008872C5 /* MDBAppViewController+Constraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */; };
 		5D890F0D1C72C9E7008872C5 /* Test.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D890F0C1C72C9E7008872C5 /* Test.xcassets */; };
+		5DB75C541C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		5D890F091C714608008872C5 /* MDBAppViewController+Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDBAppViewController+Constraints.h"; sourceTree = "<group>"; };
 		5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MDBAppViewController+Constraints.m"; sourceTree = "<group>"; };
 		5D890F0C1C72C9E7008872C5 /* Test.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Test.xcassets; sourceTree = "<group>"; };
+		5DB75C521C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBPhotoLibraryContainerViewController.h; sourceTree = "<group>"; };
+		5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBPhotoLibraryContainerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */,
 				5D890F031C701483008872C5 /* MDBAddContentViewController.h */,
 				5D890F041C701483008872C5 /* MDBAddContentViewController.m */,
+				5DB75C521C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.h */,
+				5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */,
 				5D01826B1C69758800789799 /* MDBBoardViewController.h */,
 				5D01826A1C69758800789799 /* MDBBoardViewController.m */,
 				5D0182691C69758800789799 /* MDBBoardViewLayout.h */,
@@ -328,6 +333,7 @@
 				5D0182701C69758800789799 /* MDBBoardViewLayout.m in Sources */,
 				5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */,
 				5D83F5701C67BBE700F5A04D /* main.m in Sources */,
+				5DB75C541C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,8 +14,9 @@ extern NSString * const BoardSelectedNotificationName;
 extern NSString * const PhotoLibrarySelectedNotificationName;
 
 // StoryboardIDs
-extern NSString * const AddContentViewControllerStoryboardID;
 extern NSString * const BoardViewControllerStoryBoardID;
+extern NSString * const AddContentViewControllerStoryboardID;
+extern NSString * const PhotoLibraryContainerViewControllerStoryBoardID;
 
 // BoardViewController
 // BoardViewLayout

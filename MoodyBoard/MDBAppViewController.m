@@ -11,9 +11,10 @@
 #import "MDBAppViewController+Constraints.h"
 #import "MDBAddContentViewController.h"
 #import "MDBBoardViewController.h"
+#import "MDBPhotoLibraryContainerViewController.h"
 
 
-@interface MDBAppViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MDBAppViewController () 
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) UIViewController *currentViewController;
@@ -63,7 +64,7 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleAddContentSelected)
+                                             selector:@selector(handlePhotoLibrarySelected)
                                                  name:PhotoLibrarySelectedNotificationName
                                                object:nil];
     
@@ -81,7 +82,7 @@
     
     self.navAction = AddContentNavAction;
     [self setScreenshotOfBoardToImageView];
-    UIViewController *addContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddContentViewController"];
+    UIViewController *addContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:AddContentViewControllerStoryboardID];
     [self cycleFromViewController:self.currentViewController toViewController:addContentViewController];
     self.currentViewController = addContentViewController;
     
@@ -90,7 +91,7 @@
 -(void)handleBoardSelected {
      
     self.navAction = ReturnToBoardNavAction;
-    UIViewController *boardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BoardViewController"];
+    UIViewController *boardViewController = [self.storyboard instantiateViewControllerWithIdentifier:BoardViewControllerStoryBoardID];
     [self showHideButtonsForNavAction:self.navAction];
     [self cycleFromViewController:self.currentViewController toViewController:boardViewController];
     self.currentViewController = boardViewController;
@@ -100,24 +101,9 @@
 -(void)handlePhotoLibrarySelected {
     
     self.navAction = PhotoLibraryNavAction;
-    
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.modalInPopover = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.navigationBar.tintColor = [UIColor blackColor];
-    
-//    CATransition *transition = [CATransition animation];
-//    transition.duration = 0.5;
-//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-//    transition.type = kCATransitionMoveIn;
-//    transition.subtype = kCATransitionFromRight;
-//    
-//    [self.view.window.layer addAnimation:transition forKey:nil];
-//    [self presentViewController:picker animated:NO completion:nil];
-
-    [self cycleFromViewController:self.currentViewController toViewController:picker];
+    UIViewController *photoLibraryContainerViewController = [self.storyboard instantiateViewControllerWithIdentifier:PhotoLibraryContainerViewControllerStoryBoardID];
+    [self cycleFromViewController:self.currentViewController toViewController:photoLibraryContainerViewController];
+    self.currentViewController = photoLibraryContainerViewController;
     
 }
 
@@ -144,14 +130,14 @@
     [self addChildViewController:newViewController];
     [self.containerView addSubview:newViewController.view];
     
-    newViewController.view.alpha = 0;
+    newViewController.view.alpha = 0.0;
     
     [self constrainSubView:newViewController.view
               toParentView:self.containerView
               forNavAction:self.navAction
               includeOldVC:oldViewController];
     
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:3.0
                      animations:^{
                          
                          newViewController.view.alpha = 1.0;
@@ -163,6 +149,10 @@
                          if ([self.navAction isEqualToString:AddContentNavAction]) {
                              [newViewController.view layoutIfNeeded];
                          }
+                         if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
+                             [oldViewController.view layoutIfNeeded];
+                             [newViewController.view layoutIfNeeded];
+                         }
                          
                          [self setButtonsAlphaForNavAction:self.navAction];
                      }
@@ -172,6 +162,11 @@
                          [oldViewController.view removeFromSuperview];
                          [oldViewController removeFromParentViewController];
                          [newViewController didMoveToParentViewController:self];
+                         
+                         if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
+                             MDBPhotoLibraryContainerViewController *photoLibraryContainerVC = (MDBPhotoLibraryContainerViewController *)newViewController;
+                             [photoLibraryContainerVC presentImagePickerController];
+                         }
                          
                      }];
 }

@@ -85,21 +85,21 @@
 
 -(void)animateImagePickerDidAppear {
     
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.modalInPopover = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.navigationBar.tintColor = [UIColor blackColor];
-    
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.5;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    transition.type = kCATransitionMoveIn;
-    transition.subtype = kCATransitionFromRight;
-    
-    [self.view.window.layer addAnimation:transition forKey:nil];
-    [self presentViewController:picker animated:NO completion:nil];
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.modalInPopover = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    picker.navigationBar.tintColor = [UIColor blackColor];
+//    
+//    CATransition *transition = [CATransition animation];
+//    transition.duration = 0.5;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+//    transition.type = kCATransitionMoveIn;
+//    transition.subtype = kCATransitionFromRight;
+//    
+//    [self.view.window.layer addAnimation:transition forKey:nil];
+//    [self presentViewController:picker animated:NO completion:nil];
     
 }
 

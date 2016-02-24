@@ -16,6 +16,7 @@ NSString * const PhotoLibrarySelectedNotificationName = @"PhotoLibrarySelectedNo
 // StoryboardIDs
 NSString * const AddContentViewControllerStoryboardID = @"AddContentViewController";
 NSString * const BoardViewControllerStoryBoardID = @"BoardViewController";
+NSString * const PhotoLibraryContainerViewControllerStoryBoardID = @"PhotoLibraryContainerViewController";
 
 // BoardViewController
 // BoardViewLayout
