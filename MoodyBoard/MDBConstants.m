@@ -27,6 +27,7 @@ NSString * const SettingsMenuNavAction = @"Settings Menu";
 NSString * const BoardDetailsNavAction = @"Board Details";
 NSString * const BoardActivityNavAction = @"Board Activity";
 NSString * const ReturnToBoardNavAction = @"Return to Board";
+NSString * const PhotoLibraryNavAction = @"Photo Library";
 
 
 

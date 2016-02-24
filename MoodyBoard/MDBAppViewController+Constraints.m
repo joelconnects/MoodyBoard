@@ -44,6 +44,12 @@
         //
         //
     }
+    
+    if ([navAction isEqualToString:PhotoLibraryNavAction]) {
+        [parentView removeConstraints:parentView.constraints];
+        [self constrainAddContentToMoveLeft:subView ofParentView:parentView];
+    }
+
 }
 
 
@@ -83,6 +89,41 @@
 
 }
 
+-(void)constrainAddContentToMoveLeft:(UIView *)subView ofParentView:(UIView *)parentView
+{
+
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:parentView
+                                                          attribute:NSLayoutAttributeWidth
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:parentView
+                                                          attribute:NSLayoutAttributeHeight
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:parentView
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+
+    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
+                                                          attribute:NSLayoutAttributeRight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:parentView
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+}
 
 
 @end

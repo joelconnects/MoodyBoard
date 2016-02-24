@@ -11,7 +11,7 @@
 
 
 
-@interface MDBAddContentViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MDBAddContentViewController () 
 
 @property (strong, nonatomic) UIView *subView;
 @property (strong, nonatomic) UIView *buttonView;
@@ -40,7 +40,7 @@
     
     if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
         
-        [self transitionToImagePicker];
+        [self continueToPhotoLibrary];
         return;
     };
     
@@ -59,7 +59,7 @@
                 
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^
                  {
-                     [self transitionToImagePicker];
+                     [self continueToPhotoLibrary];
                  }];
             
             }
@@ -131,6 +131,12 @@
 -(void)returnToBoardController {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:BoardSelectedNotificationName object:nil];
+    
+}
+
+-(void)continueToPhotoLibrary {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:PhotoLibrarySelectedNotificationName object:nil];
     
 }
 

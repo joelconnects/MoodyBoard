@@ -13,7 +13,7 @@
 #import "MDBBoardViewController.h"
 
 
-@interface MDBAppViewController () 
+@interface MDBAppViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) UIViewController *currentViewController;
@@ -94,6 +94,30 @@
     [self showHideButtonsForNavAction:self.navAction];
     [self cycleFromViewController:self.currentViewController toViewController:boardViewController];
     self.currentViewController = boardViewController;
+    
+}
+
+-(void)handlePhotoLibrarySelected {
+    
+    self.navAction = PhotoLibraryNavAction;
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.modalInPopover = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.navigationBar.tintColor = [UIColor blackColor];
+    
+//    CATransition *transition = [CATransition animation];
+//    transition.duration = 0.5;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+//    transition.type = kCATransitionMoveIn;
+//    transition.subtype = kCATransitionFromRight;
+//    
+//    [self.view.window.layer addAnimation:transition forKey:nil];
+//    [self presentViewController:picker animated:NO completion:nil];
+
+    [self cycleFromViewController:self.currentViewController toViewController:picker];
     
 }
 

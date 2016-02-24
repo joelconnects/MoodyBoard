@@ -27,3 +27,4 @@ extern NSString * const SettingsMenuNavAction;
 extern NSString * const BoardDetailsNavAction;
 extern NSString * const BoardActivityNavAction;
 extern NSString * const ReturnToBoardNavAction;
+extern NSString * const PhotoLibraryNavAction;
