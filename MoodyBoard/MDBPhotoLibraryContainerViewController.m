@@ -31,8 +31,7 @@
     CATransition *transition = [CATransition animation];
     transition.duration = 0.5;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    transition.type = kCATransitionMoveIn;
-    transition.subtype = kCATransitionFromRight;
+    transition.type = kCATransitionFade;
 
     [self.view.window.layer addAnimation:transition forKey:nil];
     [self presentViewController:picker animated:NO completion:nil];

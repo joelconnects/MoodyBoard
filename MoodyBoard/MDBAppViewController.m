@@ -137,7 +137,7 @@
               forNavAction:self.navAction
               includeOldVC:oldViewController];
     
-    [UIView animateWithDuration:3.0
+    [UIView animateWithDuration:0.5
                      animations:^{
                          
                          newViewController.view.alpha = 1.0;
@@ -155,6 +155,7 @@
                          }
                          
                          [self setButtonsAlphaForNavAction:self.navAction];
+                         
                      }
                      completion:^(BOOL finished) {
                          

@@ -112,7 +112,7 @@
 //    self.subView.alpha = 0;
 //    self.addImageButton.alpha = 0;
     
-    [UIView animateWithDuration:0.4 animations:^{
+    [UIView animateWithDuration:0.6 animations:^{
         
         [self.view layoutIfNeeded];
 //        self.subView.alpha = 0;
@@ -122,9 +122,9 @@
     
 //    [self animateImagePickerDidAppear];
     
-    [self performSelector:@selector(animateImagePickerDidAppear)
-               withObject:nil
-               afterDelay:0.1];
+//    [self performSelector:@selector(animateImagePickerDidAppear)
+//               withObject:nil
+//               afterDelay:0.1];
     
 }
 
