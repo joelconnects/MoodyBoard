@@ -156,49 +156,34 @@
                          
                          [self setButtonsAlphaForNavAction:self.navAction];
                          
-//                         if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
-//                             [self performSelector:@selector(presentPicker)
-//                                        withObject:nil
-//                                        afterDelay:0.3];
-//                         }
-                         
                      }
                      completion:^(BOOL finished) {
-                         
-                         [self showHideButtonsForNavAction:self.navAction];
-                         [oldViewController.view removeFromSuperview];
-                         [oldViewController removeFromParentViewController];
-                         [newViewController didMoveToParentViewController:self];
                          
 //                         if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
 //                             MDBPhotoLibraryContainerViewController *photoLibraryContainerVC = (MDBPhotoLibraryContainerViewController *)newViewController;
 //                             [photoLibraryContainerVC presentImagePickerController];
 //                         }
                          
+                         [self showHideButtonsForNavAction:self.navAction];
+                         [oldViewController.view removeFromSuperview];
+                         [oldViewController removeFromParentViewController];
+                         [newViewController didMoveToParentViewController:self];
+                         
                      }];
+    
     if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
-        [self performSelector:@selector(presentPicker)
-                   withObject:nil
+        
+        [self performSelector:@selector(presentPicker:)
+                   withObject:newViewController
                    afterDelay:0.1];
     }
+    
 }
 
--(void)presentPicker {
+-(void)presentPicker:(UIViewController *)newViewController {
 
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.modalInPopover = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.navigationBar.tintColor = [UIColor blackColor];
-        
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.4;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    transition.type = kCATransitionFade;
-
-    [self.view.window.layer addAnimation:transition forKey:nil];
-    [self presentViewController:picker animated:NO completion:nil];
+     MDBPhotoLibraryContainerViewController *photoLibraryContainerVC = (MDBPhotoLibraryContainerViewController *)newViewController;
+     [photoLibraryContainerVC presentImagePickerController];
     
 }
 
