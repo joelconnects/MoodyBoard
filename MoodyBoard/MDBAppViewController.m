@@ -159,10 +159,10 @@
                      }
                      completion:^(BOOL finished) {
                          
-//                         if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
-//                             MDBPhotoLibraryContainerViewController *photoLibraryContainerVC = (MDBPhotoLibraryContainerViewController *)newViewController;
-//                             [photoLibraryContainerVC presentImagePickerController];
-//                         }
+                         if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
+                             MDBPhotoLibraryContainerViewController *photoLibraryContainerVC = (MDBPhotoLibraryContainerViewController *)newViewController;
+                             [photoLibraryContainerVC presentImagePickerController];
+                         }
                          
                          [self showHideButtonsForNavAction:self.navAction];
                          [oldViewController.view removeFromSuperview];
@@ -171,12 +171,12 @@
                          
                      }];
     
-    if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
-        
-        [self performSelector:@selector(presentPicker:)
-                   withObject:newViewController
-                   afterDelay:0.1];
-    }
+//    if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
+//        
+//        [self performSelector:@selector(presentPicker:)
+//                   withObject:newViewController
+//                   afterDelay:0.1];
+//    }
     
 }
 

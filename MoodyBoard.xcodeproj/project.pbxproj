@@ -20,7 +20,6 @@
 		5D83F5891C67BBE700F5A04D /* MoodyBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5881C67BBE700F5A04D /* MoodyBoardTests.m */; };
 		5D83F5941C67BBE700F5A04D /* MoodyBoardUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5931C67BBE700F5A04D /* MoodyBoardUITests.m */; };
 		5D8801CD1C76B0A900CCF3C2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8801CC1C76B0A900CCF3C2 /* QuartzCore.framework */; };
-		5D8801CF1C7AB49700CCF3C2 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8801CE1C7AB49700CCF3C2 /* Test.storyboard */; };
 		5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F041C701483008872C5 /* MDBAddContentViewController.m */; };
 		5D890F081C703100008872C5 /* MDBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F071C703100008872C5 /* MDBConstants.m */; };
 		5D890F0B1C714608008872C5 /* MDBAppViewController+Constraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */; };
@@ -71,7 +70,6 @@
 		5D83F5931C67BBE700F5A04D /* MoodyBoardUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoodyBoardUITests.m; sourceTree = "<group>"; };
 		5D83F5951C67BBE700F5A04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D8801CC1C76B0A900CCF3C2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5D8801CE1C7AB49700CCF3C2 /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		5D890F031C701483008872C5 /* MDBAddContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBAddContentViewController.h; sourceTree = "<group>"; };
 		5D890F041C701483008872C5 /* MDBAddContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBAddContentViewController.m; sourceTree = "<group>"; };
 		5D890F061C703100008872C5 /* MDBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBConstants.h; sourceTree = "<group>"; };
@@ -135,27 +133,12 @@
 			children = (
 				5D83F5711C67BBE700F5A04D /* AppDelegate.h */,
 				5D83F5721C67BBE700F5A04D /* AppDelegate.m */,
-				5D890F061C703100008872C5 /* MDBConstants.h */,
-				5D890F071C703100008872C5 /* MDBConstants.m */,
-				5D2993F71C6BC94000E8C9EB /* MDBAppViewController.h */,
-				5D2993F81C6BC94000E8C9EB /* MDBAppViewController.m */,
-				5D890F091C714608008872C5 /* MDBAppViewController+Constraints.h */,
-				5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */,
-				5D890F031C701483008872C5 /* MDBAddContentViewController.h */,
-				5D890F041C701483008872C5 /* MDBAddContentViewController.m */,
-				5DB75C521C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.h */,
-				5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */,
-				5D01826B1C69758800789799 /* MDBBoardViewController.h */,
-				5D01826A1C69758800789799 /* MDBBoardViewController.m */,
-				5D0182691C69758800789799 /* MDBBoardViewLayout.h */,
-				5D0182681C69758800789799 /* MDBBoardViewLayout.m */,
-				5D01826C1C69758800789799 /* MDBBoardViewCell.h */,
-				5D01826D1C69758800789799 /* MDBBoardViewCell.m */,
-				5D01826F1C69758800789799 /* MDBBoardLayoutMultipliers.h */,
-				5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */,
-				5D83F5771C67BBE700F5A04D /* Board.storyboard */,
-				5D8801CE1C7AB49700CCF3C2 /* Test.storyboard */,
+				5DA322391C80AFF100F3433C /* Constants */,
+				5DA3223A1C80B08400F3433C /* AppViewController */,
+				5DA3223B1C80B0B000F3433C /* BoardController */,
+				5DA3223C1C80B17600F3433C /* AddContentControllers */,
 				5D83F56E1C67BBE700F5A04D /* Supporting Files */,
+				5D83F5771C67BBE700F5A04D /* Board.storyboard */,
 			);
 			path = MoodyBoard;
 			sourceTree = "<group>";
@@ -188,6 +171,52 @@
 				5D83F5951C67BBE700F5A04D /* Info.plist */,
 			);
 			path = MoodyBoardUITests;
+			sourceTree = "<group>";
+		};
+		5DA322391C80AFF100F3433C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5D890F061C703100008872C5 /* MDBConstants.h */,
+				5D890F071C703100008872C5 /* MDBConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		5DA3223A1C80B08400F3433C /* AppViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5D2993F71C6BC94000E8C9EB /* MDBAppViewController.h */,
+				5D2993F81C6BC94000E8C9EB /* MDBAppViewController.m */,
+				5D890F091C714608008872C5 /* MDBAppViewController+Constraints.h */,
+				5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */,
+			);
+			name = AppViewController;
+			sourceTree = "<group>";
+		};
+		5DA3223B1C80B0B000F3433C /* BoardController */ = {
+			isa = PBXGroup;
+			children = (
+				5D01826B1C69758800789799 /* MDBBoardViewController.h */,
+				5D01826A1C69758800789799 /* MDBBoardViewController.m */,
+				5D0182691C69758800789799 /* MDBBoardViewLayout.h */,
+				5D0182681C69758800789799 /* MDBBoardViewLayout.m */,
+				5D01826C1C69758800789799 /* MDBBoardViewCell.h */,
+				5D01826D1C69758800789799 /* MDBBoardViewCell.m */,
+				5D01826F1C69758800789799 /* MDBBoardLayoutMultipliers.h */,
+				5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */,
+			);
+			name = BoardController;
+			sourceTree = "<group>";
+		};
+		5DA3223C1C80B17600F3433C /* AddContentControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D890F031C701483008872C5 /* MDBAddContentViewController.h */,
+				5D890F041C701483008872C5 /* MDBAddContentViewController.m */,
+				5DB75C521C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.h */,
+				5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */,
+			);
+			name = AddContentControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +327,6 @@
 				5D890F0D1C72C9E7008872C5 /* Test.xcassets in Resources */,
 				5D83F57B1C67BBE700F5A04D /* Assets.xcassets in Resources */,
 				5D83F5791C67BBE700F5A04D /* Board.storyboard in Resources */,
-				5D8801CF1C7AB49700CCF3C2 /* Test.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
