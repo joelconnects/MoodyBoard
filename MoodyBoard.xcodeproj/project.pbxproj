@@ -107,6 +107,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D4503541C83C95E002DE863 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5DA3223A1C80B08400F3433C /* AppViewController */,
+				5DA3223B1C80B0B000F3433C /* BoardController */,
+				5DA3223C1C80B17600F3433C /* AddContentControllers */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		5D83F5621C67BBE700F5A04D = {
 			isa = PBXGroup;
 			children = (
@@ -134,9 +144,7 @@
 				5D83F5711C67BBE700F5A04D /* AppDelegate.h */,
 				5D83F5721C67BBE700F5A04D /* AppDelegate.m */,
 				5DA322391C80AFF100F3433C /* Constants */,
-				5DA3223A1C80B08400F3433C /* AppViewController */,
-				5DA3223B1C80B0B000F3433C /* BoardController */,
-				5DA3223C1C80B17600F3433C /* AddContentControllers */,
+				5D4503541C83C95E002DE863 /* Controllers */,
 				5D83F56E1C67BBE700F5A04D /* Supporting Files */,
 				5D83F5771C67BBE700F5A04D /* Board.storyboard */,
 			);

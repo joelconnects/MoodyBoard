@@ -22,8 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *addContentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *boardDetailsBtn;
 @property (weak, nonatomic) IBOutlet UIButton *boardActivityBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) NSString *navAction;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 
 @end
@@ -72,9 +73,22 @@
 
 -(void)setScreenshotOfBoardToImageView {
     
+    [[self.imageView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [[self.blurredImageView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     MDBBoardViewController *boardController = (MDBBoardViewController *)self.currentViewController;
-    self.imageView.image = [boardController boardScreenshot];
-    self.imageView.alpha = 1.0;
+    UIImage *boardScreenshot = [boardController boardScreenshot];
+    
+    self.blurredImageView.image = boardScreenshot;
+    self.imageView.image = boardScreenshot;
+    
+    self.blurredImageView.alpha = 1;
+    self.imageView.alpha = 1;
+    
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = self.view.frame;
+    [self.blurredImageView addSubview:effectView];
     
 }
 
@@ -95,6 +109,8 @@
     [self showHideButtonsForNavAction:self.navAction];
     [self cycleFromViewController:self.currentViewController toViewController:boardViewController];
     self.currentViewController = boardViewController;
+    
+    
     
 }
 
@@ -141,12 +157,14 @@
                      animations:^{
                          
                          newViewController.view.alpha = 1.0;
-                         self.imageView.alpha = 0.3;
                          
                          if ([self.navAction isEqualToString:ReturnToBoardNavAction]) {
+                             self.blurredImageView.alpha = 0;
                              [oldViewController.view layoutIfNeeded];
                          }
                          if ([self.navAction isEqualToString:AddContentNavAction]) {
+                             self.blurredImageView.alpha = 0.5;
+                             self.imageView.alpha = 0.0;
                              [newViewController.view layoutIfNeeded];
                          }
                          if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
@@ -159,11 +177,6 @@
                      }
                      completion:^(BOOL finished) {
                          
-                         if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
-                             MDBPhotoLibraryContainerViewController *photoLibraryContainerVC = (MDBPhotoLibraryContainerViewController *)newViewController;
-                             [photoLibraryContainerVC presentImagePickerController];
-                         }
-                         
                          [self showHideButtonsForNavAction:self.navAction];
                          [oldViewController.view removeFromSuperview];
                          [oldViewController removeFromParentViewController];
@@ -171,12 +184,12 @@
                          
                      }];
     
-//    if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
-//        
-//        [self performSelector:@selector(presentPicker:)
-//                   withObject:newViewController
-//                   afterDelay:0.1];
-//    }
+    if ([self.navAction isEqualToString:PhotoLibraryNavAction]) {
+        
+        [self performSelector:@selector(presentPicker:)
+                   withObject:newViewController
+                   afterDelay:0.1];
+    }
     
 }
 

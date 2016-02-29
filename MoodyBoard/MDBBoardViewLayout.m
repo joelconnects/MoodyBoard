@@ -10,18 +10,20 @@
 #import "MDBBoardLayoutMultipliers.h"
 #import "MDBConstants.h"
 
-static NSUInteger const kWidth = 0;
-static NSUInteger const kHeight = 1;
-static NSUInteger const kX = 0;
-static NSUInteger const kY = 1;
-static CGFloat const kFirstItemYoffsetMultiplier = 0.35326086956522;
+static NSUInteger const kWidthDictKey = 0;
+static NSUInteger const kHeightDictKey = 1;
+static NSUInteger const kXdictKey = 0;
+static NSUInteger const kYdictKey = 1;
+static CGFloat const kFirstItemYoffsetMultiplier = 0.3519553072626;
 
 typedef NS_ENUM(NSUInteger, Zindex) {
-    VeryTop = 5,
-    Top = 4,
-    Middle = 3,
-    Bottom = 2,
-    VeryBottom = 1
+    Top = 7,
+    LowerTop = 6,
+    UpperMiddle = 5,
+    Middle = 4,
+    LowerMiddle = 3,
+    UpperBottom = 2,
+    Bottom = 1
 };
 
 @interface MDBBoardViewLayout()
@@ -142,7 +144,7 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     
     // xOffset adjustment for new section
     if (section > 0 && item == 0) {
-        self.xOffset -= 4;
+        self.xOffset -= 8;
     }
     
     CGRect frame = CGRectMake(self.xOffset, self.yOffset, self.itemWidth, self.itemHeight);
@@ -163,8 +165,8 @@ typedef NS_ENUM(NSUInteger, Zindex) {
 -(void)calculateItemSize:(NSString *)size
 {
     NSArray *multipliers = [[MDBBoardLayoutMultipliers sizeMultipliers] objectForKey:size];
-    CGFloat widthMultiplier = [multipliers[kWidth] floatValue];
-    CGFloat heightMultiplier = [multipliers[kHeight] floatValue];
+    CGFloat widthMultiplier = [multipliers[kWidthDictKey] floatValue];
+    CGFloat heightMultiplier = [multipliers[kHeightDictKey] floatValue];
     self.itemWidth = roundf(self.viewWidth * widthMultiplier);
     self.itemHeight = roundf(self.viewHeight * heightMultiplier);
 }
@@ -173,12 +175,15 @@ typedef NS_ENUM(NSUInteger, Zindex) {
 {
     switch (item) {
         case 0 ... 1:
-            [self calculateItemSize:@"XL"];
+            [self calculateItemSize:@"XXL"];
             break;
         case 2 ... 3:
+            [self calculateItemSize:@"XL"];
+            break;
+        case 10 ... 11:
             [self calculateItemSize:@"L"];
             break;
-        case 8 ... 11:
+        case 8 ... 9:
             [self calculateItemSize:@"M"];
             break;
         case 4 ... 7:
@@ -197,23 +202,26 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     Zindex itemZindex;
     switch (item) {
         case 0:
-        case 10:
-        case 11:
-            itemZindex = VeryTop;
-            break;
-        case 1:
-        case 12:
-        case 13:
             itemZindex = Top;
             break;
-        case 2 ... 3:
+        case 1:
+            itemZindex = LowerTop;
+            break;
+        case 6 ... 7:
+            itemZindex = UpperMiddle;
+            break;
+        case 10 ... 11:
             itemZindex = Middle;
             break;
-        case 4 ... 5:
-            itemZindex = Bottom;
+        case 2 ... 3:
+            itemZindex = LowerMiddle;
             break;
-        case 6 ... 9:
-            itemZindex = VeryBottom;
+        case 4 ... 5:
+        case 12 ... 13:
+            itemZindex = UpperBottom;
+            break;
+        case 8 ... 9:
+            itemZindex = Bottom;
             break;
         default:
             break;
@@ -227,20 +235,21 @@ typedef NS_ENUM(NSUInteger, Zindex) {
     
     NSNumber *itemKey = [NSNumber numberWithInteger:item];
     NSArray *multipliers = [[MDBBoardLayoutMultipliers offsetMultipliers] objectForKey:itemKey];
-    CGFloat xMultiplier = [multipliers[kX] floatValue];
-    CGFloat yMultiplier = [multipliers[kY] floatValue];
+    CGFloat xMultiplier = [multipliers[kXdictKey] floatValue];
+    CGFloat yMultiplier = [multipliers[kYdictKey] floatValue];
     
     switch (item) {
-        case 0:
         case 1:
         case 5 ... 6:
-        case 9 ... 10:
-        case 12 ... 13:
+        case 8 ... 9:
+        case 12:
             self.xOffset += roundf(self.viewWidth * xMultiplier);
             break;
+        case 0:
         case 2 ... 4:
-        case 7 ... 8:
-        case 11:
+        case 7:
+        case 10 ... 11:
+        case 13:
             self.xOffset -= roundf(self.viewWidth * xMultiplier);
             break;
         default:

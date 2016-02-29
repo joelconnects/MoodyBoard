@@ -47,264 +47,64 @@
     
     if ([navAction isEqualToString:PhotoLibraryNavAction]) {
         [parentView removeConstraints:parentView.constraints];
-        [self constrainPhotoLibraryContainer:subView toTheRightOfParentView:parentView];
+        [self constrainPhotoLibraryContainer:subView toCenterofParentView:parentView];
         [self constrainSubView:oldVC.view toParentView:parentView];
         [parentView layoutIfNeeded];
         [parentView removeConstraints:parentView.constraints];
-        [self constrainAddContentToMoveLeft:oldVC.view ofParentView:parentView];
+        [self constrainPhotoLibraryContainer:oldVC.view toCenterofParentView:parentView];
         [self constrainSubView:subView toParentView:parentView];
         
     }
 
 }
 
-
 -(void)constrainSubView:(UIView *)subView
            toParentView:(UIView *)parentView
 {
-    NSDictionary * views = @{@"subView" : subView};
-    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subView]|"
-                                                                   options:0
-                                                                   metrics:0
-                                                                     views:views];
-    [parentView addConstraints:constraints];
-    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subView]|"
-                                                          options:0
-                                                          metrics:0
-                                                            views:views];
-    [parentView addConstraints:constraints];
+    
+    [subView.leftAnchor constraintEqualToAnchor:parentView.leftAnchor].active = YES;
+    [subView.rightAnchor constraintEqualToAnchor:parentView.rightAnchor].active = YES;
+    [subView.topAnchor constraintEqualToAnchor:parentView.topAnchor].active = YES;
+    [subView.bottomAnchor constraintEqualToAnchor:parentView.bottomAnchor].active = YES;
 
 }
 
 -(void)constrainAddContentSubViewSizeZero:(UIView *)subView
                              toParentView:(UIView *)parentView {
-    
-    NSDictionary *viewsDictionary = @{@"subView":subView};
-    
-    NSArray *constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[subView(0)]|"
-                                                                    options:0
-                                                                    metrics:nil
-                                                                      views:viewsDictionary];
-    
-    [parentView addConstraints:constraint_H];
-    NSArray *constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[subView(0)]"
-                                                                    options:0
-                                                                    metrics:nil
-                                                                      views:viewsDictionary];
-    [parentView addConstraints:constraint_V];
-
-}
-
--(void)constrainAddContentToMoveLeft:(UIView *)subView
-                        ofParentView:(UIView *)parentView
-{
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:0.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.0
-                                                            constant:0.0]];
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeCenterY
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeCenterY
-//                                                         multiplier:1.0
-//                                                           constant:0.0]];
-//
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeHeight
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeHeight
-//                                                         multiplier:0.0
-//                                                           constant:0.0]];
-//
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeWidth
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeWidth
-//                                                         multiplier:0.0
-//                                                           constant:0.0]];
-//
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeRight
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeLeft
-//                                                         multiplier:1.0
-//                                                           constant:-20.0]];
+    CGRect frame = subView.frame;
+    frame.size.width = 0;
+    frame.size.height = 0;
+    [subView setFrame:frame];
+    [subView.rightAnchor constraintEqualToAnchor:parentView.rightAnchor].active = YES;
+    [subView.topAnchor constraintEqualToAnchor:parentView.topAnchor].active = YES;
 }
 
 -(void)constrainPhotoLibraryContainer:(UIView *)subView
-               toTheRightOfParentView:(UIView *)parentView
+                 toCenterofParentView:(UIView *)parentView
 {
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:0.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.0
-                                                            constant:0.0]];
-    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeCenterY
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeCenterY
-//                                                          multiplier:1.0
-//                                                            constant:0.0]];
-//    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeHeight
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeHeight
-//                                                          multiplier:0.0
-//                                                            constant:0.0]];
-//    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeWidth
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeWidth
-//                                                          multiplier:0.0
-//                                                            constant:0.0]];
-//    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeLeft
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeRight
-//                                                          multiplier:1.0
-//                                                            constant:20.0]];
+    CGRect frame = subView.frame;
+    frame.size.width = 0;
+    frame.size.height = 0;
+    [subView setFrame:frame];
+    [subView.centerXAnchor constraintEqualToAnchor:parentView.centerXAnchor].active = YES;
+    [subView.centerYAnchor constraintEqualToAnchor:parentView.centerYAnchor].active = YES;
+
 }
 
-//-(void)constrainPhotoLibraryContainer:(UIView *)subView toParentView:(UIView *)parentView
-//{
-//    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeWidth
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeWidth
-//                                                          multiplier:0.2
-//                                                            constant:0.0]];
-//    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeHeight
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeHeight
-//                                                          multiplier:0.2
-//                                                            constant:0.0]];
-//    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeRight
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeRight
-//                                                          multiplier:1.0
-//                                                            constant:0.0]];
-//    
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                           attribute:NSLayoutAttributeTop
-//                                                           relatedBy:NSLayoutRelationEqual
-//                                                              toItem:parentView
-//                                                           attribute:NSLayoutAttributeTop
-//                                                          multiplier:1.0
-//                                                            constant:0.0]];
-//}
+
 
 
 @end
 
-
-
-//-(void)constrainSubView:(UIView *)subView
-//           toParentView:(UIView *)parentView
+//-(void)constrainAddContentToMoveLeft:(UIView *)subView
+//                        ofParentView:(UIView *)parentView
 //{
-//    [super updateViewConstraints];
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeTop
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeTop
-//                                                         multiplier:1.0
-//                                                           constant:0.0]];
-//
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeLeading
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeLeading
-//                                                         multiplier:1.0
-//                                                           constant:0.0]];
-//
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeBottom
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeBottom
-//                                                         multiplier:1.0
-//                                                           constant:0.0]];
-//
-//    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-//                                                          attribute:NSLayoutAttributeTrailing
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:parentView
-//                                                          attribute:NSLayoutAttributeTrailing
-//                                                         multiplier:1.0
-//                                                           constant:0.0]];
+//    CGRect frame = subView.frame;
+//    frame.size.width = 0;
+//    frame.size.height = 0;
+//    [subView setFrame:frame];
+//    [subView.centerXAnchor constraintEqualToAnchor:parentView.centerXAnchor].active = YES;
+//    [subView.centerYAnchor constraintEqualToAnchor:parentView.centerYAnchor].active = YES;
 //}
+
+

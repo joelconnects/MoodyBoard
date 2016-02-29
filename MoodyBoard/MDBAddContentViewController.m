@@ -67,13 +67,8 @@
             if (status == PHAuthorizationStatusDenied) {
                 NSLog(@"\n\nneed to set up alert for photo library access denied\n(after status not determined)\n\n");
             }
-            
         }];
-        
     };
-    
-    
-    
 }
 
 
@@ -83,50 +78,9 @@
     
 }
 
--(void)animateImagePickerDidAppear {
-    
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    picker.modalInPopover = YES;
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    picker.navigationBar.tintColor = [UIColor blackColor];
-//    
-//    CATransition *transition = [CATransition animation];
-//    transition.duration = 0.5;
-//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-//    transition.type = kCATransitionMoveIn;
-//    transition.subtype = kCATransitionFromRight;
-//    
-//    [self.view.window.layer addAnimation:transition forKey:nil];
-//    [self presentViewController:picker animated:NO completion:nil];
-    
-}
 
 
-- (void)transitionToImagePicker {
 
-    [self.view removeConstraints:self.view.constraints];
-    [self constrainSubView:self.subView toExpandToParentView:self.view];
-
-//    self.subView.alpha = 0;
-//    self.addImageButton.alpha = 0;
-    
-    [UIView animateWithDuration:0.6 animations:^{
-        
-        [self.view layoutIfNeeded];
-//        self.subView.alpha = 0;
-//        self.addImageButton.alpha = 0;
-        
-    }];
-    
-//    [self animateImagePickerDidAppear];
-    
-//    [self performSelector:@selector(animateImagePickerDidAppear)
-//               withObject:nil
-//               afterDelay:0.1];
-    
-}
 
 -(void)returnToBoardController {
     
@@ -147,11 +101,13 @@
 //}
 
 -(void)addSubView {
+    
     self.subView = [[UIView alloc] init];
     self.subView.backgroundColor = [UIColor whiteColor];
     self.subView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.subView];
     [self constrainSubView:self.subView toParentView:self.view];
+    
 }
 
 -(void)addButtonViewToSubView {
@@ -189,221 +145,122 @@
 -(void)constrainAddImageButton:(UIButton *)button
                   toButtonView:(UIView *)buttonView
 {
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                        attribute:NSLayoutAttributeWidth
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:buttonView
-                                                        attribute:NSLayoutAttributeWidth
-                                                       multiplier:1.0
-                                                         constant:0.0]];
-
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                        attribute:NSLayoutAttributeHeight
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:buttonView
-                                                        attribute:NSLayoutAttributeHeight
-                                                       multiplier:0.45
-                                                         constant:0.0]];
-
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                        attribute:NSLayoutAttributeTop
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:buttonView
-                                                        attribute:NSLayoutAttributeTop
-                                                       multiplier:1.0
-                                                         constant:0.0]];
-
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                        attribute:NSLayoutAttributeLeft
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:buttonView
-                                                        attribute:NSLayoutAttributeLeft
-                                                       multiplier:1.0
-                                                         constant:0.0]];
+    [button.widthAnchor constraintEqualToAnchor:buttonView.widthAnchor].active = YES;
+    [button.heightAnchor constraintEqualToAnchor:buttonView.heightAnchor multiplier:0.45].active = YES;
+    [button.topAnchor constraintEqualToAnchor:buttonView.topAnchor].active = YES;
+    [button.leftAnchor constraintEqualToAnchor:buttonView.leftAnchor].active = YES;
 }
 
 -(void)constrainCancelButton:(UIButton *)button
                 toButtonView:(UIView *)buttonView
 {
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:buttonView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:buttonView
-                                                           attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.45
-                                                            constant:0.0]];
-    
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                           attribute:NSLayoutAttributeBottom
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:buttonView
-                                                           attribute:NSLayoutAttributeBottom
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                           attribute:NSLayoutAttributeLeft
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:buttonView
-                                                           attribute:NSLayoutAttributeLeft
-                                                          multiplier:1.0
-                                                            constant:0.0]];
+    [button.widthAnchor constraintEqualToAnchor:buttonView.widthAnchor].active = YES;
+    [button.heightAnchor constraintEqualToAnchor:buttonView.heightAnchor multiplier:0.45].active = YES;
+    [button.leftAnchor constraintEqualToAnchor:buttonView.leftAnchor].active = YES;
+    [button.bottomAnchor constraintEqualToAnchor:buttonView.bottomAnchor].active = YES;
 }
-
-
 
 -(void)constrainSubView:(UIView *)subView
            toParentView:(UIView *)parentView
 {
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:0.8
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.8
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
+    [subView.widthAnchor constraintEqualToAnchor:parentView.widthAnchor multiplier:0.8].active = YES;
+    [subView.heightAnchor constraintEqualToAnchor:parentView.heightAnchor multiplier:0.8].active = YES;
+    [subView.centerXAnchor constraintEqualToAnchor:parentView.centerXAnchor].active = YES;
+    [subView.centerYAnchor constraintEqualToAnchor:parentView.centerYAnchor].active = YES;
 }
 
 -(void)constrainButtonView:(UIView *)buttonView toSubView:(UIView *)subView
 {
-    [subView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:subView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:0.8
-                                                            constant:0.0]];
-    
-    [subView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:subView
-                                                           attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.25
-                                                            constant:0.0]];
-    
-    [subView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:subView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [subView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:subView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
+    [buttonView.widthAnchor constraintEqualToAnchor:subView.widthAnchor multiplier:0.8].active = YES;
+    [buttonView.heightAnchor constraintEqualToAnchor:subView.heightAnchor multiplier:0.25].active = YES;
+    [buttonView.centerXAnchor constraintEqualToAnchor:subView.centerXAnchor].active = YES;
+    [buttonView.centerYAnchor constraintEqualToAnchor:subView.centerYAnchor].active = YES;
 }
 
 -(void)constrainSubView:(UIView *)subView
    toExpandToParentView:(UIView *)parentView
 {
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:0.8
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.8
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeRight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeLeft
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
+    [subView.widthAnchor constraintEqualToAnchor:parentView.widthAnchor multiplier:0.8].active = YES;
+    [subView.heightAnchor constraintEqualToAnchor:parentView.heightAnchor multiplier:0.8].active = YES;
+    [subView.rightAnchor constraintEqualToAnchor:parentView.leftAnchor].active = YES;
+    [subView.centerYAnchor constraintEqualToAnchor:parentView.centerYAnchor].active = YES;
 }
 
 -(void)constrainSubView:(UIView *)subView
         aboveParentView:(UIView *)parentView
 {
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeWidth
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeWidth
-                                                          multiplier:0.8
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeHeight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeHeight
-                                                          multiplier:0.8
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeCenterX
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    
-    [parentView addConstraint:[NSLayoutConstraint constraintWithItem:subView
-                                                           attribute:NSLayoutAttributeBottom
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:parentView
-                                                           attribute:NSLayoutAttributeTop
-                                                          multiplier:1.0
-                                                            constant:0.0]];
+    [subView.widthAnchor constraintEqualToAnchor:parentView.widthAnchor multiplier:0.8].active = YES;
+    [subView.heightAnchor constraintEqualToAnchor:parentView.heightAnchor multiplier:0.8].active = YES;
+    [subView.centerXAnchor constraintEqualToAnchor:parentView.centerXAnchor].active = YES;
+    [subView.bottomAnchor constraintEqualToAnchor:parentView.topAnchor].active = YES;
 }
 
+@end
 
+//- (void)transitionToImagePicker {
+//
+//    [self.view removeConstraints:self.view.constraints];
+//    [self constrainSubView:self.subView toExpandToParentView:self.view];
+//
+////    self.subView.alpha = 0;
+////    self.addImageButton.alpha = 0;
+//
+//    [UIView animateWithDuration:0.6 animations:^{
+//
+//        [self.view layoutIfNeeded];
+////        self.subView.alpha = 0;
+////        self.addImageButton.alpha = 0;
+//
+//    }];
+//
+////    [self animateImagePickerDidAppear];
+//
+////    [self performSelector:@selector(animateImagePickerDidAppear)
+////               withObject:nil
+////               afterDelay:0.1];
+//
+//}
+
+
+//    self.subView.layer.masksToBounds = NO;
+//    self.subView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.subView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+//    self.subView.layer.shadowOpacity = 1.0f;
+//    self.subView.layer.shadowRadius = 5.0f;
+//    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.subView.bounds];
+//    self.subView.layer.shadowPath = shadowPath.CGPath;
+
+/*
+ viewCheck.layer.shadowRadius  = 1.5f;
+ viewCheck.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+ viewCheck.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+ viewCheck.layer.shadowOpacity = 0.9f;
+ viewCheck.layer.masksToBounds = NO;
+ 
+ UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
+ UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(viewCheck.bounds, shadowInsets)];
+ viewCheck.layer.shadowPath    = shadowPath.CGPath;
+ */
+
+//-(void)animateImagePickerDidAppear {
+
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.modalInPopover = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    picker.navigationBar.tintColor = [UIColor blackColor];
+//
+//    CATransition *transition = [CATransition animation];
+//    transition.duration = 0.5;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+//    transition.type = kCATransitionMoveIn;
+//    transition.subtype = kCATransitionFromRight;
+//
+//    [self.view.window.layer addAnimation:transition forKey:nil];
+//    [self presentViewController:picker animated:NO completion:nil];
+
+//}
 
 /*
  
@@ -441,4 +298,4 @@ transition.subtype = kCATransitionReveal;
 }
 */
 
-@end
+
