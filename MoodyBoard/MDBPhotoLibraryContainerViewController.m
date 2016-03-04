@@ -214,7 +214,11 @@
     picker.modalInPopover = YES;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    picker.navigationBar.tintColor = [UIColor blackColor];
+    picker.navigationBar.tintColor = [UIColor whiteColor];
+    picker.navigationBar.translucent = NO;
+    picker.navigationBar.opaque = YES;
+    picker.navigationBar.barTintColor = [UIColor colorWithRed:101.0/255.0 green:100.0/255.0 blue:116.0/255.0 alpha:1.0];
+    [picker.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 
     CATransition *transition = [CATransition animation];
     transition.duration = 0.3;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ppe-VX-zk2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ppe-VX-zk2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -20,7 +20,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfB-w5-Hrc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <color key="backgroundColor" red="0.39754927158355713" green="0.39127889275550842" blue="0.45908540487289429" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xiW-uw-4FE">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
@@ -131,6 +130,7 @@
                         <outlet property="containerView" destination="d1H-CW-bHv" id="tw2-Tl-0kS"/>
                         <outlet property="imageView" destination="E01-Mb-YhW" id="by2-Ab-ESp"/>
                         <outlet property="settingsMenuBtn" destination="Qnq-kd-VXZ" id="Xft-Pa-oxi"/>
+                        <outlet property="statusBarView" destination="cfB-w5-Hrc" id="S22-yv-wYu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjf-cq-qyh" userLabel="First Responder" sceneMemberID="firstResponder"/>

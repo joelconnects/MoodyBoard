@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *boardDetailsBtn;
 @property (weak, nonatomic) IBOutlet UIButton *boardActivityBtn;
 @property (nonatomic, strong) NSString *navAction;
+@property (weak, nonatomic) IBOutlet UIView *statusBarView;
 @property (weak, nonatomic) IBOutlet UIImageView *blurredImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
@@ -43,22 +44,13 @@
     
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.statusBarView.backgroundColor = [UIColor colorWithRed:101.0/255.0 green:100.0/255.0 blue:116.0/255.0 alpha:1.0];
+
+    
     [self addNotificationObservers];
     
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"boardBackground"]];
-    self.view.backgroundColor = [UIColor whiteColor];
-//    self.imageView.image = [UIImage imageNamed:@"boardBackground"];
-//    self.blurredImageView.image = [UIImage imageNamed:@"boardBackground"];
-//    
-//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-//    effectView.frame = self.view.frame;
-//    [self.blurredImageView addSubview:effectView];
-//    
-//    self.imageView.alpha = 0.01;
-//    self.blurredImageView.alpha = 0.8;
     
-//    [self setButtonsAlphaToHalf];
 
 }
 
