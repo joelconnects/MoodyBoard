@@ -44,6 +44,21 @@
     [super viewDidLoad];
     
     [self addNotificationObservers];
+    
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"boardBackground"]];
+    self.view.backgroundColor = [UIColor whiteColor];
+//    self.imageView.image = [UIImage imageNamed:@"boardBackground"];
+//    self.blurredImageView.image = [UIImage imageNamed:@"boardBackground"];
+//    
+//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+//    effectView.frame = self.view.frame;
+//    [self.blurredImageView addSubview:effectView];
+//    
+//    self.imageView.alpha = 0.01;
+//    self.blurredImageView.alpha = 0.8;
+    
+//    [self setButtonsAlphaToHalf];
 
 }
 
@@ -163,7 +178,7 @@
                              [oldViewController.view layoutIfNeeded];
                          }
                          if ([self.navAction isEqualToString:AddContentNavAction]) {
-                             self.blurredImageView.alpha = 0.5;
+                             self.blurredImageView.alpha = 0.3;
                              self.imageView.alpha = 0.0;
                              [newViewController.view layoutIfNeeded];
                          }
@@ -245,6 +260,12 @@
     self.boardActivityBtn.alpha = 0.0;
     self.addContentBtn.alpha = 0.0;
     self.boardDetailsBtn.alpha = 0.0;
+}
+-(void)setButtonsAlphaToHalf {
+    self.settingsMenuBtn.alpha = 0.5;
+    self.boardActivityBtn.alpha = 0.5;
+    self.addContentBtn.alpha = 0.5;
+    self.boardDetailsBtn.alpha = 0.5;
 }
 -(void)setButtonsOpaque {
     self.settingsMenuBtn.alpha = 1.0;

@@ -58,7 +58,7 @@
     self.cancelButton.backgroundColor = [UIColor whiteColor];
     [self.cancelButton setTitle:@"✕" forState:UIControlStateNormal];
     [self.cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:32.0];
+    self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:24.0];
     self.cancelButton.alpha = 0;
     
     UIView *emptyView = [[UIView alloc] init];
@@ -74,7 +74,7 @@
     self.saveButton.backgroundColor = [UIColor whiteColor];
     [self.saveButton setTitle:@"✓" forState:UIControlStateNormal];
     [self.saveButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    self.saveButton.titleLabel.font = [UIFont systemFontOfSize:38.0];
+    self.saveButton.titleLabel.font = [UIFont systemFontOfSize:30.0];
     self.saveButton.alpha = 0;
     
     [self.view removeConstraints:self.view.constraints];
@@ -95,14 +95,20 @@
     self.hStackViewTopRow = hStackViewTopRow;
     self.hStackViewBottomRow = hStackViewBottomRow;
     
+//    CGFloat stackViewSpacing = 4;
+//    CGFloat vStackViewWidth = self.view.frame.size.width * 0.9;
+//    CGFloat vStackViewHeight = (vStackViewWidth / 3) * 2 + stackViewSpacing;
+//    CGFloat vStackViewTopConstant = self.view.frame.size.width * 0.05;
+//    CGFloat imageViewWidth = (vStackViewWidth / 3) - stackViewSpacing;
+    
     CGFloat stackViewSpacing = 4;
     CGFloat vStackViewWidth = self.view.frame.size.width * 0.9;
-    CGFloat vStackViewHeight = (vStackViewWidth / 3) * 2 + stackViewSpacing;
+    CGFloat vStackViewHeight = (vStackViewWidth / 3) + stackViewSpacing + 44;
     CGFloat vStackViewTopConstant = self.view.frame.size.width * 0.05;
     CGFloat imageViewWidth = (vStackViewWidth / 3) - stackViewSpacing;
     
     self.vStackView.axis = UILayoutConstraintAxisVertical;
-    self.vStackView.distribution = UIStackViewDistributionFillEqually;
+    self.vStackView.distribution = UIStackViewDistributionFill;
     self.vStackView.spacing = stackViewSpacing;
     [self.view addSubview:self.vStackView];
     self.vStackView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -112,34 +118,49 @@
     [self.vStackView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:vStackViewTopConstant].active = YES;
     
     self.hStackViewTopRow.axis = UILayoutConstraintAxisHorizontal;
-    self.hStackViewTopRow.distribution = UIStackViewDistributionFill;
+    self.hStackViewTopRow.distribution = UIStackViewDistributionFillEqually;
+    self.hStackViewTopRow.spacing = stackViewSpacing;
     self.hStackViewBottomRow.axis = UILayoutConstraintAxisHorizontal;
-    self.hStackViewBottomRow.distribution = UIStackViewDistributionFillEqually;
-    self.hStackViewBottomRow.spacing = stackViewSpacing;
+    self.hStackViewBottomRow.distribution = UIStackViewDistributionFill;
+    
+//    self.hStackViewTopRow.axis = UILayoutConstraintAxisHorizontal;
+//    self.hStackViewTopRow.distribution = UIStackViewDistributionFill;
+//    self.hStackViewBottomRow.axis = UILayoutConstraintAxisHorizontal;
+//    self.hStackViewBottomRow.distribution = UIStackViewDistributionFillEqually;
+//    self.hStackViewBottomRow.spacing = stackViewSpacing;
     
     [self.vStackView addArrangedSubview:self.hStackViewTopRow];
     [self.vStackView addArrangedSubview:self.hStackViewBottomRow];
     self.hStackViewTopRow.translatesAutoresizingMaskIntoConstraints = NO;
     self.hStackViewBottomRow.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.hStackViewTopRow addArrangedSubview:self.imageView];
-    [self.hStackViewTopRow addArrangedSubview:self.commentField];
-    [self.hStackViewBottomRow addArrangedSubview:self.cancelButton];
-    [self.hStackViewBottomRow addArrangedSubview:self.emptyView];
-    [self.hStackViewBottomRow addArrangedSubview:self.saveButton];
+    [self.hStackViewTopRow addArrangedSubview:self.cancelButton];
+    [self.hStackViewTopRow addArrangedSubview:self.emptyView];
+    [self.hStackViewTopRow addArrangedSubview:self.saveButton];
+    [self.hStackViewBottomRow addArrangedSubview:self.imageView];
+    [self.hStackViewBottomRow addArrangedSubview:self.commentField];
+
+    
+
+//    [self.hStackViewTopRow addArrangedSubview:self.imageView];
+//    [self.hStackViewTopRow addArrangedSubview:self.commentField];
+//    [self.hStackViewBottomRow addArrangedSubview:self.cancelButton];
+//    [self.hStackViewBottomRow addArrangedSubview:self.emptyView];
+//    [self.hStackViewBottomRow addArrangedSubview:self.saveButton];
+    
     
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.commentField.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.imageView.widthAnchor constraintEqualToConstant:imageViewWidth].active = YES;
     [self.imageView.heightAnchor constraintEqualToConstant:imageViewWidth].active = YES;
-    [self.imageView.leftAnchor constraintEqualToAnchor:self.hStackViewTopRow.leftAnchor].active = YES;
-    [self.imageView.topAnchor constraintEqualToAnchor:self.hStackViewTopRow.topAnchor].active = YES;
+    [self.imageView.leftAnchor constraintEqualToAnchor:self.hStackViewBottomRow.leftAnchor].active = YES;
+    [self.imageView.topAnchor constraintEqualToAnchor:self.hStackViewBottomRow.topAnchor].active = YES;
     
     [self.commentField.leftAnchor constraintEqualToAnchor:self.imageView.rightAnchor constant:stackViewSpacing].active = YES;
-    [self.commentField.topAnchor constraintEqualToAnchor:self.hStackViewTopRow.topAnchor].active = YES;
-    [self.commentField.rightAnchor constraintEqualToAnchor:self.hStackViewTopRow.rightAnchor].active = YES;
-    [self.commentField.bottomAnchor constraintEqualToAnchor:self.hStackViewTopRow.bottomAnchor].active = YES;
+    [self.commentField.topAnchor constraintEqualToAnchor:self.hStackViewBottomRow.topAnchor].active = YES;
+    [self.commentField.rightAnchor constraintEqualToAnchor:self.hStackViewBottomRow.rightAnchor].active = YES;
+    [self.commentField.bottomAnchor constraintEqualToAnchor:self.hStackViewBottomRow.bottomAnchor].active = YES;
     
     
     

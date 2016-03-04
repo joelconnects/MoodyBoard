@@ -25,8 +25,10 @@
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.imageView.backgroundColor = [UIColor blackColor];
     self.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.imageView.clipsToBounds = YES;
+//    self.imageView.contentMode = UIViewContentModeScaleToFill;
     [self.contentView addSubview:self.imageView];
+//    self.imageView.alpha = 0;
     
     
     /*
@@ -49,6 +51,7 @@
 
 -(void)layoutSubviews
 {
+
 //    self.colorView.frame = CGRectInset(self.bounds, 4, 4);
     self.imageView.frame = CGRectInset(self.bounds, 8, 8);
 }

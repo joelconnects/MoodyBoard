@@ -30,7 +30,7 @@ static NSUInteger const DefaultNumberOfSections = 1;
     
 
     [self.collectionView registerClass:[MDBBoardViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     
     // test set up
     self.testImages = [NSMutableArray new];
