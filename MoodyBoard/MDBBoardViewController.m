@@ -46,7 +46,7 @@ static NSUInteger const DefaultNumberOfSections = 1;
         [self.testImages addObject:image];
         integer += 1;
     }
-    self.colors = [self generateColors:BoardItemsPerSection];
+//    self.colors = [self generateColors:BoardItemsPerSection];
 
 }
 
@@ -62,11 +62,11 @@ static NSUInteger const DefaultNumberOfSections = 1;
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
-    if (self.colors.count == BoardItemsPerSection) {
+    if (self.testImages.count == BoardItemsPerSection) {
         return DefaultNumberOfSections;
     }
     
-    return self.colors.count / BoardItemsPerSection;
+    return self.testImages.count / BoardItemsPerSection;
 
 }
 

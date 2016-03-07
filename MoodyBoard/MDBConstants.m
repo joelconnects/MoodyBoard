@@ -9,13 +9,15 @@
 #import "MDBConstants.h"
 
 // Notifications
-NSString * const AddContentSelectedNotificationName = @"AddContentSelectedNotification";
+NSString * const LoginSelectedNotificationName = @"LoginSelectedNotification";
 NSString * const BoardSelectedNotificationName = @"BoardSelectedNotification";
+NSString * const AddContentSelectedNotificationName = @"AddContentSelectedNotification";
 NSString * const PhotoLibrarySelectedNotificationName = @"PhotoLibrarySelectedNotification";
 
 // StoryboardIDs
-NSString * const AddContentViewControllerStoryboardID = @"AddContentViewController";
+NSString * const LoginViewControllerStoryBoardID = @"LoginViewController";
 NSString * const BoardViewControllerStoryBoardID = @"BoardViewController";
+NSString * const AddContentViewControllerStoryboardID = @"AddContentViewController";
 NSString * const PhotoLibraryContainerViewControllerStoryBoardID = @"PhotoLibraryContainerViewController";
 
 // BoardViewController
@@ -23,6 +25,7 @@ NSString * const PhotoLibraryContainerViewControllerStoryBoardID = @"PhotoLibrar
 NSUInteger const BoardItemsPerSection = 14;
 
 // App Controller Navigation Actions
+NSString * const LoginNavAction = @"Login";
 NSString * const AddContentNavAction = @"Add Content";
 NSString * const SettingsMenuNavAction = @"Settings Menu";
 NSString * const BoardDetailsNavAction = @"Board Details";
