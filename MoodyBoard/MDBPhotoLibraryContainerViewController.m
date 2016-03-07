@@ -18,8 +18,8 @@
 @property (weak, nonatomic) UIButton *cancelButton;
 @property (weak, nonatomic) UIStackView *vStackView;
 @property (weak, nonatomic) UIStackView *hStackViewTopRow;
+@property (weak, nonatomic) UIStackView *hStackViewMiddleRow;
 @property (weak, nonatomic) UIStackView *hStackViewBottomRow;
-
 
 @end
 
@@ -55,15 +55,15 @@
     [self.cancelButton addTarget:self
                           action:@selector(returnToBoardController)
                 forControlEvents:UIControlEventTouchUpInside];
-    self.cancelButton.backgroundColor = [UIColor whiteColor];
-    [self.cancelButton setTitle:@"✕" forState:UIControlStateNormal];
-    [self.cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [self.cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
+    self.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.cancelButton.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     self.cancelButton.alpha = 0;
     
     UIView *emptyView = [[UIView alloc] init];
     self.emptyView = emptyView;
-    self.emptyView.backgroundColor = [UIColor whiteColor];
     self.emptyView.alpha = 0;
     
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -72,40 +72,29 @@
                         action:@selector(returnToBoardController)
               forControlEvents:UIControlEventTouchUpInside];
     self.saveButton.backgroundColor = [UIColor whiteColor];
-    [self.saveButton setTitle:@"✓" forState:UIControlStateNormal];
+    [self.saveButton setTitle:@"ADD TO BOARD" forState:UIControlStateNormal];
     [self.saveButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    self.saveButton.titleLabel.font = [UIFont systemFontOfSize:30.0];
+    self.saveButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
     self.saveButton.alpha = 0;
     
     [self.view removeConstraints:self.view.constraints];
     [self constrainTopViewToParentView];
     
-//    self.hStackView = [[UIStackView alloc] init];
-//    self.hStackView.axis = UILayoutConstraintAxisHorizontal;
-//    self.hStackView.distribution = UIStackViewDistributionFill;
-//    self.hStackView.alignment = UIStackViewAlignmentLeading;
-//    self.hStackView.spacing = 0;
-//    self.hStackView.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.view addSubview:self.hStackView];
-    
     UIStackView *vStackView = [[UIStackView alloc] init];
     UIStackView *hStackViewTopRow = [[UIStackView alloc] init];
+    UIStackView *hStackViewMiddleRow = [[UIStackView alloc] init];
     UIStackView *hStackViewBottomRow = [[UIStackView alloc] init];
     self.vStackView = vStackView;
     self.hStackViewTopRow = hStackViewTopRow;
+    self.hStackViewMiddleRow = hStackViewMiddleRow;
     self.hStackViewBottomRow = hStackViewBottomRow;
-    
-//    CGFloat stackViewSpacing = 4;
-//    CGFloat vStackViewWidth = self.view.frame.size.width * 0.9;
-//    CGFloat vStackViewHeight = (vStackViewWidth / 3) * 2 + stackViewSpacing;
-//    CGFloat vStackViewTopConstant = self.view.frame.size.width * 0.05;
-//    CGFloat imageViewWidth = (vStackViewWidth / 3) - stackViewSpacing;
     
     CGFloat stackViewSpacing = 4;
     CGFloat vStackViewWidth = self.view.frame.size.width * 0.9;
-    CGFloat vStackViewHeight = (vStackViewWidth / 3) + stackViewSpacing + 44;
-    CGFloat vStackViewTopConstant = self.view.frame.size.width * 0.05;
-    CGFloat imageViewWidth = (vStackViewWidth / 3) - stackViewSpacing;
+    CGFloat buttonHeight = 44;
+    CGFloat vStackViewHeight = (vStackViewWidth / 3) + (stackViewSpacing * 2) + (buttonHeight * 2);
+    CGFloat vStackViewTopConstant = 0;
+    CGFloat imageViewWidth = (vStackViewWidth / 3);
     
     self.vStackView.axis = UILayoutConstraintAxisVertical;
     self.vStackView.distribution = UIStackViewDistributionFill;
@@ -118,69 +107,43 @@
     [self.vStackView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:vStackViewTopConstant].active = YES;
     
     self.hStackViewTopRow.axis = UILayoutConstraintAxisHorizontal;
-    self.hStackViewTopRow.distribution = UIStackViewDistributionFillEqually;
-    self.hStackViewTopRow.spacing = stackViewSpacing;
+    self.hStackViewTopRow.distribution = UIStackViewDistributionFill;
+    self.hStackViewMiddleRow.axis = UILayoutConstraintAxisHorizontal;
+    self.hStackViewMiddleRow.distribution = UIStackViewDistributionFill;
     self.hStackViewBottomRow.axis = UILayoutConstraintAxisHorizontal;
     self.hStackViewBottomRow.distribution = UIStackViewDistributionFill;
     
-//    self.hStackViewTopRow.axis = UILayoutConstraintAxisHorizontal;
-//    self.hStackViewTopRow.distribution = UIStackViewDistributionFill;
-//    self.hStackViewBottomRow.axis = UILayoutConstraintAxisHorizontal;
-//    self.hStackViewBottomRow.distribution = UIStackViewDistributionFillEqually;
-//    self.hStackViewBottomRow.spacing = stackViewSpacing;
-    
     [self.vStackView addArrangedSubview:self.hStackViewTopRow];
+    [self.vStackView addArrangedSubview:self.hStackViewMiddleRow];
     [self.vStackView addArrangedSubview:self.hStackViewBottomRow];
     self.hStackViewTopRow.translatesAutoresizingMaskIntoConstraints = NO;
+    self.hStackViewMiddleRow.translatesAutoresizingMaskIntoConstraints = NO;
     self.hStackViewBottomRow.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.hStackViewTopRow addArrangedSubview:self.cancelButton];
     [self.hStackViewTopRow addArrangedSubview:self.emptyView];
-    [self.hStackViewTopRow addArrangedSubview:self.saveButton];
-    [self.hStackViewBottomRow addArrangedSubview:self.imageView];
-    [self.hStackViewBottomRow addArrangedSubview:self.commentField];
-
+    [self.hStackViewTopRow addArrangedSubview:self.cancelButton];
+    [self.hStackViewMiddleRow addArrangedSubview:self.imageView];
+    [self.hStackViewMiddleRow addArrangedSubview:self.commentField];
+    [self.hStackViewBottomRow addArrangedSubview:self.saveButton];
     
-
-//    [self.hStackViewTopRow addArrangedSubview:self.imageView];
-//    [self.hStackViewTopRow addArrangedSubview:self.commentField];
-//    [self.hStackViewBottomRow addArrangedSubview:self.cancelButton];
-//    [self.hStackViewBottomRow addArrangedSubview:self.emptyView];
-//    [self.hStackViewBottomRow addArrangedSubview:self.saveButton];
+    self.cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
     
+    [self.cancelButton.heightAnchor constraintEqualToConstant:buttonHeight].active = YES;
+    [self.cancelButton.rightAnchor constraintEqualToAnchor:self.hStackViewTopRow.rightAnchor].active = YES;
+    [self.cancelButton.topAnchor constraintEqualToAnchor:self.hStackViewTopRow.topAnchor].active = YES;
     
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.commentField.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.imageView.widthAnchor constraintEqualToConstant:imageViewWidth].active = YES;
     [self.imageView.heightAnchor constraintEqualToConstant:imageViewWidth].active = YES;
-    [self.imageView.leftAnchor constraintEqualToAnchor:self.hStackViewBottomRow.leftAnchor].active = YES;
-    [self.imageView.topAnchor constraintEqualToAnchor:self.hStackViewBottomRow.topAnchor].active = YES;
+    [self.imageView.leftAnchor constraintEqualToAnchor:self.hStackViewMiddleRow.leftAnchor].active = YES;
+    [self.imageView.topAnchor constraintEqualToAnchor:self.hStackViewMiddleRow.topAnchor].active = YES;
     
     [self.commentField.leftAnchor constraintEqualToAnchor:self.imageView.rightAnchor constant:stackViewSpacing].active = YES;
-    [self.commentField.topAnchor constraintEqualToAnchor:self.hStackViewBottomRow.topAnchor].active = YES;
-    [self.commentField.rightAnchor constraintEqualToAnchor:self.hStackViewBottomRow.rightAnchor].active = YES;
-    [self.commentField.bottomAnchor constraintEqualToAnchor:self.hStackViewBottomRow.bottomAnchor].active = YES;
-    
-    
-    
-    
-    
-    // vStackView
-    //      hStackViewTopRow
-    //          imageView, commentField
-    //      hStackViewBottomRow
-    //          cancelButton, emptyView, saveButton
-    
-    // vStackView width * 0.9
-    // vStackView height = vStackView width * 0.6666 + spacing
-    //      hStackViewTopRow
-    //          imageView width * 0.3333 - spacing/2
-    //          imageView height = imageView width
-    //          commentField width * 0.6666
-    //          commentField height = imageView width
-    //      hStackViewBottomRow
-    //          button width * 0.3333 (+ spacing)
+    [self.commentField.topAnchor constraintEqualToAnchor:self.hStackViewMiddleRow.topAnchor].active = YES;
+    [self.commentField.rightAnchor constraintEqualToAnchor:self.hStackViewMiddleRow.rightAnchor].active = YES;
+    [self.commentField.bottomAnchor constraintEqualToAnchor:self.hStackViewMiddleRow.bottomAnchor].active = YES;
 
     self.imageView.hidden = YES;
     self.commentField.hidden = YES;
@@ -189,8 +152,6 @@
     self.saveButton.hidden = YES;
     
 }
-
-
 
 
 -(void)constrainTopViewToParentView {
@@ -203,6 +164,8 @@
 
 
 -(void)returnToBoardController {
+    
+    NSLog(@"\n\n\nreturn to board controller\n\n\n");
     
 }
 
@@ -231,6 +194,11 @@
         self.topView.backgroundColor = [UIColor blackColor];
     }];
     
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -264,8 +232,7 @@
             self.imageView.alpha = 1;
             self.commentField.alpha = 1;
             self.cancelButton.alpha = 0.5;
-            self.emptyView.alpha = 0.5;
-            self.saveButton.alpha = 0.5;
+            self.saveButton.alpha = 0.6;
             
         } completion:^(BOOL finished) {
             
@@ -278,6 +245,8 @@
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    NSLog(@"\n\n\nimage picker controller did cancel\n\n\n");
     
 }
 
