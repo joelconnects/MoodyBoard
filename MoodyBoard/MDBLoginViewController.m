@@ -7,6 +7,7 @@
 //
 
 #import "MDBLoginViewController.h"
+#import "Firebase.h"
 
 @interface MDBLoginViewController ()
 
@@ -16,22 +17,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://moodyboard.firebaseio.com"];
+    [ref createUser:@"bobtony@example.com" password:@"correcthorsebatterystaple" withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+    
+    if (error) {
+        // There was an error creating the account
+    } else {
+        NSString *uid = [result objectForKey:@"uid"];
+        NSLog(@"Successfully created user account with uid: %@", uid);
+        ;
+    }
+}];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
