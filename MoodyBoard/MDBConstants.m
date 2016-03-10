@@ -8,6 +8,9 @@
 
 #import "MDBConstants.h"
 
+// Firebase
+NSString * const FirebaseAppReferenceURL = @"https://moodyboard.firebaseio.com";
+
 // Notifications
 NSString * const LoginSelectedNotificationName = @"LoginSelectedNotification";
 NSString * const BoardSelectedNotificationName = @"BoardSelectedNotification";

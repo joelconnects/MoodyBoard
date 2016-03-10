@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// Firebase
+extern NSString * const FirebaseAppReferenceURL;
+
 // Notifications
 extern NSString * const LoginSelectedNotificationName;
 extern NSString * const BoardSelectedNotificationName;

@@ -27,6 +27,10 @@
 		5D890F0D1C72C9E7008872C5 /* Test.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D890F0C1C72C9E7008872C5 /* Test.xcassets */; };
 		5DB75C541C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */; };
 		5DEB62241C8E39E80096457D /* MDBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB62231C8E39E80096457D /* MDBLoginViewController.m */; };
+		5DEB622B1C91CCD60096457D /* MDBPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB622A1C91CCD60096457D /* MDBPendingOperations.m */; };
+		5DEB622E1C91D55F0096457D /* MDBImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB622D1C91D55F0096457D /* MDBImageDownloader.m */; };
+		5DEB62311C91D68A0096457D /* MDBImageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB62301C91D68A0096457D /* MDBImageRecord.m */; };
+		5DEB62341C9226EA0096457D /* MDBFirebaseAPIclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB62331C9226EA0096457D /* MDBFirebaseAPIclient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,14 @@
 		5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBPhotoLibraryContainerViewController.m; sourceTree = "<group>"; };
 		5DEB62221C8E39E80096457D /* MDBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBLoginViewController.h; sourceTree = "<group>"; };
 		5DEB62231C8E39E80096457D /* MDBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBLoginViewController.m; sourceTree = "<group>"; };
+		5DEB62291C91CCD60096457D /* MDBPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBPendingOperations.h; sourceTree = "<group>"; };
+		5DEB622A1C91CCD60096457D /* MDBPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBPendingOperations.m; sourceTree = "<group>"; };
+		5DEB622C1C91D55F0096457D /* MDBImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBImageDownloader.h; sourceTree = "<group>"; };
+		5DEB622D1C91D55F0096457D /* MDBImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBImageDownloader.m; sourceTree = "<group>"; };
+		5DEB622F1C91D68A0096457D /* MDBImageRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBImageRecord.h; sourceTree = "<group>"; };
+		5DEB62301C91D68A0096457D /* MDBImageRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBImageRecord.m; sourceTree = "<group>"; };
+		5DEB62321C9226EA0096457D /* MDBFirebaseAPIclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBFirebaseAPIclient.h; sourceTree = "<group>"; };
+		5DEB62331C9226EA0096457D /* MDBFirebaseAPIclient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBFirebaseAPIclient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +174,7 @@
 			children = (
 				5D83F5711C67BBE700F5A04D /* AppDelegate.h */,
 				5D83F5721C67BBE700F5A04D /* AppDelegate.m */,
+				5DEB62281C91CC5E0096457D /* Test */,
 				5DA322391C80AFF100F3433C /* Constants */,
 				5D4503541C83C95E002DE863 /* Controllers */,
 				5D83F56E1C67BBE700F5A04D /* Supporting Files */,
@@ -174,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				5D83F57A1C67BBE700F5A04D /* Assets.xcassets */,
-				5D890F0C1C72C9E7008872C5 /* Test.xcassets */,
 				5D83F57C1C67BBE700F5A04D /* LaunchScreen.storyboard */,
 				5D83F57F1C67BBE700F5A04D /* Info.plist */,
 				5D83F56F1C67BBE700F5A04D /* main.m */,
@@ -253,6 +265,22 @@
 				5DEB62231C8E39E80096457D /* MDBLoginViewController.m */,
 			);
 			name = LoginController;
+			sourceTree = "<group>";
+		};
+		5DEB62281C91CC5E0096457D /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				5D890F0C1C72C9E7008872C5 /* Test.xcassets */,
+				5DEB62291C91CCD60096457D /* MDBPendingOperations.h */,
+				5DEB622A1C91CCD60096457D /* MDBPendingOperations.m */,
+				5DEB622C1C91D55F0096457D /* MDBImageDownloader.h */,
+				5DEB622D1C91D55F0096457D /* MDBImageDownloader.m */,
+				5DEB622F1C91D68A0096457D /* MDBImageRecord.h */,
+				5DEB62301C91D68A0096457D /* MDBImageRecord.m */,
+				5DEB62321C9226EA0096457D /* MDBFirebaseAPIclient.h */,
+				5DEB62331C9226EA0096457D /* MDBFirebaseAPIclient.m */,
+			);
+			name = Test;
 			sourceTree = "<group>";
 		};
 		A118DAB21AF01EB065D4CEE9 /* Pods */ = {
@@ -449,6 +477,8 @@
 			files = (
 				5D0182721C69758800789799 /* MDBBoardViewCell.m in Sources */,
 				5D2993F91C6BC94000E8C9EB /* MDBAppViewController.m in Sources */,
+				5DEB62311C91D68A0096457D /* MDBImageRecord.m in Sources */,
+				5DEB622B1C91CCD60096457D /* MDBPendingOperations.m in Sources */,
 				5D0182731C69758800789799 /* MDBBoardLayoutMultipliers.m in Sources */,
 				5D890F081C703100008872C5 /* MDBConstants.m in Sources */,
 				5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */,
@@ -456,8 +486,10 @@
 				5DEB62241C8E39E80096457D /* MDBLoginViewController.m in Sources */,
 				5D0182711C69758800789799 /* MDBBoardViewController.m in Sources */,
 				5D0182701C69758800789799 /* MDBBoardViewLayout.m in Sources */,
+				5DEB622E1C91D55F0096457D /* MDBImageDownloader.m in Sources */,
 				5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */,
 				5D83F5701C67BBE700F5A04D /* main.m in Sources */,
+				5DEB62341C9226EA0096457D /* MDBFirebaseAPIclient.m in Sources */,
 				5DB75C541C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

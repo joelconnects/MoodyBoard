@@ -36,21 +36,21 @@
 
 - (void)viewDidLoad {
     
-//    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:BoardViewControllerStoryBoardID];
-//    self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self addChildViewController:self.currentViewController];
-//    [self.containerView addSubview:self.currentViewController.view];
-//    [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
-    
-    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryBoardID];
+    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:BoardViewControllerStoryBoardID];
     self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:self.currentViewController];
     [self.containerView addSubview:self.currentViewController.view];
     [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
     
+//    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:LoginViewControllerStoryBoardID];
+//    self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self addChildViewController:self.currentViewController];
+//    [self.containerView addSubview:self.currentViewController.view];
+//    [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
+    
     [super viewDidLoad];
     
-    self.currentViewController.view.backgroundColor = [UIColor grayColor];
+//    self.currentViewController.view.backgroundColor = [UIColor grayColor];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.statusBarView.backgroundColor = [UIColor colorWithRed:101.0/255.0 green:100.0/255.0 blue:116.0/255.0 alpha:1.0];
