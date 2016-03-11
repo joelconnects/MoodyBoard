@@ -16,11 +16,12 @@
 
 +(void)loginUserWithCompletion:(NSString *)user
                       password:(NSString *)password
-                    completion:(void (^)(BOOL))completionBlock;
+                    completion:(void (^)(BOOL success))completionBlock;
 
 +(void)changeEmailForUserWithCompletion:(NSString *)user
                                password:(NSString *)password
-                             completion:(void (^)(BOOL))completionBlock;
+                               newEmail:(NSString *)newEmail
+                             completion:(void (^)(BOOL success))completionBlock;
 
 @end
 
