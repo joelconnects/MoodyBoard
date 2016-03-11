@@ -10,7 +10,17 @@
 
 @interface MDBFirebaseAPIclient : NSObject
 
++(void)createUserWithCompletion:(NSString *)user
+                       password:(NSString *)password
+                     completion:(void (^)(BOOL success))completionBlock;
 
++(void)loginUserWithCompletion:(NSString *)user
+                      password:(NSString *)password
+                    completion:(void (^)(BOOL))completionBlock;
+
++(void)changeEmailForUserWithCompletion:(NSString *)user
+                               password:(NSString *)password
+                             completion:(void (^)(BOOL))completionBlock;
 
 @end
 

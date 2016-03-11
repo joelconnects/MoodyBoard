@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, ImageRecordState) {
 @property (strong, nonatomic) UIImage *image;
 @property (nonatomic) ImageRecordState state;
 
--(id)initWithName:(NSString *)name url:(NSURL *)url;
+-(instancetype)initWithName:(NSString *)name url:(NSURL *)url;
 
 
 @end

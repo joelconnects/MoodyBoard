@@ -10,7 +10,7 @@
 
 @implementation MDBPendingOperations
 
--(id)init {
+-(instancetype)init {
     
     self = [super init];
     

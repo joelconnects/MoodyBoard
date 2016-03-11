@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) MDBImageRecord *imageRecord;
 
+-(instancetype)initWithImageRecord:(MDBImageRecord *)imageRecord;
+
 @end
 
 

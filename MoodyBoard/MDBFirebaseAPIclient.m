@@ -8,24 +8,90 @@
 
 #import "MDBFirebaseAPIclient.h"
 #import "MDBConstants.h"
+#import "Firebase.h"
+#import "MDBFirebaseReference.h"
+#import "Firebase+References.h"
 
-@implementation MDBFirebaseAPIclient
-
-//+(void)getRepositoriesWithCompletion:(void (^)(NSArray *repoDictionaries))completionBlock;
+@interface MDBFirebaseAPIclient()
 
 @end
 
-/*
- 
- Firebase *ref = [[Firebase alloc] initWithUrl:@"https://moodyboard.firebaseio.com"];
- [ref createUser:@"bobtony@example.com" password:@"correcthorsebatterystaple" withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
- 
- if (error) {
- // There was an error creating the account
- } else {
- NSString *uid = [result objectForKey:@"uid"];
- NSLog(@"Successfully created user account with uid: %@", uid);
- ;
- }
- 
- */
+@implementation MDBFirebaseAPIclient
+
+//                                 //
+// --------- CREATE USER --------- //
+//                                 //
++(void)createUserWithCompletion:(NSString *)user
+                       password:(NSString *)password
+                     completion:(void (^)(BOOL))completionBlock
+{
+    [[Firebase appReferenceURL] createUser:user
+                                  password:password
+                  withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+        
+        if (error) {
+            // There was an error creating the account
+            completionBlock(NO);
+        } else {
+            NSString *uid = [result objectForKey:@"uid"];
+            NSLog(@"Successfully created user account with uid: %@", uid);
+            completionBlock(YES);
+        }
+    }];
+    
+}
+
+//                                 //
+// --------- LOGIN USER  --------- //
+//                                 //
++(void)loginUserWithCompletion:(NSString *)user
+                      password:(NSString *)password
+                    completion:(void (^)(BOOL))completionBlock
+{
+    
+    [[Firebase appReferenceURL] authUser:user
+                                password:password
+                     withCompletionBlock:^(NSError *error, FAuthData *authData) {
+        if (error) {
+            // There was an error logging in to this account
+            completionBlock(NO);
+        } else {
+            // We are now logged in
+            completionBlock(YES);
+        }
+        
+    }];
+    
+    
+}
+
+//                                           //
+// --------- CHANGE EMAIL FOR USER --------- //
+//                                           //
++(void)changeEmailForUserWithCompletion:(NSString *)user
+                               password:(NSString *)password
+                             completion:(void (^)(BOOL))completionBlock
+{
+    [[Firebase appReferenceURL] changeEmailForUser:@"oldemail@firebase.com"
+                                          password:@"correcthorsebatterystaple"
+                                        toNewEmail:@"newemail@firebase.com"
+                               withCompletionBlock:^(NSError *error) {
+         
+        if (error) {
+             // There was an error processing the request
+         } else {
+             // Email changed successfully
+         }
+            
+     }];
+    
+    
+}
+
+
+
+
+
+@end
+
+

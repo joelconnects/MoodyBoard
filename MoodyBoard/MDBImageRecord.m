@@ -11,7 +11,7 @@
 @implementation MDBImageRecord
 
 
--(id)initWithName:(NSString *)name url:(NSURL *)url {
+-(instancetype)initWithName:(NSString *)name url:(NSURL *)url {
     
     self = [super init];
     

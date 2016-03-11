@@ -10,7 +10,7 @@
 
 @implementation MDBImageDownloader
 
--(id)initWithImageRecord:(MDBImageRecord *)imageRecord {
+-(instancetype)initWithImageRecord:(MDBImageRecord *)imageRecord {
     
     self = [super init];
     if (self) {

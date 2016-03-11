@@ -13,6 +13,8 @@
 		5D0182721C69758800789799 /* MDBBoardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826D1C69758800789799 /* MDBBoardViewCell.m */; };
 		5D0182731C69758800789799 /* MDBBoardLayoutMultipliers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01826E1C69758800789799 /* MDBBoardLayoutMultipliers.m */; };
 		5D2993F91C6BC94000E8C9EB /* MDBAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2993F81C6BC94000E8C9EB /* MDBAppViewController.m */; };
+		5D78A7891C92728400851C23 /* MDBFirebaseReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D78A7881C92728400851C23 /* MDBFirebaseReference.m */; };
+		5D78A78F1C927B2B00851C23 /* Firebase+References.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D78A78E1C927B2B00851C23 /* Firebase+References.m */; };
 		5D83F5701C67BBE700F5A04D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F56F1C67BBE700F5A04D /* main.m */; };
 		5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D83F5721C67BBE700F5A04D /* AppDelegate.m */; };
 		5D83F5791C67BBE700F5A04D /* Board.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D83F5771C67BBE700F5A04D /* Board.storyboard */; };
@@ -64,6 +66,10 @@
 		5D01826F1C69758800789799 /* MDBBoardLayoutMultipliers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBBoardLayoutMultipliers.h; sourceTree = "<group>"; };
 		5D2993F71C6BC94000E8C9EB /* MDBAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBAppViewController.h; sourceTree = "<group>"; };
 		5D2993F81C6BC94000E8C9EB /* MDBAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBAppViewController.m; sourceTree = "<group>"; };
+		5D78A7871C92728400851C23 /* MDBFirebaseReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBFirebaseReference.h; sourceTree = "<group>"; };
+		5D78A7881C92728400851C23 /* MDBFirebaseReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBFirebaseReference.m; sourceTree = "<group>"; };
+		5D78A78D1C927B2B00851C23 /* Firebase+References.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Firebase+References.h"; sourceTree = "<group>"; };
+		5D78A78E1C927B2B00851C23 /* Firebase+References.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Firebase+References.m"; sourceTree = "<group>"; };
 		5D83F56B1C67BBE700F5A04D /* MoodyBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodyBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D83F56F1C67BBE700F5A04D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D83F5711C67BBE700F5A04D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -277,6 +283,10 @@
 				5DEB622D1C91D55F0096457D /* MDBImageDownloader.m */,
 				5DEB622F1C91D68A0096457D /* MDBImageRecord.h */,
 				5DEB62301C91D68A0096457D /* MDBImageRecord.m */,
+				5D78A7871C92728400851C23 /* MDBFirebaseReference.h */,
+				5D78A7881C92728400851C23 /* MDBFirebaseReference.m */,
+				5D78A78D1C927B2B00851C23 /* Firebase+References.h */,
+				5D78A78E1C927B2B00851C23 /* Firebase+References.m */,
 				5DEB62321C9226EA0096457D /* MDBFirebaseAPIclient.h */,
 				5DEB62331C9226EA0096457D /* MDBFirebaseAPIclient.m */,
 			);
@@ -491,6 +501,8 @@
 				5D83F5701C67BBE700F5A04D /* main.m in Sources */,
 				5DEB62341C9226EA0096457D /* MDBFirebaseAPIclient.m in Sources */,
 				5DB75C541C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m in Sources */,
+				5D78A78F1C927B2B00851C23 /* Firebase+References.m in Sources */,
+				5D78A7891C92728400851C23 /* MDBFirebaseReference.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
