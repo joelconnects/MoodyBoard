@@ -4,12 +4,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="PEx-gv-KY7">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="1L4-kd-XGA" customClass="MDBLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="1L4-kd-XGA" customClass="MDBSignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Das-k6-oba"/>
                         <viewControllerLayoutGuide type="bottom" id="hz2-Zu-jnT"/>
@@ -17,9 +18,64 @@
                     <view key="view" contentMode="scaleToFill" id="p7n-5w-oRh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="b72-jv-xWp">
+                                <rect key="frame" x="24" y="28" width="272" height="280"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCd-jU-tlT">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Su1-Yf-ize">
+                                        <rect key="frame" x="0.0" y="59" width="272" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lbX-v3-bdf">
+                                        <rect key="frame" x="0.0" y="118" width="272" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hAv-Q7-IXB">
+                                        <rect key="frame" x="0.0" y="177" width="272" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oN-So-lbH">
+                                        <rect key="frame" x="112" y="236" width="49" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="m9B-wF-DHj"/>
+                                        </constraints>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="loginUser:" destination="1L4-kd-XGA" eventType="touchUpInside" id="QxK-dY-6q0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lbX-v3-bdf" firstAttribute="width" secondItem="b72-jv-xWp" secondAttribute="width" id="8kf-9O-QAN"/>
+                                    <constraint firstItem="CCd-jU-tlT" firstAttribute="width" secondItem="b72-jv-xWp" secondAttribute="width" id="IBO-0D-EiE"/>
+                                    <constraint firstItem="Su1-Yf-ize" firstAttribute="width" secondItem="b72-jv-xWp" secondAttribute="width" id="WKy-uh-6Ld"/>
+                                    <constraint firstItem="hAv-Q7-IXB" firstAttribute="width" secondItem="b72-jv-xWp" secondAttribute="width" id="lQS-HQ-GxA"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b72-jv-xWp" firstAttribute="width" secondItem="p7n-5w-oRh" secondAttribute="width" multiplier="0.85" id="FqS-Fv-4if"/>
+                            <constraint firstItem="b72-jv-xWp" firstAttribute="centerX" secondItem="p7n-5w-oRh" secondAttribute="centerX" id="aKq-lJ-ULH"/>
+                            <constraint firstItem="b72-jv-xWp" firstAttribute="top" secondItem="Das-k6-oba" secondAttribute="bottom" constant="8" id="zpM-xj-9Dh"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="email" destination="CCd-jU-tlT" id="nZ1-dn-6Xc"/>
+                        <outlet property="emailConfirm" destination="Su1-Yf-ize" id="Dl8-dS-0ol"/>
+                        <outlet property="password" destination="lbX-v3-bdf" id="MER-70-C74"/>
+                        <outlet property="passwordConfirm" destination="hAv-Q7-IXB" id="5OS-2i-YTu"/>
+                        <outlet property="submit" destination="4oN-So-lbH" id="HC8-Ke-tDn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H39-D6-R7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

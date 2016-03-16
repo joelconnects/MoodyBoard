@@ -1,5 +1,5 @@
 //
-//  MDBLoginViewController.h
+//  MDBSignUpViewController.h
 //  MoodyBoard
 //
 //  Created by Joel Bell on 3/7/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDBLoginViewController : UIViewController
+@interface MDBSignUpViewController : UIViewController
 
 @end

@@ -12,13 +12,13 @@
 NSString * const FirebaseAppReferenceURL = @"https://moodyboard.firebaseio.com";
 
 // Notifications
-NSString * const LoginSelectedNotificationName = @"LoginSelectedNotification";
+NSString * const SignUpSelectedNotificationName = @"SignUpSelectedNotification";
 NSString * const BoardSelectedNotificationName = @"BoardSelectedNotification";
 NSString * const AddContentSelectedNotificationName = @"AddContentSelectedNotification";
 NSString * const PhotoLibrarySelectedNotificationName = @"PhotoLibrarySelectedNotification";
 
 // StoryboardIDs
-NSString * const LoginViewControllerStoryBoardID = @"LoginViewController";
+NSString * const SignUpViewControllerStoryBoardID = @"SignUpViewController";
 NSString * const BoardViewControllerStoryBoardID = @"BoardViewController";
 NSString * const AddContentViewControllerStoryboardID = @"AddContentViewController";
 NSString * const PhotoLibraryContainerViewControllerStoryBoardID = @"PhotoLibraryContainerViewController";
@@ -28,7 +28,7 @@ NSString * const PhotoLibraryContainerViewControllerStoryBoardID = @"PhotoLibrar
 NSUInteger const BoardItemsPerSection = 14;
 
 // App Controller Navigation Actions
-NSString * const LoginNavAction = @"Login";
+NSString * const SignUpNavAction = @"Login";
 NSString * const AddContentNavAction = @"Add Content";
 NSString * const SettingsMenuNavAction = @"Settings Menu";
 NSString * const BoardDetailsNavAction = @"Board Details";

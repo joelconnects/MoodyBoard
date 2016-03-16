@@ -28,11 +28,10 @@
 		5D890F0B1C714608008872C5 /* MDBAppViewController+Constraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D890F0A1C714608008872C5 /* MDBAppViewController+Constraints.m */; };
 		5D890F0D1C72C9E7008872C5 /* Test.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D890F0C1C72C9E7008872C5 /* Test.xcassets */; };
 		5DB75C541C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */; };
-		5DEB62241C8E39E80096457D /* MDBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB62231C8E39E80096457D /* MDBLoginViewController.m */; };
+		5DEB62241C8E39E80096457D /* MDBSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB62231C8E39E80096457D /* MDBSignUpViewController.m */; };
 		5DEB622B1C91CCD60096457D /* MDBPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB622A1C91CCD60096457D /* MDBPendingOperations.m */; };
 		5DEB622E1C91D55F0096457D /* MDBImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB622D1C91D55F0096457D /* MDBImageDownloader.m */; };
 		5DEB62311C91D68A0096457D /* MDBImageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB62301C91D68A0096457D /* MDBImageRecord.m */; };
-		5DEB62341C9226EA0096457D /* MDBFirebaseAPIclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB62331C9226EA0096457D /* MDBFirebaseAPIclient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,16 +93,14 @@
 		5D890F0C1C72C9E7008872C5 /* Test.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Test.xcassets; sourceTree = "<group>"; };
 		5DB75C521C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBPhotoLibraryContainerViewController.h; sourceTree = "<group>"; };
 		5DB75C531C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBPhotoLibraryContainerViewController.m; sourceTree = "<group>"; };
-		5DEB62221C8E39E80096457D /* MDBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBLoginViewController.h; sourceTree = "<group>"; };
-		5DEB62231C8E39E80096457D /* MDBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBLoginViewController.m; sourceTree = "<group>"; };
+		5DEB62221C8E39E80096457D /* MDBSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBSignUpViewController.h; sourceTree = "<group>"; };
+		5DEB62231C8E39E80096457D /* MDBSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBSignUpViewController.m; sourceTree = "<group>"; };
 		5DEB62291C91CCD60096457D /* MDBPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBPendingOperations.h; sourceTree = "<group>"; };
 		5DEB622A1C91CCD60096457D /* MDBPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBPendingOperations.m; sourceTree = "<group>"; };
 		5DEB622C1C91D55F0096457D /* MDBImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBImageDownloader.h; sourceTree = "<group>"; };
 		5DEB622D1C91D55F0096457D /* MDBImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBImageDownloader.m; sourceTree = "<group>"; };
 		5DEB622F1C91D68A0096457D /* MDBImageRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBImageRecord.h; sourceTree = "<group>"; };
 		5DEB62301C91D68A0096457D /* MDBImageRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBImageRecord.m; sourceTree = "<group>"; };
-		5DEB62321C9226EA0096457D /* MDBFirebaseAPIclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBFirebaseAPIclient.h; sourceTree = "<group>"; };
-		5DEB62331C9226EA0096457D /* MDBFirebaseAPIclient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBFirebaseAPIclient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5DA3223A1C80B08400F3433C /* AppViewController */,
-				5DEB62251C8E39F40096457D /* LoginController */,
+				5DEB62251C8E39F40096457D /* SignUpController */,
 				5DA3223B1C80B0B000F3433C /* BoardController */,
 				5DA3223C1C80B17600F3433C /* AddContentControllers */,
 			);
@@ -264,13 +261,13 @@
 			name = AddContentControllers;
 			sourceTree = "<group>";
 		};
-		5DEB62251C8E39F40096457D /* LoginController */ = {
+		5DEB62251C8E39F40096457D /* SignUpController */ = {
 			isa = PBXGroup;
 			children = (
-				5DEB62221C8E39E80096457D /* MDBLoginViewController.h */,
-				5DEB62231C8E39E80096457D /* MDBLoginViewController.m */,
+				5DEB62221C8E39E80096457D /* MDBSignUpViewController.h */,
+				5DEB62231C8E39E80096457D /* MDBSignUpViewController.m */,
 			);
-			name = LoginController;
+			name = SignUpController;
 			sourceTree = "<group>";
 		};
 		5DEB62281C91CC5E0096457D /* Test */ = {
@@ -287,8 +284,6 @@
 				5D78A7881C92728400851C23 /* MDBFirebaseReference.m */,
 				5D78A78D1C927B2B00851C23 /* Firebase+References.h */,
 				5D78A78E1C927B2B00851C23 /* Firebase+References.m */,
-				5DEB62321C9226EA0096457D /* MDBFirebaseAPIclient.h */,
-				5DEB62331C9226EA0096457D /* MDBFirebaseAPIclient.m */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -493,13 +488,12 @@
 				5D890F081C703100008872C5 /* MDBConstants.m in Sources */,
 				5D83F5731C67BBE700F5A04D /* AppDelegate.m in Sources */,
 				5D890F0B1C714608008872C5 /* MDBAppViewController+Constraints.m in Sources */,
-				5DEB62241C8E39E80096457D /* MDBLoginViewController.m in Sources */,
+				5DEB62241C8E39E80096457D /* MDBSignUpViewController.m in Sources */,
 				5D0182711C69758800789799 /* MDBBoardViewController.m in Sources */,
 				5D0182701C69758800789799 /* MDBBoardViewLayout.m in Sources */,
 				5DEB622E1C91D55F0096457D /* MDBImageDownloader.m in Sources */,
 				5D890F051C701483008872C5 /* MDBAddContentViewController.m in Sources */,
 				5D83F5701C67BBE700F5A04D /* main.m in Sources */,
-				5DEB62341C9226EA0096457D /* MDBFirebaseAPIclient.m in Sources */,
 				5DB75C541C7E49B600D8A200 /* MDBPhotoLibraryContainerViewController.m in Sources */,
 				5D78A78F1C927B2B00851C23 /* Firebase+References.m in Sources */,
 				5D78A7891C92728400851C23 /* MDBFirebaseReference.m in Sources */,
@@ -647,7 +641,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MoodyBoard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.craftedbycrazy.MoodyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -664,7 +658,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MoodyBoard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.craftedbycrazy.MoodyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";

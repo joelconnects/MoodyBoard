@@ -12,13 +12,13 @@
 extern NSString * const FirebaseAppReferenceURL;
 
 // Notifications
-extern NSString * const LoginSelectedNotificationName;
+extern NSString * const SignUpSelectedNotificationName;
 extern NSString * const BoardSelectedNotificationName;
 extern NSString * const AddContentSelectedNotificationName;
 extern NSString * const PhotoLibrarySelectedNotificationName;
 
 // StoryboardIDs
-extern NSString * const LoginViewControllerStoryBoardID;
+extern NSString * const SignUpViewControllerStoryBoardID;
 extern NSString * const BoardViewControllerStoryBoardID;
 extern NSString * const AddContentViewControllerStoryboardID;
 extern NSString * const PhotoLibraryContainerViewControllerStoryBoardID;
@@ -28,7 +28,7 @@ extern NSString * const PhotoLibraryContainerViewControllerStoryBoardID;
 extern NSUInteger const BoardItemsPerSection;
 
 // App Controller Navigation Actions
-extern NSString * const LoginNavAction;
+extern NSString * const SignUpNavAction;
 extern NSString * const AddContentNavAction;
 extern NSString * const SettingsMenuNavAction;
 extern NSString * const BoardDetailsNavAction;
