@@ -91,6 +91,11 @@ static NSUInteger const DefaultNumberOfSections = 1;
     return cell;
 }
 
+-(void)test {
+    
+    CGFloat width = self.view.bounds.size.width;
+}
+
 
 -(NSArray *)generateColors:(NSUInteger)numberOfColors
 {

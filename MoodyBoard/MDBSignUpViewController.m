@@ -8,6 +8,7 @@
 
 #import "MDBSignUpViewController.h"
 #import "Firebase.h"
+#import "MDBConstants.h"
 
 @interface MDBSignUpViewController ()<UITextFieldDelegate>
 
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirm;
 @property (weak, nonatomic) IBOutlet UIButton *submit;
+@property (strong, nonatomic) NSArray *textFields;
 
 @end
 
@@ -23,21 +25,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"view did load");
     
-    for (UITextField *textField in self.view.subviews)
+    self.textFields = @[self.email,self.emailConfirm,self.password,self.passwordConfirm];
+    
+    for (UITextField *textField in self.textFields)
     {
-        if ([textField isKindOfClass:[UITextField class]])
-        {
-            textField.delegate = self;
-            [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
-        }
+        NSLog(@"if textfield in subviews");
+        textField.delegate = self;
+        [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     }
-    
-
-
 }
--(void)viewDidAppear:(BOOL)animated {
 
+-(void)viewDidAppear:(BOOL)animated {
+    NSLog(@"view did appear");
     [self.email becomeFirstResponder];
     
 }
@@ -54,6 +55,10 @@
 - (BOOL)allFieldsValid
 {
     NSLog(@"all field valid method");
+    for (UITextField *textField in self.textFields) {
+        textField.alpha = 1;
+        textField.backgroundColor = [UIColor clearColor];
+    }
     if (
         [self validateEmail:self.email.text] &&
         [self validateEmail:self.emailConfirm.text] &&
@@ -67,11 +72,58 @@
 }
 /*
  email is first responder
- if confirm email is pressed before email is validated, 
+ if confirm email (or not email) is pressed before email is validated,
+    highlight email
  */
+
+-(void)showAlert {
+    
+    NSLog(@"show alert");
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@""
+                                                                   message:@""
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil];
+    
+    [alert addAction:defaultAction];
+    alert.title = @"Uh oh!";
+    alert.message = @"Not a valid email address";
+    
+    
+    
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    NSLog(@"text field should end editing");
     BOOL valid = YES;
+    
+    if ([textField isEqual:self.email]) {
+        
+        valid = textField.text.length > 0;
+        if (!valid) {
+            self.email.alpha = 0;
+            self.email.backgroundColor = [UIColor clearColor];
+            [UIView animateWithDuration:0.75 animations:^{
+                self.email.alpha = 0.2;
+                self.email.backgroundColor = [UIColor redColor];
+            }];
+            return valid;
+        }
+        
+        valid = [self validateEmail:textField.text];
+        if (!valid) {
+            
+            [self showAlert];
+            
+
+
+        }
+        return valid;
+    }
+    
     
     if (textField.text.length == 0)
     {

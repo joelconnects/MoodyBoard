@@ -85,7 +85,13 @@
                                                  name:PhotoLibrarySelectedNotificationName
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleSignUpSelected)
+                                                 name:SignUpSelectedNotificationName
+                                               object:nil];
+    
 }
+
 
 -(void)setScreenshotOfBoardToImageView {
     
@@ -105,6 +111,11 @@
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
     effectView.frame = self.view.frame;
     [self.blurredImageView addSubview:effectView];
+    
+}
+-(void)handleSignUpSelected {
+    
+    
     
 }
 
