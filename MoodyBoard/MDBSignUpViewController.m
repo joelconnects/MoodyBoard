@@ -36,10 +36,10 @@
         [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     
-    self.email.layer.cornerRadius=10.0f;
-    self.email.layer.masksToBounds=YES;
-    self.email.layer.borderColor=[[UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.3]CGColor];
-    self.email.layer.borderWidth= 5.0f;
+//    self.email.layer.cornerRadius=10.0f;
+//    self.email.layer.masksToBounds=YES;
+//    self.email.layer.borderColor=[[UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.3]CGColor];
+//    self.email.layer.borderWidth= 5.0f;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -124,33 +124,42 @@
         
         valid = textField.text.length > 0;
         if (!valid) {
-//            self.email.alpha = 0;
-            self.email.backgroundColor = [UIColor clearColor];
+
+            textField.backgroundColor = [UIColor clearColor];
+            
             NSMutableDictionary *attributesDictionary = [NSMutableDictionary dictionary];
             [attributesDictionary setObject:[UIFont systemFontOfSize:16] forKey:NSFontAttributeName];
             [attributesDictionary setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-            [UIView animateKeyframesWithDuration:2.0 delay:0 options:0 animations:^{
+            
+            [UIView animateKeyframesWithDuration:1.7 delay:0 options:0 animations:^{
                 [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.2 animations:^{
-                    self.email.backgroundColor = [UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.5];
-                    self.email.attributedText = [[NSAttributedString alloc] initWithString:@"Not a valid email address" attributes:attributesDictionary];
+                    
+                    textField.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+                    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Please enter email" attributes:attributesDictionary];
                 }];
-                [UIView addKeyframeWithRelativeStartTime:1.0 relativeDuration:1.0 animations:^{
-                    NSLog(@"fade red");
-                    self.email.backgroundColor = [UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.1];
+                [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
+                    
+                    textField.backgroundColor = [UIColor clearColor];
+                    
                     
                 }];
             } completion:^(BOOL finished) {
-                self.email.alpha = 1;
+//                textField.attributedPlaceholder = nil;
                 
-
+                
+                
+                [UIView animateWithDuration:1.0 animations:^{
+                    
+                    //                    NSMutableDictionary *attributesDictionary = [NSMutableDictionary dictionary];
+//                    [attributesDictionary setObject:[UIFont systemFontOfSize:16] forKey:NSFontAttributeName];
+//                    [attributesDictionary setObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName];
+//                    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:attributesDictionary];
+                }];
                 
                 
             }];
             
-//            [UIView animateWithDuration:0.75 animations:^{
-//                self.email.alpha = 0.2;
-//                self.email.backgroundColor = [UIColor redColor];
-//            }];
+
             return valid;        }
         
         valid = [self validateEmail:textField.text];
