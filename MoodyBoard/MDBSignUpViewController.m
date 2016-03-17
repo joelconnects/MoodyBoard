@@ -35,6 +35,11 @@
         textField.delegate = self;
         [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     }
+    
+    self.email.layer.cornerRadius=10.0f;
+    self.email.layer.masksToBounds=YES;
+    self.email.layer.borderColor=[[UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.3]CGColor];
+    self.email.layer.borderWidth= 5.0f;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -90,11 +95,26 @@
     [alert addAction:defaultAction];
     alert.title = @"Uh oh!";
     alert.message = @"Not a valid email address";
-    
-    
+//    BOOL isAlert = [self isModal];
+//    NSLog(isAlert ? @"Yes" : @"No");
+    [self presentViewController:alert animated:YES completion:^{
+//        self.email.text = @"";
+    }];
     
 }
 
+- (BOOL)isModal {
+    if([self presentingViewController])
+        return YES;
+    if([[self presentingViewController] presentedViewController] == self)
+        return YES;
+    
+    return NO;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"textField did end editing");
+}
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     NSLog(@"text field should end editing");
@@ -104,20 +124,41 @@
         
         valid = textField.text.length > 0;
         if (!valid) {
-            self.email.alpha = 0;
+//            self.email.alpha = 0;
             self.email.backgroundColor = [UIColor clearColor];
-            [UIView animateWithDuration:0.75 animations:^{
-                self.email.alpha = 0.2;
-                self.email.backgroundColor = [UIColor redColor];
+            NSMutableDictionary *attributesDictionary = [NSMutableDictionary dictionary];
+            [attributesDictionary setObject:[UIFont systemFontOfSize:16] forKey:NSFontAttributeName];
+            [attributesDictionary setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+            [UIView animateKeyframesWithDuration:2.0 delay:0 options:0 animations:^{
+                [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.2 animations:^{
+                    self.email.backgroundColor = [UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.5];
+                    self.email.attributedText = [[NSAttributedString alloc] initWithString:@"Not a valid email address" attributes:attributesDictionary];
+                }];
+                [UIView addKeyframeWithRelativeStartTime:1.0 relativeDuration:1.0 animations:^{
+                    NSLog(@"fade red");
+                    self.email.backgroundColor = [UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.1];
+                    
+                }];
+            } completion:^(BOOL finished) {
+                self.email.alpha = 1;
+                
+
+                
+                
             }];
-            return valid;
-        }
+            
+//            [UIView animateWithDuration:0.75 animations:^{
+//                self.email.alpha = 0.2;
+//                self.email.backgroundColor = [UIColor redColor];
+//            }];
+            return valid;        }
         
         valid = [self validateEmail:textField.text];
         if (!valid) {
             
-            [self showAlert];
             
+            [self showAlert];
+            return YES;
 
 
         }
