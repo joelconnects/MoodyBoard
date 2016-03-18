@@ -34,23 +34,30 @@
         NSLog(@"if textfield in subviews");
         textField.delegate = self;
         [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
+        [[textField valueForKey:@"textInputTraits"] setValue:[UIColor blackColor] forKey:@"insertionPointColor"];
     }
     
-//    self.email.layer.cornerRadius=10.0f;
-//    self.email.layer.masksToBounds=YES;
-//    self.email.layer.borderColor=[[UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:0.3]CGColor];
-//    self.email.layer.borderWidth= 5.0f;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     NSLog(@"view did appear");
     [self.email becomeFirstResponder];
+    self.submit.userInteractionEnabled = NO;
     
 }
 
 - (void)textChanged:(UITextField *)textField
 {
     NSLog(@"Text Changed");
+    
+    NSLog(@"textField did end editing");
+    if ([self.email.text isEqualToString:self.emailConfirm.text]) {
+        NSLog(@"did end - email equal email confirm");
+        self.emailConfirm.userInteractionEnabled = NO;
+        self.emailConfirm.attributedText = [[NSAttributedString alloc] initWithString:self.email.text attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
+    } else {
+        
+    }
     if ([self allFieldsValid])
     {
         self.submit.userInteractionEnabled = YES;
@@ -60,148 +67,163 @@
 - (BOOL)allFieldsValid
 {
     NSLog(@"all field valid method");
-    for (UITextField *textField in self.textFields) {
-        textField.alpha = 1;
-        textField.backgroundColor = [UIColor clearColor];
-    }
     if (
-        [self validateEmail:self.email.text] &&
-        [self validateEmail:self.emailConfirm.text] &&
-        [self validatePassword:self.password.text] &&
-        [self validatePassword:self.passwordConfirm.text]
+        [self.email.text isEqualToString:self.emailConfirm.text] &&
+        [self.password.text isEqualToString:self.passwordConfirm.text]
         )
     {
         return YES;
     }
     return NO;
 }
-/*
- email is first responder
- if confirm email (or not email) is pressed before email is validated,
-    highlight email
- */
 
--(void)showAlert {
-    
-    NSLog(@"show alert");
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@""
-                                                                   message:@""
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:nil];
-    
-    [alert addAction:defaultAction];
-    alert.title = @"Uh oh!";
-    alert.message = @"Not a valid email address";
-//    BOOL isAlert = [self isModal];
-//    NSLog(isAlert ? @"Yes" : @"No");
-    [self presentViewController:alert animated:YES completion:^{
-//        self.email.text = @"";
-    }];
-    
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if ([textField isEqual:self.emailConfirm]) {
+        NSLog(@"text field did begin editing - change color");
+        self.emailConfirm.attributedText = [[NSAttributedString alloc] initWithString:@"" attributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
+        
+    }
+    return YES;
 }
 
-- (BOOL)isModal {
-    if([self presentingViewController])
-        return YES;
-    if([[self presentingViewController] presentedViewController] == self)
-        return YES;
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"text field did begin editing");
     
-    return NO;
-}
+//    if ([textField isEqual:self.email]) {
+//        if (
+//            [textField.text isEqualToString:self.emailConfirm.text] &&
+//            self.password.text.length == 0 &&
+//            self.passwordConfirm.text.length == 0
+//            )
+//        {
+//            self.emailConfirm.userInteractionEnabled = YES;
+//            self.emailConfirm.text = @"";
+//            [textField becomeFirstResponder];
+//        }
+//    }
+    
+    
 
+    if ([textField isEqual:self.passwordConfirm]) {
+        if (self.password.text.length == 0 &&
+            [self validateEmail:self.email.text] &&
+            [self validateEmail:self.emailConfirm.text]
+            )
+        {
+
+            [self highlightBackgroundForValidationError:self.password placeholder:@"Enter password"];
+            [self.password becomeFirstResponder];
+        }
+    }
+}
 -(void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"textField did end editing");
+    
+//    if ([self.password.text isEqualToString:@""] && [self.passwordConfirm.text isEqualToString:@""]) {
+//        [self.password becomeFirstResponder];
+//    }
+    
+
+    
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     NSLog(@"text field should end editing");
     BOOL valid = YES;
     
+    // check email text for validity
     if ([textField isEqual:self.email]) {
+        
+//        valid = textField.text.length > 0;
+//        if (!valid) {
+//
+//            [self highlightBackgroundForValidationError:textField placeholder:@"Enter email address"];
+//            return valid;
+//        }
+        
+        valid = [self validateEmail:textField.text];
+        if (!valid) {
+            
+            NSLog(@"not valid email");
+            textField.text = nil;
+            [self highlightBackgroundForValidationError:textField placeholder:@"Enter valid email"];
+            return valid;
+        }
+        return valid;
+    }
+    
+    // check emailConfirm text for validity
+    if ([textField isEqual:self.emailConfirm]) {
         
         valid = textField.text.length > 0;
         if (!valid) {
-
-            textField.backgroundColor = [UIColor clearColor];
             
-            NSMutableDictionary *attributesDictionary = [NSMutableDictionary dictionary];
-            [attributesDictionary setObject:[UIFont systemFontOfSize:16] forKey:NSFontAttributeName];
-            [attributesDictionary setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+            if ([self validateEmail:self.email.text]) {return YES;}
             
-            [UIView animateKeyframesWithDuration:1.7 delay:0 options:0 animations:^{
-                [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.2 animations:^{
-                    
-                    textField.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
-                    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Please enter email" attributes:attributesDictionary];
-                }];
-                [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
-                    
-                    textField.backgroundColor = [UIColor clearColor];
-                    
-                    
-                }];
-            } completion:^(BOOL finished) {
-//                textField.attributedPlaceholder = nil;
-                
-                
-                
-                [UIView animateWithDuration:1.0 animations:^{
-                    
-                    //                    NSMutableDictionary *attributesDictionary = [NSMutableDictionary dictionary];
-//                    [attributesDictionary setObject:[UIFont systemFontOfSize:16] forKey:NSFontAttributeName];
-//                    [attributesDictionary setObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName];
-//                    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:attributesDictionary];
-                }];
-                
-                
-            }];
-            
-
-            return valid;        }
+            [self highlightBackgroundForValidationError:textField placeholder:@"Confirm email address"];
+            return valid;
+        }
         
-        valid = [self validateEmail:textField.text];
+        valid = [self.email.text isEqualToString:self.emailConfirm.text];
         if (!valid) {
             
+            NSLog(@"emails do not match");
+            textField.text = nil;
+            [self highlightBackgroundForValidationError:textField placeholder:@"Email does not match"];
             
-            [self showAlert];
+            return valid;
+        }
+        return valid;
+    }
+    
+    // check password for validty
+    if ([textField isEqual:self.password]) {
+        
+        valid = self.password.text.length > 0;
+        if (!valid) {
+//            [self highlightBackgroundForValidationError:textField placeholder:@"Enter password"];
             return YES;
-
-
         }
-        return valid;
-    }
-    
-    
-    if (textField.text.length == 0)
-    {
-        return valid;
-    }
-    
-    if ([textField isEqual:self.email]) {
-        //
-    }
-    
-    if ([textField isEqual:self.email] || [textField isEqual:self.emailConfirm])
-    {
-        valid = [self validateEmail:textField.text];
-        if (!valid)
-        {
-//            [self alertWithInvalidField:@"Email"];
-        }
-    }
-    else if ([textField isEqual:self.password] || [textField isEqual:self.passwordConfirm])
-    {
+        
+        
         valid = [self validatePassword:textField.text];
-        if (!valid)
-        {
-//            [self alertWithInvalidField:@"Password"];
+        if (!valid) {
+            
+            NSLog(@"not valid password");
+            textField.text = nil;
+            [self highlightBackgroundForValidationError:textField placeholder:@"Enter valid email"];
+            return valid;
         }
+        return valid;
     }
     
     return valid;
+}
+
+-(void)highlightBackgroundForValidationError:(UITextField *)textField placeholder:(NSString *)placehoderText {
+    
+    textField.backgroundColor = [UIColor clearColor];
+    
+    NSMutableDictionary *attributesDictionary = [NSMutableDictionary dictionary];
+    [attributesDictionary setObject:[UIFont systemFontOfSize:16] forKey:NSFontAttributeName];
+    [attributesDictionary setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    
+    [UIView animateKeyframesWithDuration:1.7 delay:0 options:0 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.1 animations:^{
+            
+            textField.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+            textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placehoderText attributes:attributesDictionary];
+        }];
+        [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
+            
+            textField.backgroundColor = [UIColor clearColor];
+            
+            
+        }];
+    } completion:^(BOOL finished) {
+        textField.attributedPlaceholder = nil;
+    }];
+    
 }
 
 - (BOOL)validateEmail:(NSString *)email
@@ -262,9 +284,40 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
+//-(void)showAlert {
+//    
+//    NSLog(@"show alert");
+//    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@""
+//                                                                   message:@""
+//                                                            preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+//                                                            style:UIAlertActionStyleDefault
+//                                                          handler:nil];
+//    
+//    [alert addAction:defaultAction];
+//    alert.title = @"Uh oh!";
+//    alert.message = @"Not a valid email address";
+//    //    BOOL isAlert = [self isModal];
+//    //    NSLog(isAlert ? @"Yes" : @"No");
+//    [self presentViewController:alert animated:YES completion:^{
+//        //        self.email.text = @"";
+//    }];
+//    
+//}
+//
+//- (BOOL)isModal {
+//    if([self presentingViewController])
+//        return YES;
+//    if([[self presentingViewController] presentedViewController] == self)
+//        return YES;
+//    
+//    return NO;
+//}
+//
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//}
 
 
 
