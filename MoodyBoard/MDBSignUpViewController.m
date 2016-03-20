@@ -115,6 +115,15 @@
     }
     
     if ([self.index integerValue] == 2) {
+        
+        if (![self validateEmail:self.emailConfirm.text]) {
+            NSLog(@"2, length, validate");
+            self.emailConfirm.text = nil;
+            [textField resignFirstResponder];
+            [self.emailConfirm becomeFirstResponder];
+            [self highlightBackgroundToPromptUser:self.emailConfirm];
+            return;
+        }
         if (arrayIndex > [self.index integerValue]) {
             NSLog(@"array tom foolery");
             [textField resignFirstResponder];
@@ -126,6 +135,7 @@
             self.passwordConfirm.text = nil;
             
         }
+
         self.passwordConfirm.userInteractionEnabled = YES;
         
     }
@@ -218,7 +228,7 @@
         if (![self validatePassword:textField.text]) {
             NSLog(@"not valid password");
             textField.text = nil;
-            if ([self.index integerValue] > 1) {
+            if ([self.index integerValue] > 1 && [self validateEmail:self.emailConfirm.text]) {
                 [self highlightBackgroundForValidationError:textField placeholder:@"Enter valid password"];
             }
         } else {
