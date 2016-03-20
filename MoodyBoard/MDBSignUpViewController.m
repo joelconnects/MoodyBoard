@@ -121,6 +121,7 @@
             self.emailConfirm.text = nil;
             [textField resignFirstResponder];
             [self.emailConfirm becomeFirstResponder];
+            self.index = [NSNumber numberWithInteger:1];
             [self highlightBackgroundToPromptUser:self.emailConfirm];
             return;
         }
