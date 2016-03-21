@@ -148,19 +148,11 @@
             [self highlightBackgroundToPromptUser:self.password];
         }
         
-        UIColor *color = [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:205.0/255.0 alpha:1.0];
-        
         if ([self.password.text isEqualToString:self.passwordConfirm.text]) {
             
-            self.passwordConfirm.attributedText = [[NSAttributedString alloc] initWithString:self.password.text attributes:@{NSForegroundColorAttributeName: color}];
             [self.passwordConfirm resignFirstResponder];
-            [self.submit becomeFirstResponder];
             self.passwordConfirm.userInteractionEnabled = NO;
             
-        } else {
-            
-            
-            self.passwordConfirm.attributedText = [[NSAttributedString alloc] initWithString:self.passwordConfirm.text attributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
         }
         
         return;
