@@ -28,8 +28,12 @@
     [super viewDidLoad];
     NSLog(@"view did load");
     
+    // add text fields to textFields property array
     self.textFields = @[self.email,self.emailConfirm,self.password,self.passwordConfirm];
     
+    // set delegate for each text field in the array
+    // add target action for all text fields in array
+    // change cursor color of each text field in the array to black
     for (UITextField *textField in self.textFields)
     {
         NSLog(@"if textfield in subviews");
@@ -38,8 +42,11 @@
         [[textField valueForKey:@"textInputTraits"] setValue:[[UIColor blackColor] colorWithAlphaComponent:0.3] forKey:@"insertionPointColor"];
     }
     
+    // set bool of secureTextEntry property to YES for password and passwordConfirm
     self.password.secureTextEntry = YES;
     self.passwordConfirm.secureTextEntry = YES;
+    
+    // disable user interaction of submit button
     self.submit.userInteractionEnabled = NO;
     
 }
