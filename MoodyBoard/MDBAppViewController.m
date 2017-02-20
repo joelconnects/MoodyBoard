@@ -36,18 +36,18 @@
 
 - (void)viewDidLoad {
     
-//    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:BoardViewControllerStoryBoardID];
-//    self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self addChildViewController:self.currentViewController];
-//    [self.containerView addSubview:self.currentViewController.view];
-//    [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
-    
-    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:SignUpViewControllerStoryBoardID];
+    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:BoardViewControllerStoryBoardID];
     self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addChildViewController:self.currentViewController];
     [self.containerView addSubview:self.currentViewController.view];
     [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
-    [self setButtonsToHidden];
+    
+//    self.currentViewController = [self.storyboard instantiateViewControllerWithIdentifier:SignUpViewControllerStoryBoardID];
+//    self.currentViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self addChildViewController:self.currentViewController];
+//    [self.containerView addSubview:self.currentViewController.view];
+//    [self constrainSubView:self.currentViewController.view toParentView:self.containerView];
+//    [self setButtonsToHidden];
     
     [super viewDidLoad];
     
